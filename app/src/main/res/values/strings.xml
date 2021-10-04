@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ProductCalc</string>
+    <string name="empty_products_message">Список товаров пуст\nДобавьте что-нибудь!</string>
+</resources>

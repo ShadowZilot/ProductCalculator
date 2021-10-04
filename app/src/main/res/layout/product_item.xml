@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/productNameView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textAppearance="@style/ProductNameText"
+        tools:text="Перец"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/productRowView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/ProductInfoText"
+        android:layout_marginTop="4dp"
+        tools:text="6 ряд"
+        app:layout_constraintTop_toBottomOf="@id/productNameView"
+        app:layout_constraintStart_toStartOf="@id/productNameView"/>
+
+    <TextView
+        android:id="@+id/productWeightView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/ProductInfoText"
+        android:layout_marginEnd="24dp"
+        tools:text="Вес = 100 кг"
+        app:layout_constraintTop_toBottomOf="@id/productRowView"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/productPriceView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textAppearance="@style/ProductInfoText"
+        tools:text="Цена за 1 кг = 25 руб"
+        app:layout_constraintEnd_toEndOf="@id/productWeightView"
+        app:layout_constraintTop_toBottomOf="@id/productWeightView"/>
+
+    <TextView
+        android:id="@+id/summaryPriceView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAppearance="@style/ProductInfoText"
+        tools:text="Итого = 1000 руб"
+        app:layout_constraintEnd_toEndOf="@id/productPriceView"
+        app:layout_constraintTop_toBottomOf="@id/productPriceView"/>
+
+    <TextView
+        android:id="@+id/productNoteView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textAppearance="@style/ProductInfoText"
+        tools:text="2 ящика"
+        app:layout_constraintStart_toStartOf="@id/productRowView"
+        app:layout_constraintBottom_toBottomOf="@id/summaryPriceView"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
