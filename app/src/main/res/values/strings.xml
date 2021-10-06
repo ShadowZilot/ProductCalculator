@@ -6,4 +6,10 @@
     <string name="formatted_weight">Вес = %f кг</string>
     <string name="formatted_summary_price">Итого = %f:2 руб</string>
     <string name="add_product_label">Добавить</string>
+    <string name="product_name_label">Наименование товара</string>
+    <string name="ae_title">Опишите товар</string>
+    <string name="weight_label">Вес товара</string>
+    <string name="row_label">Ряд</string>
+    <string name="price_per_1_label">Цена за 1 кг</string>
+    <string name="note_label">Заметка</string>
 </resources>
