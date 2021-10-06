@@ -11,9 +11,9 @@ import com.human_developing_sofr.productcalc.product_storage.domain.ProductListV
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductsListVM
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductsObserver
 
-class ProductsFragment : Fragment(), ProductsObserver {
+class ProductsFragment : Fragment(), ProductsObserver, OnProductClickListener {
     private lateinit var mBinding: ProductsFragmentBinding
-    private lateinit var mProgressManager: ProductsListEmptyView
+    private lateinit var mListManager: AllProductsView
     private lateinit var mViewModel: ProductsListVM
 
     override fun onCreateView(
@@ -26,8 +26,12 @@ class ProductsFragment : Fragment(), ProductsObserver {
             container,
             false
         )
-        mProgressManager = ProductsListEmptyView.Base(
-            mBinding.productListEmpty
+        mListManager = AllProductsView.Base(
+            mBinding.productsList,
+            ProductsListEmptyView.Base(
+                mBinding.productListEmpty
+            ),
+            this
         )
         return mBinding.root
     }
@@ -41,13 +45,15 @@ class ProductsFragment : Fragment(), ProductsObserver {
 
     override fun onStart() {
         super.onStart()
-        mProgressManager.beginLoading()
+        mListManager.beginLoading()
         mViewModel.fetchProducts()
     }
 
     override fun updatedProducts(products: List<ProductUi>) {
-        mProgressManager.stopLoading(
-            products.isNotEmpty()
-        )
+        mListManager.fetchData(products)
+    }
+
+    override fun onProductClick(id: Int) {
+
     }
 }

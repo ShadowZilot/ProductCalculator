@@ -8,6 +8,7 @@ interface ProductUi {
         private val mName: String,
         private val mWeight: Float,
         private val mPriceForWeight: Float,
+        private val mPriceSummary: Float,
         private val mPlaceRow: Int,
         private val mNote: String
     ) : ProductUi {
@@ -17,6 +18,7 @@ interface ProductUi {
                 mName,
                 mWeight,
                 mPriceForWeight,
+                mPriceSummary,
                 mPlaceRow,
                 mNote
             )
@@ -29,6 +31,7 @@ interface ProductUi {
             name: String,
             weight: Float,
             priceForWeight: Float,
+            priceSummary: Float,
             placeRow: Int,
             note: String
         ): T

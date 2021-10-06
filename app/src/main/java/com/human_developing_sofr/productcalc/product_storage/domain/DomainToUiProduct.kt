@@ -16,6 +16,7 @@ class DomainToUiProduct : DomainProduct.Mapper<ProductUi> {
             name,
             weight,
             priceForWeight,
+            weight * priceForWeight,
             placeRow,
             note
         )

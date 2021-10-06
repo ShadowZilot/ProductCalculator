@@ -32,4 +32,18 @@ data class Product(
             mTime
         )
     }
+
+    fun getId() = mId
+
+    fun getName() = mName
+
+    fun getWeight() = mWeight
+
+    fun getPriceForWeight() = mPriceForWeight
+
+    fun getPlaceRow() = mPlaceRow
+
+    fun getNote() = mNote
+
+    fun getTime() = mTime
 }

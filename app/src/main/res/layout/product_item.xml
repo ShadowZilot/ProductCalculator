@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:textAppearance="@style/ProductNameText"
-        tools:text="Перец"
+        tools:text="Баклажаны"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
