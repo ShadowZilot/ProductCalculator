@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Калькулятор\nТовара</string>
     <string name="empty_products_message">Список товаров пуст\nДобавьте что-нибудь!</string>
-    <string name="formatted_place_row">%d ряд</string>
-    <string name="formatted_price">Цена = %d руб</string>
-    <string name="formatted_weight">Вес = %f кг</string>
-    <string name="formatted_summary_price">Итого = %f:2 руб</string>
+    <string name="formatted_place_row">%s ряд</string>
+    <string name="formatted_price">Цена = %s руб</string>
+    <string name="formatted_weight">Вес = %s кг</string>
+    <string name="formatted_summary_price">Итого = %s руб</string>
     <string name="add_product_label">Добавить</string>
     <string name="product_name_label">Наименование товара</string>
     <string name="ae_title">Опишите товар</string>

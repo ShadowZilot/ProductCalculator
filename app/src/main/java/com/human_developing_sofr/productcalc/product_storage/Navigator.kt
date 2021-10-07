@@ -9,4 +9,6 @@ interface Navigator {
     fun navigateTo(targetFragment: Class<out Fragment>)
 
     fun navigateTo(targetFragment: Class<out Fragment>, data: Bundle)
+
+    fun takeBack()
 }

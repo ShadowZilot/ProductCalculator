@@ -35,10 +35,12 @@ interface AllProductsView {
         override fun fetchData(data: List<ProductUi>) {
             mProcessManager.stopLoading(data.isNotEmpty())
             if (data.isNotEmpty()) {
+                mAdapter.fetchData(data)
                 val animator = ObjectAnimator.ofFloat(mList,
                     "alpha", 0f, 1f)
                 animator.duration = 100
                 animator.start()
+
             }
         }
     }

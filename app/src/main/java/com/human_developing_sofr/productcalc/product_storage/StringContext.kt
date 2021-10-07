@@ -2,6 +2,7 @@ package com.human_developing_sofr.productcalc.product_storage
 
 import android.content.Context
 import androidx.annotation.StringRes
+import java.util.*
 
 interface StringContext {
     fun string(@StringRes id: Int): String
@@ -15,7 +16,7 @@ interface StringContext {
         override fun string(id: Int) = mContext.getString(id)
 
         override fun string(id: Int, vararg args: Any) = mContext.getString(
-            id, args
+            id, *args
         )
     }
 }
