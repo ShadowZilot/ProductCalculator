@@ -18,4 +18,6 @@
     <string name="success_deleted">Товар удалён</string>
     <string name="edit_button_label">Изменить</string>
     <string name="summa_products">Сумма = %d</string>
+    <string name="editing_tool_label">Редактирование</string>
+    <string name="delete_label">Удалить</string>
 </resources>

@@ -8,6 +8,7 @@ interface ProductUiFactory {
     fun create(context: Context): ProductUi
 
     class Base(
+        private val mId: Int?,
         private val mName: String,
         private val mWeight: String,
         private val mPrice: String,
@@ -21,7 +22,7 @@ interface ProductUiFactory {
                 mPlaceRow != "" &&
                 mNote != "") {
                  ProductUi.Base(
-                    null,
+                    mId,
                     mName,
                     mWeight.toFloat(),
                     mPrice.toFloat(),

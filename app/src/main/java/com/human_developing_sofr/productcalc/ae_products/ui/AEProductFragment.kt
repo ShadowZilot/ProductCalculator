@@ -1,10 +1,10 @@
 package com.human_developing_sofr.productcalc.ae_products.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import androidx.appcompat.view.menu.MenuBuilder
+import androidx.appcompat.view.menu.MenuPresenter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.human_developing_sofr.productcalc.R
@@ -20,16 +20,18 @@ class AEProductFragment : Fragment(), OnProductUpdatedListener, OnProductObtaine
     private lateinit var mBinding: AeProductsFragmentBinding
     private lateinit var mViewModel: AEProductVM
     private lateinit var mFields: ProductFieldsImpl
+    private var mId : Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        mId = arguments?.getInt("id")
         mBinding = AeProductsFragmentBinding.inflate(
             inflater, container, false
         )
-        mFields = ProductFieldsImpl(mBinding.aeFields)
+        mFields = ProductFieldsImpl(mBinding.aeFields, mId)
         return mBinding.root
     }
 
@@ -38,16 +40,23 @@ class AEProductFragment : Fragment(), OnProductUpdatedListener, OnProductObtaine
             AEProductVMFactory(requireContext(),
             this, this)
         ).get(AEProductVM::class.java)
-        val id = arguments?.getInt("id")
-        if (id == null) {
+        if (mId == null) {
+            mBinding.aeToolBar.menu.getItem(0).isVisible = false
             mBinding.aeAddButton.setOnClickListener {
                 mViewModel.saveProduct(
                     mFields.product()
                 )
             }
         } else {
+            mBinding.aeToolBar.menu.getItem(0).setOnMenuItemClickListener {
+                mViewModel.deleteProduct(
+                    mFields.product()
+                )
+                true
+            }
+            mBinding.aeToolBar.setTitle(R.string.editing_tool_label)
             mBinding.aeAddButton.setText(R.string.edit_button_label)
-            mViewModel.productById(id)
+            mViewModel.productById(mId!!)
             mBinding.aeAddButton.setOnClickListener {
                 mViewModel.updateProduct(
                     mFields.product()

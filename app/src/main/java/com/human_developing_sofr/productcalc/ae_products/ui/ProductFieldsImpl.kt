@@ -4,10 +4,12 @@ import com.human_developing_sofr.productcalc.databinding.AeFieldsBinding
 import com.human_developing_sofr.productcalc.product_storage.ui.ProductUi
 
 class ProductFieldsImpl(
-    private val mBinding: AeFieldsBinding
+    private val mBinding: AeFieldsBinding,
+    private val mId: Int? = null
 ) : ProductFields {
     override fun product(): ProductUi {
             return ProductUiFactory.Base(
+                mId,
                 mBinding.nameInput.text.toString(),
                 mBinding.weightInput.text.toString(),
                 mBinding.priceInput.text.toString(),

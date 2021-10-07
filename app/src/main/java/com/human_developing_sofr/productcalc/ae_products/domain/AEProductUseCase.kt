@@ -20,11 +20,15 @@ class AEProductUseCase(
     }
 
     override suspend fun updateProduct(product: DomainProduct) {
-        super.updateProduct(product)
+        mDatabase.updateProduct(
+            product.map(DomainToDataProduct())
+        )
     }
 
     override suspend fun deleteProduct(product: DomainProduct) {
-        super.deleteProduct(product)
+        mDatabase.deleteProduct(
+            product.map(DomainToDataProduct())
+        )
     }
 
     override suspend fun productById(id: Int): DomainProduct {

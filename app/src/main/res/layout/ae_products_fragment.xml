@@ -16,9 +16,9 @@
             android:id="@+id/aeToolBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:menu="@menu/editing_menu"
             app:titleTextColor="@color/white"
-            app:title="@string/ae_title"
-            app:navigationIcon="@drawable/ic_back_arrow"/>
+            app:title="@string/ae_title" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <include
