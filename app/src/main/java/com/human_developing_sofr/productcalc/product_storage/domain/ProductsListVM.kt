@@ -19,7 +19,8 @@ class ProductsListVM(
             mObserver?.updatedProducts(
                 mData.allProducts(Date().time).map {
                     it.map(DomainToUiProduct())
-                }
+                },
+                mData.allProducts(Date().time).summa()
             )
         }
     }
@@ -28,4 +29,14 @@ class ProductsListVM(
         mJob.cancel()
         mObserver = null
     }
+}
+
+fun List<DomainProduct>.summa(): Float {
+    var summa = 0f
+    forEach {
+        summa += it.map(
+            DomainSumma()
+        )
+    }
+    return summa
 }

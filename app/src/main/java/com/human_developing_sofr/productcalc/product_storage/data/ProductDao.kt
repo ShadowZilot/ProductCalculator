@@ -1,9 +1,6 @@
 package com.human_developing_sofr.productcalc.product_storage.data
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface ProductDao {
@@ -12,4 +9,13 @@ interface ProductDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertProduct(newProduct: Product)
+
+    @Update
+    suspend fun updateProduct(product: Product)
+
+    @Delete
+    suspend fun deleteProduct(product: Product)
+
+    @Query("SELECT * FROM products WHERE mId = :id")
+    suspend fun productById(id: Int): Product
 }

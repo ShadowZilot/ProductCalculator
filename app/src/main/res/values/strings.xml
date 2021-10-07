@@ -14,4 +14,8 @@
     <string name="note_label">Заметка</string>
     <string name="success_updating_message">Товар успешно добавлен!</string>
     <string name="fail_empty_fields">Заполните все поля!</string>
+    <string name="success_updated">Товар отредактирован</string>
+    <string name="success_deleted">Товар удалён</string>
+    <string name="edit_button_label">Изменить</string>
+    <string name="summa_products">Сумма = %d</string>
 </resources>

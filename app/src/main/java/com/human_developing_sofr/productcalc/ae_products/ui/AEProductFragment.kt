@@ -7,13 +7,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.human_developing_sofr.productcalc.R
 import com.human_developing_sofr.productcalc.ae_products.domain.AEProductVM
 import com.human_developing_sofr.productcalc.ae_products.domain.AEProductVMFactory
+import com.human_developing_sofr.productcalc.ae_products.domain.OnProductObtained
 import com.human_developing_sofr.productcalc.ae_products.domain.OnProductUpdatedListener
 import com.human_developing_sofr.productcalc.databinding.AeProductsFragmentBinding
 import com.human_developing_sofr.productcalc.product_storage.Navigation
+import com.human_developing_sofr.productcalc.product_storage.ui.ProductUi
 
-class AEProductFragment : Fragment(), OnProductUpdatedListener {
+class AEProductFragment : Fragment(), OnProductUpdatedListener, OnProductObtained {
     private lateinit var mBinding: AeProductsFragmentBinding
     private lateinit var mViewModel: AEProductVM
     private lateinit var mFields: ProductFieldsImpl
@@ -33,12 +36,23 @@ class AEProductFragment : Fragment(), OnProductUpdatedListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mViewModel = ViewModelProvider(this,
             AEProductVMFactory(requireContext(),
-            this)
+            this, this)
         ).get(AEProductVM::class.java)
-        mBinding.aeAddButton.setOnClickListener {
-            mViewModel.saveProduct(
-                mFields.product()
-            )
+        val id = arguments?.getInt("id")
+        if (id == null) {
+            mBinding.aeAddButton.setOnClickListener {
+                mViewModel.saveProduct(
+                    mFields.product()
+                )
+            }
+        } else {
+            mBinding.aeAddButton.setText(R.string.edit_button_label)
+            mViewModel.productById(id)
+            mBinding.aeAddButton.setOnClickListener {
+                mViewModel.updateProduct(
+                    mFields.product()
+                )
+            }
         }
     }
 
@@ -61,5 +75,11 @@ class AEProductFragment : Fragment(), OnProductUpdatedListener {
                 Toast.LENGTH_LONG
             ).show()
         }
+    }
+
+    override fun onProductObtained(product: ProductUi) {
+        product.map(
+            mFields
+        )
     }
 }

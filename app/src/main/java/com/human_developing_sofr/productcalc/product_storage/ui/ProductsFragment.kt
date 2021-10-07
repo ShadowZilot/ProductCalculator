@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.human_developing_sofr.productcalc.R
 import com.human_developing_sofr.productcalc.ae_products.ui.AEProductFragment
 import com.human_developing_sofr.productcalc.databinding.ProductsFragmentBinding
 import com.human_developing_sofr.productcalc.product_storage.Navigation
+import com.human_developing_sofr.productcalc.product_storage.StringContext
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductListVMFactory
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductsListVM
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductsObserver
@@ -62,13 +64,23 @@ class ProductsFragment : Fragment(), ProductsObserver, OnProductClickListener {
         mViewModel.onCancel()
     }
 
-    override fun updatedProducts(products: List<ProductUi>) {
+    override fun updatedProducts(products: List<ProductUi>, summary: Float) {
         requireActivity().runOnUiThread{
             mListManager.fetchData(products)
+            mBinding.productsToolbar.subtitle = StringContext.Base(
+                requireContext()
+            ).string(
+                R.string.summa_products, summary.toInt()
+            )
         }
     }
 
     override fun onProductClick(id: Int) {
-
+        val args = Bundle()
+        args.putInt("id", id)
+        Navigation.Navigation.instance().navigateTo(
+            AEProductFragment::class.java,
+            args
+        )
     }
 }

@@ -24,6 +24,18 @@ class ProductDBStorage private constructor(
             .insertProduct(product)
     }
 
+    override suspend fun updateProduct(product: Product) {
+        mDatabase.productDao().updateProduct(product)
+    }
+
+    override suspend fun deleteProduct(product: Product) {
+        mDatabase.productDao().deleteProduct(product)
+    }
+
+    override suspend fun productById(id: Int): Product {
+        return mDatabase.productDao().productById(id)
+    }
+
     object Instance {
         private var mInstance: ProductStorage? = null
 

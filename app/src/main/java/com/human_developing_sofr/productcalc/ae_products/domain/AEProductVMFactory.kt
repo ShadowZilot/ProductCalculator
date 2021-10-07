@@ -6,9 +6,10 @@ import androidx.lifecycle.ViewModelProvider
 
 class AEProductVMFactory(
     private val mContext: Context,
-    private val mListener: OnProductUpdatedListener
+    private val mListener: OnProductUpdatedListener,
+    private val mListenerProduct: OnProductObtained
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return AEProductVM(mContext, mListener) as T
+        return AEProductVM(mContext, mListener, mListenerProduct) as T
     }
 }

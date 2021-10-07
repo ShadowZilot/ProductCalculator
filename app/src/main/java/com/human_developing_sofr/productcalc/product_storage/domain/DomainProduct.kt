@@ -24,6 +24,12 @@ interface DomainProduct {
         }
     }
 
+    class Dummy : DomainProduct {
+        override fun <T> map(mapper: Mapper<T>): T {
+            throw Exception("Handle with empty DomainProduct")
+        }
+    }
+
     interface Mapper<T> {
         fun map(
             id: Int?,

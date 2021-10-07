@@ -16,7 +16,7 @@ class Navigation private constructor(
         transaction.replace(
             mHost,
             targetFragment,
-            Bundle(),
+            null,
             targetFragment.name
         )
         mStack.add(targetFragment)
