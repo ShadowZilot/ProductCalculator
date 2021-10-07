@@ -5,7 +5,7 @@ interface DomainProduct {
     fun <T> map(mapper: Mapper<T>): T
 
     class Base(
-        private val mId: Int,
+        private val mId: Int?,
         private val mName: String,
         private val mWeight: Float,
         private val mPriceForWeight: Float,
@@ -26,7 +26,7 @@ interface DomainProduct {
 
     interface Mapper<T> {
         fun map(
-            id: Int,
+            id: Int?,
             name: String,
             weight: Float,
             priceForWeight: Float,

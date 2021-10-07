@@ -9,6 +9,8 @@ class Navigation private constructor(
     private val mManager: FragmentManager,
     private val mHost: Int
 ) : Navigator {
+    private val mStack = mutableListOf<Class<out Fragment>>()
+
     override fun navigateTo(targetFragment: Class<out Fragment>) {
         val transaction = mManager.beginTransaction()
         transaction.replace(
@@ -17,8 +19,8 @@ class Navigation private constructor(
             Bundle(),
             targetFragment.name
         )
+        mStack.add(targetFragment)
         transaction.commit()
-        mManager.popBackStack()
     }
 
     override fun navigateTo(targetFragment: Class<out Fragment>, data: Bundle) {
@@ -29,21 +31,20 @@ class Navigation private constructor(
             data,
             targetFragment.name
         )
+        mStack.add(targetFragment)
         transaction.commit()
-        mManager.popBackStack()
     }
 
     override fun takeBack() {
-        val transaction = mManager.beginTransaction()
-        val lastIndex = mManager.fragments.lastIndex
-        try {
+        if (mStack.size >= 1) {
+            val transaction = mManager.beginTransaction()
+            mStack.removeAt(mStack.size - 1)
             transaction.replace(
                 mHost,
-                mManager.fragments[lastIndex - 1]
+                mStack[mStack.size - 1],
+                Bundle()
             )
             transaction.commit()
-        } catch (e: IndexOutOfBoundsException) {
-            e.printStackTrace()
         }
     }
 

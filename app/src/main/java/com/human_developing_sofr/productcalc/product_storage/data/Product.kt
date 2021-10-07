@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "products")
 data class Product(
     @PrimaryKey(autoGenerate = true)
-    private val mId: Int,
+    private val mId: Int?,
     @ColumnInfo(name = "name")
     private val mName: String,
     @ColumnInfo(name = "weight")
@@ -23,7 +23,7 @@ data class Product(
 ) {
     fun <T> map(mapper: ProductMapper<T>): T {
         return mapper.map(
-            mId,
+            mId!!,
             mName,
             mWeight,
             mPriceForWeight,

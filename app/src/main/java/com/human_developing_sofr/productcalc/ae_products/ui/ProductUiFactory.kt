@@ -1,0 +1,38 @@
+package com.human_developing_sofr.productcalc.ae_products.ui
+
+import android.content.Context
+import com.human_developing_sofr.productcalc.R
+import com.human_developing_sofr.productcalc.product_storage.ui.ProductUi
+
+interface ProductUiFactory {
+    fun create(context: Context): ProductUi
+
+    class Base(
+        private val mName: String,
+        private val mWeight: String,
+        private val mPrice: String,
+        private val mPlaceRow: String,
+        private val mNote: String
+    ): ProductUiFactory {
+        override fun create(context: Context): ProductUi {
+            return if (mName != "" &&
+                mWeight != "" &&
+                mPrice != "" &&
+                mPlaceRow != "" &&
+                mNote != "") {
+                 ProductUi.Base(
+                    null,
+                    mName,
+                    mWeight.toFloat(),
+                    mPrice.toFloat(),
+                    0f,
+                    mPlaceRow.toInt(),
+                    mNote
+                )
+            } else {
+                ProductUi.Fail(R.string.fail_empty_fields,
+                    context)
+            }
+        }
+    }
+}

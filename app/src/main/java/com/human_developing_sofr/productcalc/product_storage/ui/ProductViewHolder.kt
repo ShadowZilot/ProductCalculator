@@ -11,7 +11,7 @@ class ProductViewHolder(
 ) : RecyclerView.ViewHolder(mBinding.root), ProductUi.Mapper<Unit> {
 
     override fun map(
-        id: Int,
+        id: Int?,
         name: String,
         weight: Float,
         priceForWeight: Float,
@@ -21,7 +21,7 @@ class ProductViewHolder(
     ) {
         val stringProvider = StringContext.Base(mBinding.root.context)
         mBinding.root.setOnClickListener {
-            mListener.onProductClick(id)
+            mListener.onProductClick(id!!)
         }
         mBinding.productNameView.text = name
         mBinding.productWeightView.text = stringProvider.string(R.string.formatted_weight,

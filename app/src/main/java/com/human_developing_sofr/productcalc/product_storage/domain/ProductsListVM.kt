@@ -16,28 +16,9 @@ class ProductsListVM(
     @DelicateCoroutinesApi
     fun fetchProducts() {
         mJob = GlobalScope.launch(Dispatchers.IO) {
-            val products = mutableListOf<DomainProduct>()
-            products.add(DomainProduct.Base(
-                0,
-                "Баклажаны",
-                50f,
-                50f,
-                4,
-                "3 мешка"
-            ))
-            products.add(DomainProduct.Base(
-                1,
-                "Перец",
-                40f,
-                70f,
-                3,
-                "2 ящика"
-            ))
             mObserver?.updatedProducts(
-                products.map {
-                    it.map(
-                        DomainToUiProduct()
-                    )
+                mData.allProducts(Date().time).map {
+                    it.map(DomainToUiProduct())
                 }
             )
         }

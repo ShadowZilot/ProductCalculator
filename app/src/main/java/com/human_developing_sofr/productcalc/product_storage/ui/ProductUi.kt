@@ -1,10 +1,15 @@
 package com.human_developing_sofr.productcalc.product_storage.ui
 
+import android.content.Context
+import androidx.annotation.StringRes
+import com.human_developing_sofr.productcalc.ae_products.domain.WrongProductException
+import com.human_developing_sofr.productcalc.product_storage.StringContext
+
 interface ProductUi {
     fun <T> map(mapper: Mapper<T>): T
 
     class Base(
-        private val mId: Int,
+        private val mId: Int?,
         private val mName: String,
         private val mWeight: Float,
         private val mPriceForWeight: Float,
@@ -25,9 +30,21 @@ interface ProductUi {
         }
     }
 
+    class Fail(
+        @StringRes message: Int,
+        context: Context
+    ) : ProductUi {
+        private val mMessage = StringContext.Base(context).string(message)
+
+        override fun <T> map(mapper: Mapper<T>): T {
+            throw WrongProductException(mMessage)
+        }
+    }
+
+
     interface Mapper<T> {
         fun map(
-            id: Int,
+            id: Int?,
             name: String,
             weight: Float,
             priceForWeight: Float,

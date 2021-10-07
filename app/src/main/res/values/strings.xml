@@ -12,4 +12,6 @@
     <string name="row_label">Ряд</string>
     <string name="price_per_1_label">Цена за 1 кг</string>
     <string name="note_label">Заметка</string>
+    <string name="success_updating_message">Товар успешно добавлен!</string>
+    <string name="fail_empty_fields">Заполните все поля!</string>
 </resources>
