@@ -23,25 +23,15 @@
             tools:subtitle="Общая сумма = 37 840"/>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ProgressBar
-        android:id="@+id/productsProgressLoad"
-        android:layout_width="wrap_content"
+    <include
+        android:id="@+id/emptyListProducts"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/emptyProgressText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:text="@string/empty_products_message"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_width="match_parent"
+        layout="@layout/empty_list_layout"
+        app:layout_constraintStart_toStartOf="@id/productsToolBarLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/addProductButton"
+        app:layout_constraintTop_toBottomOf="@id/productsToolBarLayout"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/productsList"

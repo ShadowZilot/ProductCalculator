@@ -5,6 +5,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.StringRes
 import com.human_developing_sofr.productcalc.R
+import com.human_developing_sofr.productcalc.databinding.EmptyListLayoutBinding
 
 interface ProductsListEmptyView  {
 
@@ -19,6 +20,9 @@ interface ProductsListEmptyView  {
         private val mProgress: ProgressBar,
         private val mMessage: TextView
     ) : ProductsListEmptyView {
+        constructor(binding: EmptyListLayoutBinding): this(
+            binding.productsProgressLoad, binding.emptyProgressText
+        )
 
         override fun beginLoading() {
             mProgress.visibility = View.VISIBLE

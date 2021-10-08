@@ -33,8 +33,7 @@ class ProductsFragment : Fragment(), ProductsObserver, OnProductClickListener {
         mListManager = AllProductsView.Base(
             mBinding.productsList,
             ProductsListEmptyView.Base(
-                mBinding.productsProgressLoad,
-                mBinding.emptyProgressText
+                mBinding.emptyListProducts
             ),
             this
         )
