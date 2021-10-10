@@ -24,11 +24,11 @@ class ProductFieldsImpl(
         weight: Float,
         priceForWeight: Float,
         priceSummary: Float,
-        placeRow: Int,
+        placeRow: String,
         note: String
     ) {
         mBinding.nameInput.setText(name)
-        mBinding.placeInput.setText(placeRow.toString())
+        mBinding.placeInput.setText(placeRow)
         mBinding.weightInput.setText(weight.toString())
         mBinding.priceInput.setText(priceForWeight.toString())
         mBinding.noteInput.setText(note)

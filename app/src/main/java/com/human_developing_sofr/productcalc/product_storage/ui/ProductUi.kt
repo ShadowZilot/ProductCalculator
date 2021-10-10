@@ -14,7 +14,7 @@ interface ProductUi {
         private val mWeight: Float,
         private val mPriceForWeight: Float,
         private val mPriceSummary: Float,
-        private val mPlaceRow: Int,
+        private val mPlaceRow: String,
         private val mNote: String
     ) : ProductUi {
         override fun <T> map(mapper: Mapper<T>): T {
@@ -49,7 +49,7 @@ interface ProductUi {
             weight: Float,
             priceForWeight: Float,
             priceSummary: Float,
-            placeRow: Int,
+            placeRow: String,
             note: String
         ): T
     }

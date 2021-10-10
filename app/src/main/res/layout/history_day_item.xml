@@ -10,6 +10,7 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_margin="4dp"
+        app:cardBackgroundColor="@color/teal_200"
         app:cardCornerRadius="4dp"
         app:cardElevation="8dp">
 

@@ -17,7 +17,7 @@ class DomainToUiProduct : DomainProduct.Mapper<ProductUi> {
             weight,
             priceForWeight,
             weight * priceForWeight,
-            placeRow,
+            if (placeRow == -1) "" else placeRow.toString(),
             note
         )
     }

@@ -18,16 +18,14 @@ interface ProductUiFactory {
         override fun create(context: Context): ProductUi {
             return if (mName != "" &&
                 mWeight != "" &&
-                mPrice != "" &&
-                mPlaceRow != "" &&
-                mNote != "") {
+                mPrice != "") {
                  ProductUi.Base(
                     mId,
                     mName,
                     mWeight.toFloat(),
                     mPrice.toFloat(),
                     0f,
-                    mPlaceRow.toInt(),
+                    if (mPlaceRow == "") "" else mPlaceRow,
                     mNote
                 )
             } else {

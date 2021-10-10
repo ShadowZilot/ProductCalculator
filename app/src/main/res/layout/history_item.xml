@@ -28,5 +28,31 @@
         app:layout_constraintStart_toStartOf="@id/monthNameView"
         app:layout_constraintTop_toBottomOf="@id/monthNameView"
         app:layout_constraintEnd_toEndOf="parent">
+        <!--<include
+            layout="@layout/history_day_item"/>
+        <include
+            layout="@layout/history_day_item"/>
+        <include
+            layout="@layout/history_day_item"/>
+        <include
+            layout="@layout/history_day_item"/>
+        <include
+            layout="@layout/history_day_item"/>
+        <include
+            layout="@layout/history_day_item"/>
+        <include
+            layout="@layout/history_day_item"/>
+        <include
+            layout="@layout/history_day_item"/>
+        <include
+            layout="@layout/history_day_item"/>
+        <include
+            layout="@layout/history_day_item"/>
+        <include
+            layout="@layout/history_day_item"/>
+        <include
+            layout="@layout/history_day_item"/>
+        <include
+            layout="@layout/history_day_item"/>-->
     </GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

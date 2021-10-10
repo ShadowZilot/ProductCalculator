@@ -16,7 +16,7 @@ class ProductViewHolder(
         weight: Float,
         priceForWeight: Float,
         priceSummary: Float,
-        placeRow: Int,
+        placeRow: String,
         note: String
     ) {
         val stringProvider = StringContext.Base(mBinding.root.context)
@@ -30,8 +30,9 @@ class ProductViewHolder(
             priceForWeight.toString())
         mBinding.summaryPriceView.text = stringProvider.string(R.string.formatted_summary_price,
             priceSummary.toString())
-        mBinding.productRowView.text = stringProvider.string(R.string.formatted_place_row,
-            placeRow.toString())
+        mBinding.productRowView.text = if (placeRow == "") "" else
+            stringProvider.string(R.string.formatted_place_row,
+            placeRow)
         mBinding.productNoteView.text = note
     }
 }
