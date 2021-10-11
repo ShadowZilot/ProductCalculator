@@ -1,15 +1,13 @@
 package com.human_developing_sofr.productcalc.history.domain
 
-import java.util.*
-
 interface MonthDomain {
 
     fun <T> map(mapper: Mapper<T>): T
 
     class Base(
-        private val mTime: Date,
-        private val mDays: List<Date>
+        private val mDays: List<Long>
     ): MonthDomain {
+        private val mTime: Long = mDays[0]
         override fun <T> map(mapper: Mapper<T>): T {
             return mapper.map(
                 mTime,
@@ -20,8 +18,8 @@ interface MonthDomain {
 
     interface Mapper<T> {
         fun map(
-            time: Date,
-            days: List<Date>
+            time: Long,
+            days: List<Long>
         ): T
     }
 }

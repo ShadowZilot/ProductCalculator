@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.human_developing_sofr.productcalc.R
 import com.human_developing_sofr.productcalc.ae_products.ui.AEProductFragment
 import com.human_developing_sofr.productcalc.databinding.ProductsFragmentBinding
+import com.human_developing_sofr.productcalc.history.ui.HistoryFragment
 import com.human_developing_sofr.productcalc.product_storage.Navigation
 import com.human_developing_sofr.productcalc.product_storage.StringContext
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductListVMFactory
@@ -49,6 +51,12 @@ class ProductsFragment : Fragment(), ProductsObserver, OnProductClickListener {
             Navigation.Navigation.instance().navigateTo(
                 AEProductFragment::class.java
             )
+        }
+        mBinding.productsToolbar.menu.getItem(0).setOnMenuItemClickListener {
+            Navigation.Navigation.instance().navigateTo(
+                HistoryFragment::class.java
+            )
+            true
         }
     }
 

@@ -17,6 +17,7 @@
             android:id="@+id/productsToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:menu="@menu/products_menu"
             app:titleTextColor="@color/white"
             app:subtitleTextColor="@color/white"
             app:title="Товар"

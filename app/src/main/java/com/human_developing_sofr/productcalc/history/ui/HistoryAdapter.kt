@@ -29,4 +29,9 @@ class HistoryAdapter(
 
     override fun getItemCount() = mData.size
 
+    fun fetchData(data: List<MonthUi>) {
+        mData.clear()
+        mData.addAll(data)
+        notifyDataSetChanged()
+    }
 }

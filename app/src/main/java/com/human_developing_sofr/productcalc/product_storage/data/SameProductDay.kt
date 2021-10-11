@@ -1,5 +1,7 @@
 package com.human_developing_sofr.productcalc.product_storage.data
 
+import java.util.*
+
 class SameProductDay(
     private val mCurrentDate: Long
 ) : ProductMapper<Boolean> {
@@ -12,8 +14,10 @@ class SameProductDay(
         note: String,
         time: Long
     ): Boolean {
-        val currentAmountDays = (mCurrentDate / 1000) / 86400
-        val productAmountDays = (time / 1000) / 86400
-        return currentAmountDays == productAmountDays
+        val otherDate = GregorianCalendar.getInstance()
+        otherDate.time = Date(mCurrentDate)
+        val selfDate = GregorianCalendar.getInstance()
+        selfDate.time = Date(time)
+        return otherDate.get(Calendar.DAY_OF_MONTH) == selfDate.get(Calendar.DAY_OF_MONTH)
     }
 }

@@ -7,7 +7,7 @@ class ProductDBStorage private constructor(
     context: Context
 ): ProductStorage {
     private val mDatabase: ProductDatabase = Room.databaseBuilder(
-        context,
+        context.applicationContext,
         ProductDatabase::class.java,
         "Products.db"
     ).build()

@@ -14,9 +14,7 @@ class MonthViewHolder(
         mBinding.monthNameView.text = name
         for (day in days) {
             val dayItem = HistoryDayItemBinding.inflate(
-                LayoutInflater.from(mBinding.root.context),
-                mBinding.daysGrid
-            )
+                LayoutInflater.from(mBinding.root.context))
             dayItem.dayNumber.text = day.byDay()
             dayItem.root.setOnClickListener {
                 mObserver.onDayClick(day)
