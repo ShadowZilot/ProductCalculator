@@ -11,7 +11,7 @@ interface MonthProvider {
     ) : MonthProvider {
         override fun monthByOrder(order: Int): String {
             return mContext.resources.getStringArray(
-                R.array.months_name)[order-1]
+                R.array.months_name)[order]
         }
     }
 }

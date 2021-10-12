@@ -1,25 +1,17 @@
 package com.human_developing_sofr.productcalc.history.data
 
-import com.human_developing_sofr.productcalc.product_storage.data.Product
-import com.human_developing_sofr.productcalc.product_storage.data.ProductMapper
+import com.human_developing_sofr.productcalc.history.domain.DayTiming
+import com.human_developing_sofr.productcalc.history.domain.SeparatedDay
 import java.util.*
 
 class SameMonthProduct(
-    private val mOtherProduct: Product
-) : ProductMapper<Boolean> {
-    override fun map(
-        id: Int,
-        name: String,
-        weight: Float,
-        priceForWeight: Float,
-        placeRow: Int,
-        note: String,
-        time: Long
-    ): Boolean {
-        val otherDate = GregorianCalendar.getInstance()
-        otherDate.time = Date(mOtherProduct.getTime())
+    private val mTiming: SeparatedDay
+) : SeparatedDay.Mapper<Boolean> {
+    override fun map(commonTime: Long): Boolean {
         val selfDate = GregorianCalendar.getInstance()
-        selfDate.time = Date(time)
-        return otherDate.get(Calendar.MONTH) == selfDate.get(Calendar.MONTH)
+        selfDate.time = Date(mTiming.map(DayTiming()))
+        val thisDate = GregorianCalendar.getInstance()
+        thisDate.time = Date(commonTime)
+        return selfDate.get(Calendar.MONTH) == thisDate.get(Calendar.MONTH)
     }
 }
