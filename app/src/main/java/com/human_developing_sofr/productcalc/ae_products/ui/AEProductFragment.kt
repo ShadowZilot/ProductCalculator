@@ -87,8 +87,10 @@ class AEProductFragment : Fragment(), OnProductUpdatedListener, OnProductObtaine
     }
 
     override fun onProductObtained(product: ProductUi) {
-        product.map(
-            mFields
-        )
+        requireActivity().runOnUiThread {
+            product.map(
+                mFields
+            )
+        }
     }
 }

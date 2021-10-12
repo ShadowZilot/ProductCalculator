@@ -12,7 +12,7 @@ interface DaySeparatingList {
         override fun separate(): List<SeparatedDay> {
             val result = mutableListOf<SeparatedDay>()
             result.add(SeparatedDay.Base(mProducts[0].getTime()))
-            for (i in 1 until mProducts.size-1) {
+            for (i in 0 until mProducts.size-1) {
                 val comparator = SameProductDay(mProducts[i].getTime())
                 if (!mProducts[i+1].map(comparator)) {
                     result.add(SeparatedDay.Base(mProducts[i+1].getTime()))
