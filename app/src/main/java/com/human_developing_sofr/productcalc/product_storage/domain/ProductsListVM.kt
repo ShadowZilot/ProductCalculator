@@ -24,7 +24,7 @@ class ProductsListVM(
                 mData.allProducts(mTime).map {
                     it.map(DomainToUiProduct())
                 },
-                mData.allProducts(Date().time).summa()
+                mData.allProducts(mTime).summa()
             )
         }
     }
@@ -32,7 +32,6 @@ class ProductsListVM(
     fun navigateToAdding(id: Int) {
         val args = Bundle()
         args.putInt("id", id)
-        args.putLong("time", mTime)
         Navigation.Navigation.instance().navigateTo(
             AEProductFragment::class.java,
             args

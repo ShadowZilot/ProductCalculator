@@ -39,12 +39,16 @@ class Navigation private constructor(
         if (mStack.size >= 1) {
             val transaction = mManager.beginTransaction()
             mStack.removeAt(mStack.size - 1)
-            transaction.replace(
-                mHost,
-                mStack[mStack.size - 1],
-                Bundle()
-            )
-            transaction.commit()
+            try {
+                transaction.replace(
+                    mHost,
+                    mStack[mStack.size - 1],
+                    Bundle()
+                )
+                transaction.commit()
+            } catch (e : ArrayIndexOutOfBoundsException) {
+                e.printStackTrace()
+            }
         }
     }
 

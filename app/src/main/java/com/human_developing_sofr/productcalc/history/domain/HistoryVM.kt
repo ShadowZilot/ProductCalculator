@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import com.human_developing_sofr.productcalc.history.ui.MonthProvider
 import com.human_developing_sofr.productcalc.product_storage.Navigation
+import com.human_developing_sofr.productcalc.product_storage.ui.DayDetailFragment
 import com.human_developing_sofr.productcalc.product_storage.ui.ProductsFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -30,7 +31,7 @@ class HistoryVM(
         val args = Bundle()
         args.putLong("time", time)
         Navigation.Navigation.instance().navigateTo(
-            ProductsFragment::class.java,
+            DayDetailFragment::class.java,
             args
         )
     }

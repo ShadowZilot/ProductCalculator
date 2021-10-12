@@ -22,7 +22,6 @@ class ProductsFragment : Fragment(), ProductsObserver, OnProductClickListener {
     private lateinit var mBinding: ProductsFragmentBinding
     private lateinit var mListManager: AllProductsView
     private lateinit var mViewModel: ProductsListVM
-    private var mTime :Long? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,15 +44,9 @@ class ProductsFragment : Fragment(), ProductsObserver, OnProductClickListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        mTime = arguments?.getLong("time")
-        mTime = if (mTime == 0L) null else mTime
-        if (mTime != null) {
-            mBinding.productsToolbar.menu[0].isVisible = false
-            mBinding.addProductButton.visibility = View.GONE
-        }
         mViewModel = ViewModelProvider(this, ProductListVMFactory(
             this,
-            mTime ?: Date().time,
+            Date().time,
             requireContext()
         )).get(ProductsListVM::class.java)
         mBinding.addProductButton.setOnClickListener {
