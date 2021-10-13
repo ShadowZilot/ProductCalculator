@@ -59,15 +59,17 @@ class AEProductVM(
         }
     }
 
-    fun productById(id: Int) {
-        GlobalScope.launch(Dispatchers.IO) {
-            val product = mData.productById(
-                id
-            )
-            with(Dispatchers.Main) {
-                mProductListener.onProductObtained(
-                    product.map(DomainToUiProduct())
+    fun productById(id: Int?) {
+        if (id != null) {
+            GlobalScope.launch(Dispatchers.IO) {
+                val product = mData.productById(
+                    id
                 )
+                with(Dispatchers.Main) {
+                    mProductListener.onProductObtained(
+                        product.map(DomainToUiProduct())
+                    )
+                }
             }
         }
     }

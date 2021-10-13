@@ -28,6 +28,7 @@ class AEProductFragment : Fragment(), OnProductUpdatedListener, OnProductObtaine
         savedInstanceState: Bundle?
     ): View {
         mId = arguments?.getInt("id")
+        if (mId == -1) mId = null
         mBinding = AeProductsFragmentBinding.inflate(
             inflater, container, false
         )

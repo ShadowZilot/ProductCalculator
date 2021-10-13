@@ -2,6 +2,7 @@ package com.human_developing_sofr.productcalc.product_storage.domain
 
 import android.content.Context
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModel
 import com.human_developing_sofr.productcalc.ae_products.ui.AEProductFragment
 import com.human_developing_sofr.productcalc.history.domain.FreshDayRecognition
@@ -30,7 +31,7 @@ class ProductsListVM(
         }
     }
 
-    fun navigateToAdding(id: Int) {
+    fun navigateToAdding(id: Int = -1) {
         val fresh = FreshDayRecognition.Base(mTime)
         if (fresh.isFresh()) {
             val args = Bundle()
@@ -41,6 +42,11 @@ class ProductsListVM(
                 args
             )
         }
+    }
+
+    fun visibilityForAdding(): Int {
+        val fresh = FreshDayRecognition.Base(mTime)
+        return if (fresh.isFresh()) View.VISIBLE else View.GONE
     }
 
     fun onCancel() {

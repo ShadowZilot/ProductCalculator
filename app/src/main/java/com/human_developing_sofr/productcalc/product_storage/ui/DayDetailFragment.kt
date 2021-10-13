@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.human_developing_sofr.productcalc.R
+import com.human_developing_sofr.productcalc.ae_products.ui.AEProductFragment
 import com.human_developing_sofr.productcalc.databinding.DayDetailFragmentBinding
 import com.human_developing_sofr.productcalc.history.ui.DateProvider
+import com.human_developing_sofr.productcalc.product_storage.Navigation
 import com.human_developing_sofr.productcalc.product_storage.StringContext
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductListVMFactory
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductsListVM
@@ -44,6 +46,10 @@ class DayDetailFragment : Fragment(), OnProductClickListener, ProductsObserver {
                         time,
                         requireContext())
         ).get(ProductsListVM::class.java)
+        mBinding.addDetailButton.setOnClickListener {
+            mViewModel.navigateToAdding()
+        }
+        mBinding.addDetailButton.visibility = mViewModel.visibilityForAdding()
     }
 
     override fun onStart() {
