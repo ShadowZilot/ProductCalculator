@@ -9,7 +9,7 @@ class Navigation private constructor(
     private val mManager: FragmentManager,
     private val mHost: Int
 ) : Navigator {
-    private val mStack = mutableListOf<Class<out Fragment>>()
+    private val mStack = mutableListOf<StackItem>()
 
     override fun navigateTo(targetFragment: Class<out Fragment>) {
         val transaction = mManager.beginTransaction()
@@ -19,7 +19,7 @@ class Navigation private constructor(
             null,
             targetFragment.name
         )
-        mStack.add(targetFragment)
+        mStack.add(StackItem.Base(targetFragment, null))
         transaction.commit()
     }
 
@@ -31,7 +31,7 @@ class Navigation private constructor(
             data,
             targetFragment.name
         )
-        mStack.add(targetFragment)
+        mStack.add(StackItem.Base(targetFragment, data))
         transaction.commit()
     }
 
@@ -42,8 +42,8 @@ class Navigation private constructor(
             try {
                 transaction.replace(
                     mHost,
-                    mStack[mStack.size - 1],
-                    Bundle()
+                    mStack[mStack.size - 1].fragment(),
+                    mStack[mStack.size - 1].args()
                 )
                 transaction.commit()
             } catch (e : ArrayIndexOutOfBoundsException) {
