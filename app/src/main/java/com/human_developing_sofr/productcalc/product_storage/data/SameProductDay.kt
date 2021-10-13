@@ -18,6 +18,7 @@ class SameProductDay(
         otherDate.time = Date(mCurrentDate)
         val selfDate = GregorianCalendar.getInstance()
         selfDate.time = Date(time)
-        return otherDate.get(Calendar.DAY_OF_MONTH) == selfDate.get(Calendar.DAY_OF_MONTH)
+        return (otherDate.get(Calendar.DAY_OF_YEAR) == selfDate.get(Calendar.DAY_OF_YEAR)
+                && otherDate.get(Calendar.YEAR) == selfDate.get(Calendar.YEAR))
     }
 }

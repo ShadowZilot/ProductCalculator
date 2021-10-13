@@ -50,4 +50,20 @@ class DaySeparatingListTest {
         ).separate()
         assert(separatedList.size == 1)
     }
+
+    @Test
+    fun sameDayInMonth() {
+        val inputProducts = listOf(
+            ProductFactory(2021,
+                10, 12
+            ).createProduct(),
+            ProductFactory(2021,
+                11, 12
+            ).createProduct()
+        )
+        val separatingList = DaySeparatingList.Base(
+            inputProducts
+        ).separate()
+        assert(separatingList.size == 2)
+    }
 }

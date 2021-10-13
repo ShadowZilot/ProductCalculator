@@ -12,6 +12,7 @@ class SameMonthProduct(
         selfDate.time = Date(mTiming.map(DayTiming()))
         val thisDate = GregorianCalendar.getInstance()
         thisDate.time = Date(commonTime)
-        return selfDate.get(Calendar.MONTH) == thisDate.get(Calendar.MONTH)
+        return (selfDate.get(Calendar.MONTH) == thisDate.get(Calendar.MONTH)
+                && selfDate.get(Calendar.YEAR) == thisDate.get(Calendar.YEAR))
     }
 }
