@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import com.human_developing_sofr.productcalc.ae_products.ui.AEProductFragment
+import com.human_developing_sofr.productcalc.history.domain.FreshDayRecognition
 import com.human_developing_sofr.productcalc.product_storage.Navigation
 import com.human_developing_sofr.productcalc.product_storage.ui.ProductUi
 import kotlinx.coroutines.*
@@ -30,12 +31,16 @@ class ProductsListVM(
     }
 
     fun navigateToAdding(id: Int) {
-        val args = Bundle()
-        args.putInt("id", id)
-        Navigation.Navigation.instance().navigateTo(
-            AEProductFragment::class.java,
-            args
-        )
+        val fresh = FreshDayRecognition.Base(mTime)
+        if (fresh.isFresh()) {
+            val args = Bundle()
+            args.putInt("id", id)
+            args.putLong("time", mTime)
+            Navigation.Navigation.instance().navigateTo(
+                AEProductFragment::class.java,
+                args
+            )
+        }
     }
 
     fun onCancel() {

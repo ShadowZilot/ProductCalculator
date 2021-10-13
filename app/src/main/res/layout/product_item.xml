@@ -57,12 +57,14 @@
 
     <TextView
         android:id="@+id/productNoteView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="16sp"
+        android:layout_marginEnd="16dp"
         android:textAppearance="@style/ProductInfoText"
         tools:text="2 ящика"
         app:layout_constraintStart_toStartOf="@id/productRowView"
+        app:layout_constraintEnd_toStartOf="@id/productPriceView"
         app:layout_constraintBottom_toBottomOf="@id/summaryPriceView"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

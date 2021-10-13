@@ -8,26 +8,27 @@ import com.human_developing_sofr.productcalc.product_storage.domain.DomainProduc
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductRepository
 
 class AEProductUseCase(
-    context: Context
+    context: Context,
+    private val mTime : Long
 ) : ProductRepository {
     private val mDatabase = ProductDBStorage
         .Instance.database(context)
 
     override suspend fun insertProduct(product: DomainProduct) {
         mDatabase.insertProduct(
-            product.map(DomainToDataProduct())
+            product.map(DomainToDataProduct(mTime))
         )
     }
 
     override suspend fun updateProduct(product: DomainProduct) {
         mDatabase.updateProduct(
-            product.map(DomainToDataProduct())
+            product.map(DomainToDataProduct(mTime))
         )
     }
 
     override suspend fun deleteProduct(product: DomainProduct) {
         mDatabase.deleteProduct(
-            product.map(DomainToDataProduct())
+            product.map(DomainToDataProduct(mTime))
         )
     }
 

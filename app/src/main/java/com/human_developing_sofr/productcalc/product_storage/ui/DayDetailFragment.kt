@@ -64,5 +64,7 @@ class DayDetailFragment : Fragment(), OnProductClickListener, ProductsObserver {
         }
     }
 
-    override fun onProductClick(id: Int) {}
+    override fun onProductClick(id: Int) {
+        mViewModel.navigateToAdding(id)
+    }
 }

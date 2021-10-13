@@ -38,7 +38,8 @@ class AEProductFragment : Fragment(), OnProductUpdatedListener, OnProductObtaine
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mViewModel = ViewModelProvider(this,
             AEProductVMFactory(requireContext(),
-            this, this)
+            this, this,
+            arguments?.getLong("time"))
         ).get(AEProductVM::class.java)
         if (mId == null) {
             mBinding.aeToolBar.menu.getItem(0).isVisible = false

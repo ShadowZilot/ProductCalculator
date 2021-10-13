@@ -14,9 +14,11 @@ import kotlinx.coroutines.withContext
 class AEProductVM(
     context: Context,
     private val mListener: OnProductUpdatedListener,
-    private val mProductListener: OnProductObtained
+    private val mProductListener: OnProductObtained,
+    time : Long
 ) : ViewModel() {
-    private val mData: ProductRepository = AEProductUseCase(context)
+    private val mData: ProductRepository = AEProductUseCase(context,
+        time)
 
     fun saveProduct(product: ProductUi) {
         GlobalScope.launch(Dispatchers.IO) {

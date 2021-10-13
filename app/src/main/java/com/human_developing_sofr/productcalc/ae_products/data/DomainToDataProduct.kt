@@ -4,7 +4,9 @@ import com.human_developing_sofr.productcalc.product_storage.data.Product
 import com.human_developing_sofr.productcalc.product_storage.domain.DomainProduct
 import java.util.*
 
-class DomainToDataProduct : DomainProduct.Mapper<Product> {
+class DomainToDataProduct(
+    private val mTime : Long = Date().time
+) : DomainProduct.Mapper<Product> {
     override fun map(
         id: Int?,
         name: String,
@@ -20,7 +22,7 @@ class DomainToDataProduct : DomainProduct.Mapper<Product> {
             priceForWeight,
             placeRow,
             note,
-            Date().time
+            mTime
         )
     }
 }
