@@ -8,21 +8,33 @@ import com.human_developing_sofr.productcalc.product_storage.Navigator
 import com.human_developing_sofr.productcalc.product_storage.ui.ProductsFragment
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var mViewModel : MainVM
+    private lateinit var mViewModel: MainVM
+    private lateinit var mNavigator: Navigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mViewModel = ViewModelProvider(
-            this, MainVMFactory(supportFragmentManager,
-                R.id.mainHost)
+            this, MainVMFactory()
         ).get(MainVM::class.java)
-        mViewModel.navigateTo(
-            ProductsFragment::class.java
+        mNavigator = Navigation.Navigation.instance(
+            supportFragmentManager,
+            R.id.mainHost, mViewModel.stackList(), mViewModel
         )
+        if (mViewModel.stackList().isNotEmpty()) {
+            val item = mViewModel.restoredList()
+            mNavigator.navigateTo(
+                item.fragment(),
+                item.args()!!
+            )
+        } else {
+            mNavigator.navigateTo(
+                ProductsFragment::class.java
+            )
+        }
     }
 
     override fun onBackPressed() {
-        mViewModel.back()
+        mNavigator.takeBack()
     }
 }

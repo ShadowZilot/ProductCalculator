@@ -7,9 +7,10 @@ import androidx.fragment.app.FragmentManager
 
 class Navigation private constructor(
     private val mManager: FragmentManager,
-    private val mHost: Int
+    private val mHost: Int,
+    private val mStack: List<StackItem>,
+    private val mListener: OnNavigatedListener
 ) : Navigator {
-    private val mStack = mutableListOf<StackItem>()
 
     override fun navigateTo(targetFragment: Class<out Fragment>) {
         val transaction = mManager.beginTransaction()
@@ -19,7 +20,7 @@ class Navigation private constructor(
             null,
             targetFragment.name
         )
-        mStack.add(StackItem.Base(targetFragment, null))
+        mListener.onNavigated(targetFragment, null)
         transaction.commit()
     }
 
@@ -31,14 +32,14 @@ class Navigation private constructor(
             data,
             targetFragment.name
         )
-        mStack.add(StackItem.Base(targetFragment, data))
+        mListener.onNavigated(targetFragment, data)
         transaction.commit()
     }
 
     override fun takeBack() {
-        if (mStack.size >= 1) {
+        if (mStack.isNotEmpty()) {
             val transaction = mManager.beginTransaction()
-            mStack.removeAt(mStack.size - 1)
+            mListener.onBacked()
             try {
                 transaction.replace(
                     mHost,
@@ -46,17 +47,22 @@ class Navigation private constructor(
                     mStack[mStack.size - 1].args()
                 )
                 transaction.commit()
-            } catch (e : ArrayIndexOutOfBoundsException) {
+            } catch (e: ArrayIndexOutOfBoundsException) {
                 e.printStackTrace()
             }
         }
     }
 
     object Navigation {
-        private var mNavigator : Navigator? = null
+        private var mNavigator: Navigator? = null
 
-        fun instance(manager: FragmentManager, @IdRes host: Int): Navigator {
-            mNavigator = Navigation(manager, host)
+        fun instance(
+            manager: FragmentManager,
+            @IdRes host: Int,
+            stack: List<StackItem>,
+            listener: OnNavigatedListener
+        ): Navigator {
+            mNavigator = Navigation(manager, host, stack, listener)
             return mNavigator!!
         }
 
