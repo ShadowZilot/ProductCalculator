@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.human_developing_sofr.productcalc.product_storage.ui.ProductsFragment
 
 class Navigation private constructor(
     private val mManager: FragmentManager,
@@ -37,19 +38,15 @@ class Navigation private constructor(
     }
 
     override fun takeBack() {
-        if (mStack.isNotEmpty()) {
+        if (mStack.size >= 1) {
             val transaction = mManager.beginTransaction()
             mListener.onBacked()
-            try {
-                transaction.replace(
-                    mHost,
-                    mStack[mStack.size - 1].fragment(),
-                    mStack[mStack.size - 1].args()
-                )
-                transaction.commit()
-            } catch (e: ArrayIndexOutOfBoundsException) {
-                e.printStackTrace()
-            }
+            transaction.replace(
+                mHost,
+                mStack[mStack.size - 1].fragment(),
+                mStack[mStack.size - 1].args()
+            )
+            transaction.commit()
         }
     }
 

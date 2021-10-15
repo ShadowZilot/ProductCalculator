@@ -19,7 +19,7 @@ class ProductsUseCase(
                 suitableProducts.add(product)
             }
         }
-        return suitableProducts.map {
+        return suitableProducts.reversed().map {
             it.map(DataToDomainProduct())
         }
     }
