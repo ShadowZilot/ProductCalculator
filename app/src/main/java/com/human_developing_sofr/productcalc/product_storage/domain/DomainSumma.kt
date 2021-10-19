@@ -6,7 +6,7 @@ class DomainSumma : DomainProduct.Mapper<Float> {
         name: String,
         weight: Float,
         priceForWeight: Float,
-        placeRow: Int,
+        placeRow: String,
         note: String
     ): Float {
         return priceForWeight * weight

@@ -5,12 +5,12 @@ import com.human_developing_sofr.productcalc.product_storage.domain.DomainProduc
 class DataToDomainProduct : ProductMapper<DomainProduct> {
     override fun map(
         id: Int,
+        dayId: Int,
         name: String,
         weight: Float,
         priceForWeight: Float,
-        placeRow: Int,
-        note: String,
-        time: Long
+        placeRow: String,
+        note: String
     ): DomainProduct {
         return DomainProduct.Base(
             id,

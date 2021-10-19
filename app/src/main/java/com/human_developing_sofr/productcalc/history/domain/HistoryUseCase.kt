@@ -2,8 +2,6 @@ package com.human_developing_sofr.productcalc.history.domain
 
 import android.content.Context
 import com.human_developing_sofr.productcalc.product_storage.data.ProductDBStorage
-import com.human_developing_sofr.productcalc.history.data.SameMonthProduct
-import com.human_developing_sofr.productcalc.product_storage.data.SameProductDay
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductRepository
 
 class HistoryUseCase(
@@ -13,10 +11,7 @@ class HistoryUseCase(
 
     override suspend fun productHistory(): List<MonthDomain> {
         val products = mDatabase.allProducts()
-        return MonthSeparatingList.Base(
-            DaySeparatingList.Base(
-                products
-            )
-        ).separate()
+        // TODO Implement this method with new database
+        return emptyList()
     }
 }

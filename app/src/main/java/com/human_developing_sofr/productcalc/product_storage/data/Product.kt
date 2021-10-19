@@ -9,7 +9,7 @@ data class Product(
     @PrimaryKey(autoGenerate = true)
     private val mId: Int?,
     @ColumnInfo(name = "dayId")
-    private val mDayId: Int,
+    private val mDayId: Int?,
     @ColumnInfo(name = "name")
     private val mName: String,
     @ColumnInfo(name = "weight")
@@ -24,7 +24,7 @@ data class Product(
     fun <T> map(mapper: ProductMapper<T>): T {
         return mapper.map(
             mId!!,
-            mDayId,
+            mDayId!!,
             mName,
             mWeight,
             mPriceForWeight,

@@ -12,17 +12,17 @@ class DomainToDataProduct(
         name: String,
         weight: Float,
         priceForWeight: Float,
-        placeRow: Int,
+        placeRow: String,
         note: String
     ): Product {
         return Product(
             id,
+            null,
             name,
             weight,
             priceForWeight,
             placeRow,
             note,
-            mTime
         )
     }
 }

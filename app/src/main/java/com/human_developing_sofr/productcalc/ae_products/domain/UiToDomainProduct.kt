@@ -18,7 +18,7 @@ class UiToDomainProduct : ProductUi.Mapper<DomainProduct> {
             name,
             weight,
             priceForWeight,
-            if (placeRow == "") -1 else placeRow.toInt(),
+            placeRow,
             note
         )
     }

@@ -8,7 +8,7 @@ class DomainToUiProduct : DomainProduct.Mapper<ProductUi> {
         name: String,
         weight: Float,
         priceForWeight: Float,
-        placeRow: Int,
+        placeRow: String,
         note: String
     ): ProductUi {
         return ProductUi.Base(
@@ -17,7 +17,7 @@ class DomainToUiProduct : DomainProduct.Mapper<ProductUi> {
             weight,
             priceForWeight,
             weight * priceForWeight,
-            if (placeRow == -1) "" else placeRow.toString(),
+            placeRow,
             note
         )
     }

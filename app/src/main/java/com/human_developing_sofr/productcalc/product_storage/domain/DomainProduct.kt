@@ -9,7 +9,7 @@ interface DomainProduct {
         private val mName: String,
         private val mWeight: Float,
         private val mPriceForWeight: Float,
-        private val mPlaceRow: Int,
+        private val mPlaceRow: String,
         private val mNote: String
     ) : DomainProduct {
         override fun <T> map(mapper: Mapper<T>): T {
@@ -36,7 +36,7 @@ interface DomainProduct {
             name: String,
             weight: Float,
             priceForWeight: Float,
-            placeRow: Int,
+            placeRow: String,
             note: String
         ): T
     }

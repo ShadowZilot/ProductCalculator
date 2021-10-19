@@ -12,4 +12,10 @@ data class Day(
     private val mAllMoney: Int,
     @ColumnInfo(name = "date")
     private val mTime: Long
-)
+) {
+    fun getId() = mId
+
+    fun getAllMoney() = mAllMoney
+
+    fun getTime() = mTime
+}
