@@ -58,16 +58,12 @@ class DayDetailFragment : Fragment(), OnProductClickListener, ProductsObserver {
         mViewModel.fetchProducts()
     }
 
-    override fun updatedProducts(products: List<ProductUi>, summary: Float) {
-        requireActivity().runOnUiThread {
-            mListManager.fetchData(products)
-            mBinding.dayDetailToolbar.subtitle = StringContext.Base(requireContext())
-                .string(R.string.summa_products, summary.toInt())
-            mBinding.dayDetailToolbar.title = DateProvider.Base(
-                requireArguments().getLong("time"),
-                requireContext()
-            ).date()
-        }
+    override fun onUpdatedProducts(day: AllDayUi) {
+        // TODO Implement this method with new UI object
+    }
+
+    override fun onError(stringRes: Int) {
+        // TODO Implement on error method
     }
 
     override fun onProductClick(id: Int) {

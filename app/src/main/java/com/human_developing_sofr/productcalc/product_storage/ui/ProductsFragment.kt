@@ -4,15 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.human_developing_sofr.productcalc.R
 import com.human_developing_sofr.productcalc.ae_products.ui.AEProductFragment
 import com.human_developing_sofr.productcalc.databinding.ProductsFragmentBinding
 import com.human_developing_sofr.productcalc.history.ui.HistoryFragment
 import com.human_developing_sofr.productcalc.product_storage.Navigation
-import com.human_developing_sofr.productcalc.product_storage.StringContext
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductListVMFactory
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductsListVM
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductsObserver
@@ -73,8 +70,12 @@ class ProductsFragment : Fragment(), ProductsObserver, OnProductClickListener {
         mViewModel.onCancel()
     }
 
-    override fun updatedProducts(day: AllDayUi) {
+    override fun onUpdatedProducts(day: AllDayUi) {
         // TODO Implement this with new ui object
+    }
+
+    override fun onError(stringRes: Int) {
+        mListManager.fetchData(emptyList())
     }
 
     override fun onProductClick(id: Int) {
