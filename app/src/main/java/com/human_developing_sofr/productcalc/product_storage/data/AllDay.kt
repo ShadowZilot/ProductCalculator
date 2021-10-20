@@ -7,15 +7,20 @@ data class AllDay(
     @Embedded
     private val mDay: Day,
     @Relation(
-        parentColumn = "id",
+        parentColumn = "mId",
         entityColumn = "dayId"
     )
-    private val mProducts: List<Product>
+    private val products: List<Product>
 ) {
+
+    fun getDay() = mDay
+
+    fun getProducts() = products
+
     fun <T> map(mapper: Mapper<T>): T {
         return mapper.map(
             mDay,
-            mProducts
+            products
         )
     }
 

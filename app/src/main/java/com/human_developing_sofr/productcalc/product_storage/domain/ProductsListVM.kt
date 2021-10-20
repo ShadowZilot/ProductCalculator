@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.human_developing_sofr.productcalc.ae_products.ui.AEProductFragment
 import com.human_developing_sofr.productcalc.history.domain.FreshDayRecognition
 import com.human_developing_sofr.productcalc.product_storage.Navigation
+import com.human_developing_sofr.productcalc.product_storage.ui.AllDayDomainToUi
 import com.human_developing_sofr.productcalc.product_storage.ui.ProductUi
 import kotlinx.coroutines.*
 import java.util.*
@@ -23,10 +24,9 @@ class ProductsListVM(
     fun fetchProducts() {
         mJob = GlobalScope.launch(Dispatchers.IO) {
             mObserver?.updatedProducts(
-                mData.allProducts(mTime).map {
-                    it.map(DomainToUiProduct())
-                },
-                mData.allProducts(mTime).summa()
+                mData.dayByDate(mTime).map(
+                    AllDayDomainToUi()
+                )
             )
         }
     }

@@ -73,15 +73,8 @@ class ProductsFragment : Fragment(), ProductsObserver, OnProductClickListener {
         mViewModel.onCancel()
     }
 
-    override fun updatedProducts(products: List<ProductUi>, summary: Float) {
-        requireActivity().runOnUiThread{
-            mListManager.fetchData(products)
-            mBinding.productsToolbar.subtitle = StringContext.Base(
-                requireContext()
-            ).string(
-                R.string.summa_products, summary.toInt()
-            )
-        }
+    override fun updatedProducts(day: AllDayUi) {
+        // TODO Implement this with new ui object
     }
 
     override fun onProductClick(id: Int) {

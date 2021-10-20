@@ -1,7 +1,6 @@
 package com.human_developing_sofr.productcalc.product_storage.domain
 
 import com.human_developing_sofr.productcalc.history.domain.MonthDomain
-import com.human_developing_sofr.productcalc.product_storage.data.ExpenditureData
 
 interface ProductRepository {
     suspend fun dayByDate(data: Long): AllDayDomain {return AllDayDomain.Dummy()}

@@ -1,7 +1,7 @@
 package com.human_developing_sofr.productcalc.product_storage.domain
 
-import com.human_developing_sofr.productcalc.product_storage.ui.ProductUi
+import com.human_developing_sofr.productcalc.product_storage.ui.AllDayUi
 
 interface ProductsObserver {
-    fun updatedProducts(products: List<ProductUi>, summary: Float)
+    fun updatedProducts(day: AllDayUi)
 }
