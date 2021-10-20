@@ -1,11 +1,9 @@
 package com.human_developing_sofr.productcalc.history.domain
 
-import com.human_developing_sofr.productcalc.history.data.SameMonthProduct
-
 interface MonthSeparatingList {
     fun separate(): List<MonthDomain>
 
-    class Base(
+    /*class Base(
         private val mSeparatedDay: DaySeparatingList
     ) : MonthSeparatingList {
         override fun separate(): List<MonthDomain> {
@@ -44,5 +42,5 @@ interface MonthSeparatingList {
                 )
             )
         }
-    }
+    }*/
 }

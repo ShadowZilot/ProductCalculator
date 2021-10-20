@@ -8,6 +8,8 @@ import androidx.room.PrimaryKey
 data class Product(
     @PrimaryKey(autoGenerate = true)
     private val mId: Int?,
+    @ColumnInfo(name = "dayId")
+    private val mDayId: Int?,
     @ColumnInfo(name = "name")
     private val mName: String,
     @ColumnInfo(name = "weight")
@@ -15,25 +17,25 @@ data class Product(
     @ColumnInfo(name = "priceForWeight")
     private val mPriceForWeight: Float,
     @ColumnInfo(name = "placeRow")
-    private val mPlaceRow: Int,
+    private val mPlaceRow: String,
     @ColumnInfo(name = "note")
     private val mNote: String,
-    @ColumnInfo(name = "date")
-    private val mTime: Long
 ) {
     fun <T> map(mapper: ProductMapper<T>): T {
         return mapper.map(
             mId!!,
+            mDayId!!,
             mName,
             mWeight,
             mPriceForWeight,
             mPlaceRow,
-            mNote,
-            mTime
+            mNote
         )
     }
 
     fun getId() = mId
+
+    fun getDayId() = mDayId
 
     fun getName() = mName
 
@@ -44,6 +46,4 @@ data class Product(
     fun getPlaceRow() = mPlaceRow
 
     fun getNote() = mNote
-
-    fun getTime() = mTime
 }
