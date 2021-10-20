@@ -4,8 +4,9 @@ import androidx.room.*
 
 @Dao
 interface ProductDao {
-    @Query("SELECT * FROM products")
-    suspend fun allProducts(): List<Product>
+    @Transaction
+    @Query("SELECT * FROM days")
+    suspend fun allDays(): List<AllDay>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertProduct(newProduct: Product)

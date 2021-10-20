@@ -18,4 +18,20 @@ data class Day(
     fun getAllMoney() = mAllMoney
 
     fun getTime() = mTime
+
+    fun <T> map(mapper: Mapper<T>): T {
+        return mapper.map(
+            mId!!,
+            mAllMoney,
+            mTime
+        )
+    }
+
+    interface Mapper<T> {
+        fun map(
+            id: Int,
+            money: Int,
+            time: Long
+        ) : T
+    }
 }

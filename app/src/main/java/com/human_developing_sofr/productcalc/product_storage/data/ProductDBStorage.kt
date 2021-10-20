@@ -12,10 +12,10 @@ class ProductDBStorage private constructor(
         "Products.db"
     ).build()
 
-    override suspend fun allProducts(): List<Product> {
+    override suspend fun allDays(): List<AllDay> {
         return mDatabase
             .productDao()
-            .allProducts()
+            .allDays()
     }
 
     override suspend fun insertProduct(product: Product) {

@@ -11,16 +11,13 @@ class ProductsUseCase(
     private val mDatabase = ProductDBStorage
         .Instance.database(context)
 
-    override suspend fun allProducts(data: Long): List<DomainProduct> {
-        val suitableProducts = mutableListOf<Product>()
-        for (product in mDatabase.allProducts()) {
-            // TODO Implements this method with new database
-            if (false) {
-                suitableProducts.add(product)
+    override suspend fun dayByDate(data: Long): AllDayDomain {
+        var allDay : AllDayDomain = AllDayDomain.Dummy()
+        for (day in mDatabase.allDays()) {
+            if (day.map(SameDayDate(data))) {
+                allDay = day.map(AllDayDataToDomain())
             }
         }
-        return suitableProducts.reversed().map {
-            it.map(DataToDomainProduct())
-        }
+        return allDay
     }
 }

@@ -10,5 +10,20 @@ data class AllDay(
         parentColumn = "id",
         entityColumn = "dayId"
     )
-    private val products: List<Product>
-)
+    private val mProducts: List<Product>
+) {
+    fun <T> map(mapper: Mapper<T>): T {
+        return mapper.map(
+            mDay,
+            mProducts
+        )
+    }
+
+    interface Mapper<T> {
+        fun map(
+            day: Day,
+            products: List<Product>
+        ): T
+    }
+}
+
