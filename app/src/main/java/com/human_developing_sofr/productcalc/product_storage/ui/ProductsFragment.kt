@@ -17,7 +17,7 @@ import java.util.*
 
 class ProductsFragment : Fragment(), ProductsObserver, OnProductClickListener {
     private lateinit var mBinding: ProductsFragmentBinding
-    private lateinit var mListManager: AllProductsView
+    private lateinit var mUiManager: DayPresentation
     private lateinit var mViewModel: ProductsListVM
 
     override fun onCreateView(
@@ -30,22 +30,29 @@ class ProductsFragment : Fragment(), ProductsObserver, OnProductClickListener {
             container,
             false
         )
-        mListManager = AllProductsView.Base(
-            mBinding.productsList,
-            ProductsListEmptyView.Base(
-                mBinding.emptyListProducts
+        mUiManager = DayPresentation.Base(
+            MoneyInfoView.Base(
+                mBinding.moneyInfo
             ),
-            this
+            AllProductsView.Base(
+                mBinding.productsList,
+                ProductsListEmptyView.Base(
+                    mBinding.emptyListProducts
+                ),
+                this
+            )
         )
         return mBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        mViewModel = ViewModelProvider(this, ProductListVMFactory(
-            this,
-            Date().time,
-            requireContext()
-        )).get(ProductsListVM::class.java)
+        mViewModel = ViewModelProvider(
+            this, ProductListVMFactory(
+                this,
+                Date().time,
+                requireContext()
+            )
+        ).get(ProductsListVM::class.java)
         mBinding.addProductButton.setOnClickListener {
             Navigation.Navigation.instance().navigateTo(
                 AEProductFragment::class.java
@@ -61,7 +68,7 @@ class ProductsFragment : Fragment(), ProductsObserver, OnProductClickListener {
 
     override fun onStart() {
         super.onStart()
-        mListManager.beginLoading()
+        mUiManager.startLoading()
         mViewModel.fetchProducts()
     }
 
@@ -71,12 +78,14 @@ class ProductsFragment : Fragment(), ProductsObserver, OnProductClickListener {
     }
 
     override fun onUpdatedProducts(day: AllDayUi) {
-        // TODO Implement this with new ui object
+        requireActivity().runOnUiThread {
+            day.map(mUiManager)
+        }
     }
 
     override fun onError(stringRes: Int) {
         requireActivity().runOnUiThread {
-            mListManager.fetchData(emptyList(), stringRes)
+            mUiManager.raiseError(stringRes)
         }
     }
 

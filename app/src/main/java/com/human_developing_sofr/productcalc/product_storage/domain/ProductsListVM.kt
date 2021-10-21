@@ -9,6 +9,9 @@ import com.human_developing_sofr.productcalc.ae_products.ui.AEProductFragment
 import com.human_developing_sofr.productcalc.history.domain.FreshDayRecognition
 import com.human_developing_sofr.productcalc.product_storage.Navigation
 import com.human_developing_sofr.productcalc.product_storage.ui.AllDayDomainToUi
+import com.human_developing_sofr.productcalc.product_storage.ui.AllDayUi
+import com.human_developing_sofr.productcalc.product_storage.ui.DayUi
+import com.human_developing_sofr.productcalc.product_storage.ui.ProductUi
 import kotlinx.coroutines.*
 
 class ProductsListVM(
