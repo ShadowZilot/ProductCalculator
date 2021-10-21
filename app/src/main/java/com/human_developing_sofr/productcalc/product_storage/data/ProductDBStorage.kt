@@ -28,6 +28,10 @@ class ProductDBStorage private constructor(
         mDatabase.productDao().updateProduct(product)
     }
 
+    override suspend fun createDay(day: Day) {
+        mDatabase.productDao().createDay(day)
+    }
+
     override suspend fun deleteProduct(product: Product) {
         mDatabase.productDao().deleteProduct(product)
     }

@@ -11,6 +11,9 @@ interface ProductDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertProduct(newProduct: Product)
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun createDay(newDay: Day)
+
     @Update
     suspend fun updateProduct(product: Product)
 

@@ -31,6 +31,9 @@ class ProductsListVM(
                     )
                 )
             } catch (e : DayNotFoundException) {
+                mData.createDay(
+                    DayDomain.Base(null, 0), mTime
+                )
                 mObserver?.onError(R.string.empty_products_message)
             }
         }

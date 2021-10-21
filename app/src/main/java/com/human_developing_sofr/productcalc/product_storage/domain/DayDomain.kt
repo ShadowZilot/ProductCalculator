@@ -5,7 +5,7 @@ interface DayDomain {
     fun <T> map(mapper: Mapper<T>): T
 
     class Base(
-        private val mId: Int,
+        private val mId: Int?,
         private val mMoney: Int
     ) : DayDomain {
         override fun <T> map(mapper: Mapper<T>): T {
@@ -18,7 +18,7 @@ interface DayDomain {
 
     interface Mapper<T> {
         fun map(
-            id: Int,
+            id: Int?,
             money: Int
         ): T
     }
