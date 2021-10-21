@@ -2,14 +2,13 @@ package com.human_developing_sofr.productcalc.ae_products.domain
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.human_developing_sofr.productcalc.R
 import com.human_developing_sofr.productcalc.product_storage.domain.DomainToUiProduct
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductRepository
 import com.human_developing_sofr.productcalc.product_storage.ui.ProductUi
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class AEProductVM(
     context: Context,
@@ -21,7 +20,7 @@ class AEProductVM(
         time)
 
     fun saveProduct(product: ProductUi) {
-        GlobalScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 mData.insertProduct(
                     product.map(UiToDomainProduct())
@@ -38,7 +37,7 @@ class AEProductVM(
     }
 
     fun deleteProduct(product: ProductUi) {
-        GlobalScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO) {
             mData.deleteProduct(
                 product.map(UiToDomainProduct())
             )
@@ -49,7 +48,7 @@ class AEProductVM(
     }
 
     fun updateProduct(product: ProductUi) {
-        GlobalScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO) {
             mData.updateProduct(
                 product.map(UiToDomainProduct())
             )
@@ -61,11 +60,11 @@ class AEProductVM(
 
     fun productById(id: Int?) {
         if (id != null) {
-            GlobalScope.launch(Dispatchers.IO) {
+            viewModelScope.launch(Dispatchers.IO) {
                 val product = mData.productById(
                     id
                 )
-                with(Dispatchers.Main) {
+                launch(Dispatchers.Main) {
                     mProductListener.onProductObtained(
                         product.map(DomainToUiProduct())
                     )

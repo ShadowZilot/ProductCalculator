@@ -4,15 +4,15 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.human_developing_sofr.productcalc.R
 import com.human_developing_sofr.productcalc.ae_products.ui.AEProductFragment
 import com.human_developing_sofr.productcalc.history.domain.FreshDayRecognition
 import com.human_developing_sofr.productcalc.product_storage.Navigation
 import com.human_developing_sofr.productcalc.product_storage.ui.AllDayDomainToUi
-import com.human_developing_sofr.productcalc.product_storage.ui.AllDayUi
-import com.human_developing_sofr.productcalc.product_storage.ui.DayUi
-import com.human_developing_sofr.productcalc.product_storage.ui.ProductUi
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class ProductsListVM(
     private var mObserver: ProductsObserver?,
@@ -22,9 +22,8 @@ class ProductsListVM(
     private val mData : ProductRepository = ProductsUseCase(context)
     private lateinit var mJob : Job
 
-    @DelicateCoroutinesApi
     fun fetchProducts() {
-        mJob = GlobalScope.launch(Dispatchers.IO) {
+        mJob = viewModelScope.launch(Dispatchers.IO) {
             try {
                 mObserver?.onUpdatedProducts(
                     mData.dayByDate(mTime).map(
