@@ -75,7 +75,9 @@ class ProductsFragment : Fragment(), ProductsObserver, OnProductClickListener {
     }
 
     override fun onError(stringRes: Int) {
-        mListManager.fetchData(emptyList())
+        requireActivity().runOnUiThread {
+            mListManager.fetchData(emptyList(), stringRes)
+        }
     }
 
     override fun onProductClick(id: Int) {

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/allMoneyView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:textAppearance="@style/MoneyInfoText"
+        tools:text="Всего денег = 40000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/wastedMoneyView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textAppearance="@style/MoneyInfoText"
+        tools:text="Потрачено денег = 25000"
+        app:layout_constraintTop_toBottomOf="@id/allMoneyView"
+        app:layout_constraintStart_toStartOf="@id/allMoneyView"/>
+
+    <TextView
+        android:id="@+id/restMoneyView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textAppearance="@style/MoneyInfoText"
+        tools:text="Остаток = 15000"
+        app:layout_constraintTop_toBottomOf="@id/wastedMoneyView"
+        app:layout_constraintStart_toStartOf="@id/wastedMoneyView"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

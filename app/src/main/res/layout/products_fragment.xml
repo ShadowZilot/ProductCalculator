@@ -19,10 +19,21 @@
             android:layout_height="wrap_content"
             app:menu="@menu/products_menu"
             app:titleTextColor="@color/white"
-            app:subtitleTextColor="@color/white"
-            app:title="Товар"
-            tools:subtitle="Общая сумма = 37 840"/>
+            app:title="Товар" />
     </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+        android:id="@+id/moneyInfoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/productsToolBarLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <include
+            android:id="@+id/moneyInfo"
+            layout="@layout/products_budget_info"/>
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     <include
         android:id="@+id/emptyListProducts"
@@ -32,7 +43,7 @@
         app:layout_constraintStart_toStartOf="@id/productsToolBarLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/addProductButton"
-        app:layout_constraintTop_toBottomOf="@id/productsToolBarLayout"/>
+        app:layout_constraintTop_toBottomOf="@id/moneyInfoContainer"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/productsList"
@@ -41,7 +52,7 @@
         tools:listitem="@layout/product_item"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/productsToolBarLayout"
+        app:layout_constraintTop_toBottomOf="@id/moneyInfoContainer"
         app:layout_constraintBottom_toTopOf="@id/addProductButton"/>
 
     <com.google.android.material.button.MaterialButton
