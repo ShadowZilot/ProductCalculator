@@ -2,8 +2,11 @@ package com.human_developing_sofr.productcalc.product_storage
 
 import android.os.Bundle
 import androidx.annotation.IdRes
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentResultListener
+import androidx.lifecycle.LifecycleOwner
 import com.human_developing_sofr.productcalc.product_storage.ui.ProductsFragment
 
 class Navigation private constructor(
@@ -12,20 +15,7 @@ class Navigation private constructor(
     private val mStack: List<StackItem>,
     private val mListener: OnNavigatedListener
 ) : Navigator {
-
-    override fun navigateTo(targetFragment: Class<out Fragment>) {
-        val transaction = mManager.beginTransaction()
-        transaction.replace(
-            mHost,
-            targetFragment,
-            null,
-            targetFragment.name
-        )
-        mListener.onNavigated(targetFragment, null)
-        transaction.commit()
-    }
-
-    override fun navigateTo(targetFragment: Class<out Fragment>, data: Bundle) {
+    override fun navigateTo(targetFragment: Class<out Fragment>, data: Bundle?) {
         val transaction = mManager.beginTransaction()
         transaction.replace(
             mHost,
@@ -36,6 +26,25 @@ class Navigation private constructor(
         mListener.onNavigated(targetFragment, data)
         transaction.commit()
     }
+
+    override fun showDialog(
+        targetFragment: DialogFragment,
+        listener: FragmentResultListener?,
+        data: Bundle?
+    ) {
+        targetFragment.arguments = data
+        if (listener != null) {
+            mManager.setFragmentResultListener(
+                "result",
+                listener as LifecycleOwner,
+                listener
+            )
+        }
+        targetFragment.show(
+            mManager,
+            targetFragment.tag)
+    }
+
 
     override fun takeBack() {
         if (mStack.size >= 1) {

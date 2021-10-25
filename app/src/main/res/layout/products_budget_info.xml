@@ -16,21 +16,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <ImageButton
+        android:id="@+id/allMoneyEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_edit"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toTopOf="@id/allMoneyView"
+        app:layout_constraintBottom_toBottomOf="@id/allMoneyView"
+        app:layout_constraintStart_toEndOf="@id/allMoneyView"
+        android:contentDescription="@string/cd_editing_btn" />
+
     <TextView
         android:id="@+id/wastedMoneyView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="4dp"
         android:textAppearance="@style/MoneyInfoText"
         tools:text="Потрачено денег = 25000"
-        app:layout_constraintTop_toBottomOf="@id/allMoneyView"
+        app:layout_constraintTop_toBottomOf="@id/allMoneyEdit"
         app:layout_constraintStart_toStartOf="@id/allMoneyView"/>
 
     <TextView
         android:id="@+id/restMoneyView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="10dp"
         android:textAppearance="@style/MoneyInfoText"
         tools:text="Остаток = 15000"
         app:layout_constraintTop_toBottomOf="@id/wastedMoneyView"

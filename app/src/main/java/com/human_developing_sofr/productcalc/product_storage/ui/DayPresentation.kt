@@ -1,5 +1,6 @@
 package com.human_developing_sofr.productcalc.product_storage.ui
 
+import android.view.View
 import androidx.annotation.StringRes
 
 interface DayPresentation : AllDayUi.Mapper<Unit> {
@@ -15,6 +16,7 @@ interface DayPresentation : AllDayUi.Mapper<Unit> {
 
         override fun startLoading() {
             mProductsList.beginLoading()
+            mMoneyInfo.changeVisibility(View.GONE)
         }
 
         override fun raiseError(message: Int) {
@@ -29,6 +31,7 @@ interface DayPresentation : AllDayUi.Mapper<Unit> {
             mProductsList.fetchData(
                 products
             )
+            mMoneyInfo.changeVisibility(View.VISIBLE)
         }
     }
 }

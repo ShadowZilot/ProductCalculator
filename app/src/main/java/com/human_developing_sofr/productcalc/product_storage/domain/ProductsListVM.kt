@@ -3,15 +3,20 @@ package com.human_developing_sofr.productcalc.product_storage.domain
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.human_developing_sofr.productcalc.R
 import com.human_developing_sofr.productcalc.ae_products.ui.AEProductFragment
+import com.human_developing_sofr.productcalc.edit_day_money.domain.EditMoneyUseCase
+import com.human_developing_sofr.productcalc.edit_day_money.ui.EditingMoneyFragment
+import com.human_developing_sofr.productcalc.history.domain.AllDayId
 import com.human_developing_sofr.productcalc.history.domain.FreshDayRecognition
 import com.human_developing_sofr.productcalc.product_storage.Navigation
 import com.human_developing_sofr.productcalc.product_storage.ui.AllDayDomainToUi
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class ProductsListVM(
@@ -19,16 +24,16 @@ class ProductsListVM(
     private val mTime: Long,
     context: Context
 ) : ViewModel() {
+    private var mDayId : Int? = null
     private val mData : ProductRepository = ProductsUseCase(context)
-    private lateinit var mJob : Job
 
     fun fetchProducts() {
-        mJob = viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
+                val allDay = mData.dayByDate(mTime)
+                mDayId = allDay.map(AllDayId())
                 mObserver?.onUpdatedProducts(
-                    mData.dayByDate(mTime).map(
-                        AllDayDomainToUi()
-                    )
+                    allDay.map(AllDayDomainToUi())
                 )
             } catch (e : DayNotFoundException) {
                 mData.createDay(
@@ -52,13 +57,16 @@ class ProductsListVM(
         }
     }
 
+    fun navigateToEditingDay(listener: FragmentResultListener) {
+        Navigation.Navigation.instance().showDialog(
+            EditingMoneyFragment(),
+            listener,
+            bundleOf("dayId" to mDayId)
+        )
+    }
+
     fun visibilityForAdding(): Int {
         val fresh = FreshDayRecognition.Base(mTime)
         return if (fresh.isFresh()) View.VISIBLE else View.GONE
-    }
-
-    fun onCancel() {
-        mJob.cancel()
-        mObserver = null
     }
 }

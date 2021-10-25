@@ -16,6 +16,12 @@ interface DayDomain {
         }
     }
 
+    class Dummy : DayDomain {
+        override fun <T> map(mapper: Mapper<T>): T {
+            throw DayNotFoundException("Handle with empty DayDomain")
+        }
+    }
+
     interface Mapper<T> {
         fun map(
             id: Int?,

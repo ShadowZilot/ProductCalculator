@@ -14,6 +14,12 @@ interface ProductDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun createDay(newDay: Day)
 
+    @Query("SELECT * FROM days WHERE mId = :id")
+    suspend fun dayById(id: Int): Day
+
+    @Update
+    suspend fun updateDay(day: Day)
+
     @Update
     suspend fun updateProduct(product: Product)
 

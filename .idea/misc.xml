@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.4479166666666667" />
+        <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.37222222222222223" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.42083333333333334" />
         <entry key="app/src/main/res/layout/ae_fields.xml" value="0.42083333333333334" />
         <entry key="app/src/main/res/layout/ae_products_fragment.xml" value="0.42083333333333334" />
         <entry key="app/src/main/res/layout/day_detail_fragment.xml" value="0.42083333333333334" />
+        <entry key="app/src/main/res/layout/day_money_editing.xml" value="0.42083333333333334" />
         <entry key="app/src/main/res/layout/empty_list_layout.xml" value="0.42083333333333334" />
         <entry key="app/src/main/res/layout/history_day_item.xml" value="0.42083333333333334" />
         <entry key="app/src/main/res/layout/history_fragment.xml" value="0.42083333333333334" />

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import com.human_developing_sofr.productcalc.ae_products.ui.AEProductFragment
 import com.human_developing_sofr.productcalc.databinding.ProductsFragmentBinding
@@ -15,7 +16,8 @@ import com.human_developing_sofr.productcalc.product_storage.domain.ProductsList
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductsObserver
 import java.util.*
 
-class ProductsFragment : Fragment(), ProductsObserver, OnProductClickListener {
+class ProductsFragment : Fragment(), ProductsObserver,
+    OnProductClickListener, OnDayEditing, FragmentResultListener {
     private lateinit var mBinding: ProductsFragmentBinding
     private lateinit var mUiManager: DayPresentation
     private lateinit var mViewModel: ProductsListVM
@@ -32,7 +34,8 @@ class ProductsFragment : Fragment(), ProductsObserver, OnProductClickListener {
         )
         mUiManager = DayPresentation.Base(
             MoneyInfoView.Base(
-                mBinding.moneyInfo
+                mBinding.moneyInfo,
+                this
             ),
             AllProductsView.Base(
                 mBinding.productsList,
@@ -72,11 +75,6 @@ class ProductsFragment : Fragment(), ProductsObserver, OnProductClickListener {
         mViewModel.fetchProducts()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        mViewModel.onCancel()
-    }
-
     override fun onUpdatedProducts(day: AllDayUi) {
         requireActivity().runOnUiThread {
             day.map(mUiManager)
@@ -91,5 +89,14 @@ class ProductsFragment : Fragment(), ProductsObserver, OnProductClickListener {
 
     override fun onProductClick(id: Int) {
         mViewModel.navigateToAdding(id)
+    }
+
+    override fun onDayEdit() {
+        mViewModel.navigateToEditingDay(this)
+    }
+
+    override fun onFragmentResult(requestKey: String, result: Bundle) {
+        mUiManager.startLoading()
+        mViewModel.fetchProducts()
     }
 }
