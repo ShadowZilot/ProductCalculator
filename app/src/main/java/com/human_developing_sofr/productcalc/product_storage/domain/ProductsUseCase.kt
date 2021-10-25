@@ -1,9 +1,7 @@
 package com.human_developing_sofr.productcalc.product_storage.domain
 
 import android.content.Context
-import com.human_developing_sofr.productcalc.product_storage.data.DataToDomainProduct
 import com.human_developing_sofr.productcalc.product_storage.data.DayDomainToData
-import com.human_developing_sofr.productcalc.product_storage.data.Product
 import com.human_developing_sofr.productcalc.product_storage.data.ProductDBStorage
 
 class ProductsUseCase(

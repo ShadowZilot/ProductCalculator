@@ -5,12 +5,14 @@ interface AllDayUi {
 
     class Base(
         private val mDay: DayUi,
-        private val mProducts: List<ProductUi>
+        private val mProducts: List<ProductUi>,
+        private val mExpenditures: List<ExpenditureUi>
     ) : AllDayUi {
         override fun <T> map(mapper: Mapper<T>): T {
             return mapper.map(
                 mDay,
-                mProducts
+                mProducts,
+                mExpenditures
             )
         }
     }
@@ -18,7 +20,8 @@ interface AllDayUi {
     interface Mapper<T> {
         fun map(
             day: DayUi,
-            products: List<ProductUi>
+            products: List<ProductUi>,
+            expenditures: List<ExpenditureUi>
         ): T
     }
 }
