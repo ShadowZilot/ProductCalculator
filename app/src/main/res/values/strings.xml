@@ -28,4 +28,5 @@
     <string name="all_money_day">Все деньги за день</string>
     <string name="apply_label">Применить</string>
     <string name="cancel_label">Отменить</string>
+    <string name="collapse_dt_ds">Кнопка раскрывающая список с расходами</string>
 </resources>

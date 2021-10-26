@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/expenditureNameView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textAppearance="@style/ProductNameText"
+        tools:text="Заправка"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/expenditureCostView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/ProductInfoText"
+        android:layout_marginEnd="16dp"
+        tools:text="Итого = 2000 руб"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/expenditureNameView" />
+
+    <TextView
+        android:id="@+id/expenditureNoteView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:textAppearance="@style/ProductInfoText"
+        tools:text="Заправка для газели"
+        app:layout_constraintStart_toStartOf="@id/expenditureNameView"
+        app:layout_constraintTop_toBottomOf="@id/expenditureNameView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

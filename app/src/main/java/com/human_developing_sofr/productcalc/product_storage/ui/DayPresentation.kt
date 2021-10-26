@@ -11,7 +11,7 @@ interface DayPresentation : AllDayUi.Mapper<Unit> {
 
     class Base(
         private val mMoneyInfo: MoneyInfoView,
-        private val mProductsList: AllProductsView
+        private val mProductsList: AllProductsView,
     ) : DayPresentation {
 
         override fun startLoading() {
@@ -22,14 +22,18 @@ interface DayPresentation : AllDayUi.Mapper<Unit> {
         override fun raiseError(message: Int) {
             mProductsList.fetchData(
                 emptyList(),
+                emptyList(),
                 message
             )
         }
 
-        override fun map(day: DayUi, products: List<ProductUi>) {
+        override fun map(day: DayUi,
+                         products: List<ProductUi>,
+                         expenditures: List<ExpenditureUi>) {
             day.map(mMoneyInfo)
             mProductsList.fetchData(
-                products
+                products,
+                expenditures
             )
             mMoneyInfo.changeVisibility(View.VISIBLE)
         }

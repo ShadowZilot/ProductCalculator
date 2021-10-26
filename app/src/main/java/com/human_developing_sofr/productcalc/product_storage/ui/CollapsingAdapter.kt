@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.human_developing_sofr.productcalc.databinding.ProductItemBinding
 
-class ProductAdapter(
+class CollapsingAdapter(
     private val mListener: OnProductClickListener
 ) : RecyclerView.Adapter<ProductViewHolder>(), BaseAdapter {
     private val mProducts = mutableListOf<ProductUi>()
+    private val mExpenditures = mutableListOf<ExpenditureUi>()
 
     override fun onCreateViewHolder(parent: ViewGroup,
                                     viewType: Int): ProductViewHolder {
@@ -27,9 +28,12 @@ class ProductAdapter(
 
     override fun getItemCount() = mProducts.size
 
-    override fun fetchData(data: List<ProductUi>) {
+    override fun fetchData(products: List<ProductUi>,
+                           expenditure: List<ExpenditureUi>) {
         mProducts.clear()
-        mProducts.addAll(data)
+        mProducts.addAll(products)
+        mExpenditures.clear()
+        mExpenditures.addAll(expenditure)
         notifyDataSetChanged()
     }
 }

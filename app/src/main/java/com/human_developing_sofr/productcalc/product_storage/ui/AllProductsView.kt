@@ -10,15 +10,18 @@ import com.human_developing_sofr.productcalc.R
 interface AllProductsView {
     fun beginLoading()
 
-    fun fetchData(data: List<ProductUi>,
-                  @StringRes errorMessage: Int = R.string.empty_products_message)
+    fun fetchData(
+        products: List<ProductUi>,
+        expenditures: List<ExpenditureUi>,
+        @StringRes errorMessage: Int = R.string.empty_products_message
+    )
 
     class Base(
         private val mList: RecyclerView,
         private val mProcessManager: ProductsListEmptyView,
         listener: OnProductClickListener
     ) : AllProductsView {
-        private val mAdapter: BaseAdapter = ProductAdapter(listener)
+        private val mAdapter: BaseAdapter = CollapsingAdapter(listener)
 
         init {
             mList.layoutManager = LinearLayoutManager(mList.context,
@@ -35,11 +38,14 @@ interface AllProductsView {
             mList.alpha = 0f
         }
 
-        override fun fetchData(data: List<ProductUi>,
-                               @StringRes errorMessage: Int) {
-            if (data.isNotEmpty()) {
+        override fun fetchData(
+            products: List<ProductUi>,
+            expenditures: List<ExpenditureUi>,
+            @StringRes errorMessage: Int
+        ) {
+            if (products.isNotEmpty()) {
                 mProcessManager.stopLoading(true)
-                mAdapter.fetchData(data)
+                mAdapter.fetchData(products, expenditures)
                 val animator = ObjectAnimator.ofFloat(mList,
                     "alpha", 0f, 1f)
                 animator.duration = 100
