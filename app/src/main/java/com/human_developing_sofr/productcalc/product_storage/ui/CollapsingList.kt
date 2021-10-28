@@ -2,7 +2,7 @@ package com.human_developing_sofr.productcalc.product_storage.ui
 
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import com.human_developing_sofr.productcalc.R
 import com.human_developing_sofr.productcalc.databinding.CollapsingItemBinding
 import com.human_developing_sofr.productcalc.databinding.CollapsingListBinding
 
@@ -40,11 +40,13 @@ interface CollapsingList {
                 this.addView(productView.root)
                 this.addView(expenditureView.root)
             }
-            mProductCollapse = BaseCollapsingView.ProductCollapsing(
-                productView, ProductAdapter(mProductsEventListener)
+            mProductCollapse = ProductCollapsing(
+                productView,
+                ProductAdapter(mProductsEventListener), R.string.collapse_title_product
             )
-            mExpenditureCollapse = BaseCollapsingView.ExpenditureCollapsing(
-                expenditureView, ExpenditureAdapter(mExpenditureEventListener)
+            mExpenditureCollapse = ExpenditureCollapsing(
+                expenditureView,
+                ExpenditureAdapter(mExpenditureEventListener), R.string.collapse_title_expenditure
             )
         }
 

@@ -19,7 +19,6 @@ import com.human_developing_sofr.productcalc.product_storage.domain.ProductsList
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductsObserver
 import java.util.*
 
-// TODO refactor this code
 class ProductsFragment : Fragment(), ProductsObserver,
     OnProductClickListener, OnDayEditing, OnExpenditureClickListener, FragmentResultListener {
     private lateinit var mBinding: ProductsFragmentBinding
