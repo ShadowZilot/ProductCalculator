@@ -6,17 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.human_developing_sofr.productcalc.R
-import com.human_developing_sofr.productcalc.ae_products.ui.AEProductFragment
+import com.human_developing_sofr.productcalc.databinding.CollapsingListBinding
 import com.human_developing_sofr.productcalc.databinding.DayDetailFragmentBinding
-import com.human_developing_sofr.productcalc.history.ui.DateProvider
-import com.human_developing_sofr.productcalc.product_storage.Navigation
-import com.human_developing_sofr.productcalc.product_storage.StringContext
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductListVMFactory
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductsListVM
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductsObserver
 
-class DayDetailFragment : Fragment(), OnProductClickListener, ProductsObserver {
+class DayDetailFragment : Fragment(), OnProductClickListener,
+    ProductsObserver, OnExpenditureClickListener {
     private lateinit var mBinding: DayDetailFragmentBinding
     private lateinit var mListManager: AllProductsView
     private lateinit var mViewModel: ProductsListVM
@@ -30,11 +27,16 @@ class DayDetailFragment : Fragment(), OnProductClickListener, ProductsObserver {
             inflater, container, false
         )
         mListManager = AllProductsView.Base(
-            mBinding.dayList,
+            CollapsingList.Base(
+                CollapsingListBinding.inflate(
+                    inflater, container, false
+                ),
+                this,
+                this
+            ),
             ProductsListEmptyView.Base(
                 mBinding.emptyListDetail
-            ),
-            this
+            )
         )
         return mBinding.root
     }
@@ -68,5 +70,9 @@ class DayDetailFragment : Fragment(), OnProductClickListener, ProductsObserver {
 
     override fun onProductClick(id: Int) {
         mViewModel.navigateToAdding(id)
+    }
+
+    override fun onClick(id: Int) {
+
     }
 }

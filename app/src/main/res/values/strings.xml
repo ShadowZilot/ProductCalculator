@@ -29,4 +29,6 @@
     <string name="apply_label">Применить</string>
     <string name="cancel_label">Отменить</string>
     <string name="collapse_dt_ds">Кнопка раскрывающая список с расходами</string>
+    <string name="collapse_title_product">Расходы на товар = %s руб</string>
+    <string name="collapse_title_expenditure">Прочие расходы = %s руб</string>
 </resources>

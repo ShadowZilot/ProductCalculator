@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import com.human_developing_sofr.productcalc.ae_products.ui.AEProductFragment
+import com.human_developing_sofr.productcalc.databinding.CollapsingItemBinding
+import com.human_developing_sofr.productcalc.databinding.CollapsingListBinding
 import com.human_developing_sofr.productcalc.databinding.ProductsFragmentBinding
 import com.human_developing_sofr.productcalc.history.ui.HistoryFragment
 import com.human_developing_sofr.productcalc.product_storage.Navigation
@@ -16,8 +19,9 @@ import com.human_developing_sofr.productcalc.product_storage.domain.ProductsList
 import com.human_developing_sofr.productcalc.product_storage.domain.ProductsObserver
 import java.util.*
 
+// TODO refactor this code
 class ProductsFragment : Fragment(), ProductsObserver,
-    OnProductClickListener, OnDayEditing, FragmentResultListener {
+    OnProductClickListener, OnDayEditing, OnExpenditureClickListener, FragmentResultListener {
     private lateinit var mBinding: ProductsFragmentBinding
     private lateinit var mUiManager: DayPresentation
     private lateinit var mViewModel: ProductsListVM
@@ -38,11 +42,14 @@ class ProductsFragment : Fragment(), ProductsObserver,
                 this
             ),
             AllProductsView.Base(
-                mBinding.productsList,
+                CollapsingList.Base(
+                    mBinding.productsList,
+                    this,
+                    this
+                ),
                 ProductsListEmptyView.Base(
                     mBinding.emptyListProducts
-                ),
-                this
+                )
             )
         )
         return mBinding.root
@@ -98,5 +105,9 @@ class ProductsFragment : Fragment(), ProductsObserver,
     override fun onFragmentResult(requestKey: String, result: Bundle) {
         mUiManager.startLoading()
         mViewModel.fetchProducts()
+    }
+
+    override fun onClick(id: Int) {
+
     }
 }

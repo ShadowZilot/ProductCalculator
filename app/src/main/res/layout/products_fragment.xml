@@ -45,11 +45,11 @@
         app:layout_constraintBottom_toTopOf="@id/addProductButton"
         app:layout_constraintTop_toBottomOf="@id/moneyInfoContainer"/>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <include
         android:id="@+id/productsList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:listitem="@layout/collapsing_item"
+        layout="@layout/collapsing_list"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/moneyInfoContainer"
