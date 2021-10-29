@@ -1,5 +1,10 @@
 package com.human_developing_sofr.productcalc.product_storage.ui
 
+import android.content.Context
+import androidx.annotation.StringRes
+import com.human_developing_sofr.productcalc.ae_expenditures.ui.WrongExpenditureException
+import com.human_developing_sofr.productcalc.product_storage.StringContext
+
 interface ExpenditureUi {
     fun <T> map(mapper: Mapper<T>): T
 
@@ -11,6 +16,19 @@ interface ExpenditureUi {
     ) : ExpenditureUi {
         override fun <T> map(mapper: Mapper<T>): T {
             return mapper.map(mId, mName, mCost, mNote)
+        }
+    }
+
+    class Fail(
+        context: Context,
+        @StringRes errorMessage: Int
+    ) : ExpenditureUi {
+        private val mMessage = StringContext.Base(
+            context
+        ).string(errorMessage)
+
+        override fun <T> map(mapper: Mapper<T>): T {
+            throw WrongExpenditureException(mMessage)
         }
     }
 

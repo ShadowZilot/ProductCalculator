@@ -9,6 +9,7 @@ import com.human_developing_sofr.productcalc.product_storage.domain.ProductRepos
 import com.human_developing_sofr.productcalc.product_storage.ui.ProductUi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class AEProductVM(
     context: Context,
@@ -64,7 +65,7 @@ class AEProductVM(
                 val product = mData.productById(
                     id
                 )
-                launch(Dispatchers.Main) {
+                withContext(Dispatchers.Main) {
                     mProductListener.onProductObtained(
                         product.map(DomainToUiProduct())
                     )

@@ -1,5 +1,7 @@
 package com.human_developing_sofr.productcalc.product_storage.domain
 
+import java.lang.Exception
+
 interface ExpenditureDomain {
     fun <T> map(mapper: Mapper<T>): T
 
@@ -15,6 +17,14 @@ interface ExpenditureDomain {
                 mName,
                 mPrice,
                 mNote
+            )
+        }
+    }
+
+    class Dummy : ExpenditureDomain {
+        override fun <T> map(mapper: Mapper<T>): T {
+            throw Exception(
+                "Handle with empty ${ExpenditureDomain::class.java.simpleName}"
             )
         }
     }
