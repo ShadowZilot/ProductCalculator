@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/aeAppBarLayout"
+        android:id="@+id/aeExpenditureAppBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -13,25 +13,25 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/aeToolBar"
+            android:id="@+id/aeExpenditureToolBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:menu="@menu/editing_menu"
             app:titleTextColor="@color/white"
-            app:title="@string/ae_title" />
+            app:title="@string/ae_expenditure_title" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <include
-        android:id="@+id/aeFields"
+        android:id="@+id/aeExpenditureFields"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/ae_fields"
-        app:layout_constraintTop_toBottomOf="@id/aeAppBarLayout"
+        layout="@layout/ae_expenditure_fields"
+        app:layout_constraintTop_toBottomOf="@id/aeExpenditureAppBarLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
-        android:id="@+id/aeAddButton"
+        android:id="@+id/aeExpenditureAddButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/add_product_label"

@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator
 import android.view.View
 import androidx.annotation.StringRes
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.human_developing_sofr.productcalc.databinding.CollapsingItemBinding
 import com.human_developing_sofr.productcalc.product_storage.StringContext
@@ -19,8 +18,8 @@ abstract class BaseCollapsingView<T>(
 
     init {
         mBinding.collapsingList.adapter = mAdapter as RecyclerView.Adapter<*>
-        mBinding.collapsingList.layoutManager = LinearLayoutManager(
-            mBinding.root.context, RecyclerView.VERTICAL, false
+        mBinding.collapsingList.layoutManager = NoScrollingLinearManager(
+            mBinding.root.context
         )
         mBinding.collapsingList.addItemDecoration(
             DividerItemDecoration(

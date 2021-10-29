@@ -31,4 +31,7 @@
     <string name="collapse_dt_ds">Кнопка раскрывающая список с расходами</string>
     <string name="collapse_title_product">Расходы на товар = %s руб</string>
     <string name="collapse_title_expenditure">Прочие расходы = %s руб</string>
+    <string name="ae_expenditure_title">Напишите расход</string>
+    <string name="field_expenditure_helper">Название траты</string>
+    <string name="expenditure_cost_helper">Стоимость</string>
 </resources>

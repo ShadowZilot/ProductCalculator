@@ -12,6 +12,7 @@ import com.human_developing_sofr.productcalc.ae_products.domain.AEProductVM
 import com.human_developing_sofr.productcalc.ae_products.domain.AEProductVMFactory
 import com.human_developing_sofr.productcalc.ae_products.domain.OnProductObtained
 import com.human_developing_sofr.productcalc.ae_products.domain.OnProductUpdatedListener
+import com.human_developing_sofr.productcalc.databinding.AeFieldsBinding
 import com.human_developing_sofr.productcalc.databinding.AeProductsFragmentBinding
 import com.human_developing_sofr.productcalc.product_storage.Navigation
 import com.human_developing_sofr.productcalc.product_storage.ui.ProductUi

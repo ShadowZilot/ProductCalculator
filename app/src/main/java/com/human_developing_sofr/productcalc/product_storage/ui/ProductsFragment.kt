@@ -4,13 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import com.human_developing_sofr.productcalc.ae_products.ui.AEProductFragment
-import com.human_developing_sofr.productcalc.databinding.CollapsingItemBinding
-import com.human_developing_sofr.productcalc.databinding.CollapsingListBinding
 import com.human_developing_sofr.productcalc.databinding.ProductsFragmentBinding
 import com.human_developing_sofr.productcalc.history.ui.HistoryFragment
 import com.human_developing_sofr.productcalc.product_storage.Navigation

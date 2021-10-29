@@ -1,5 +1,6 @@
 package com.human_developing_sofr.productcalc.product_storage.ui
 
+import android.animation.ObjectAnimator
 import android.view.LayoutInflater
 import android.view.View
 import com.human_developing_sofr.productcalc.R
@@ -24,7 +25,7 @@ interface CollapsingList {
         private lateinit var mExpenditureCollapse: BaseCollapsingView<ExpenditureUi>
 
         override fun hide() {
-            mBinding.root.visibility = View.GONE
+            mBinding.root.alpha = 0f
             mBinding.collapsingLayout.removeAllViews()
             val productView = CollapsingItemBinding.inflate(
                 LayoutInflater.from(
@@ -54,8 +55,10 @@ interface CollapsingList {
             products: List<ProductUi>,
             expenditures: List<ExpenditureUi>
         ) {
-            // TODO add animation for list
-            mBinding.root.visibility = View.VISIBLE
+            val animator = ObjectAnimator.ofFloat(mBinding.root,
+                "alpha", 0f, 1f)
+            animator.duration = 150
+            animator.start()
             var productSumma = 0
             for (product in products) {
                 productSumma += product.map(ProductPrice())

@@ -9,6 +9,8 @@
         <entry key="app/src/main/res/drawable/money_info_bg.xml" value="0.36944444444444446" />
         <entry key="app/src/main/res/drawable/section_info_bg.xml" value="0.38333333333333336" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.42083333333333334" />
+        <entry key="app/src/main/res/layout/ae_expenditure_fields.xml" value="0.4317708333333333" />
+        <entry key="app/src/main/res/layout/ae_expenditure_fragment.xml" value="0.4317708333333333" />
         <entry key="app/src/main/res/layout/ae_fields.xml" value="0.42083333333333334" />
         <entry key="app/src/main/res/layout/ae_products_fragment.xml" value="0.42083333333333334" />
         <entry key="app/src/main/res/layout/collapsing_item.xml" value="0.42083333333333334" />
