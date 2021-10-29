@@ -1,4 +1,4 @@
-package com.human_developing_sofr.productcalc.ae_expenditures.domain
+package com.human_developing_sofr.productcalc.add_editing.expenditures.domain
 
 import android.content.Context
 import com.human_developing_sofr.productcalc.history.domain.AllDayId

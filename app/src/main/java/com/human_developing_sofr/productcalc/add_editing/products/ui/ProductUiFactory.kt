@@ -1,4 +1,4 @@
-package com.human_developing_sofr.productcalc.ae_products.ui
+package com.human_developing_sofr.productcalc.add_editing.products.ui
 
 import android.content.Context
 import com.human_developing_sofr.productcalc.R

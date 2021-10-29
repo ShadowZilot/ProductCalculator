@@ -1,8 +1,7 @@
-package com.human_developing_sofr.productcalc.ae_products.data
+package com.human_developing_sofr.productcalc.add_editing.products.data
 
 import com.human_developing_sofr.productcalc.product_storage.data.Product
 import com.human_developing_sofr.productcalc.product_storage.domain.DomainProduct
-import java.util.*
 
 class DomainToDataProduct(
     private val mDayId : Int

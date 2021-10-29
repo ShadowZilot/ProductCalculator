@@ -1,26 +1,28 @@
-package com.human_developing_sofr.productcalc.ae_products.ui
+package com.human_developing_sofr.productcalc.add_editing.products.ui
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.view.menu.MenuBuilder
-import androidx.appcompat.view.menu.MenuPresenter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.human_developing_sofr.productcalc.R
-import com.human_developing_sofr.productcalc.ae_products.domain.AEProductVM
-import com.human_developing_sofr.productcalc.ae_products.domain.AEProductVMFactory
-import com.human_developing_sofr.productcalc.ae_products.domain.OnProductObtained
-import com.human_developing_sofr.productcalc.ae_products.domain.OnProductUpdatedListener
-import com.human_developing_sofr.productcalc.databinding.AeFieldsBinding
+import com.human_developing_sofr.productcalc.add_editing.common_ui.AddEditRestUi
+import com.human_developing_sofr.productcalc.add_editing.common_ui.OnChangingButtonClick
+import com.human_developing_sofr.productcalc.add_editing.common_ui.OnChangingButtonClick.AddEditConfig
+import com.human_developing_sofr.productcalc.add_editing.products.domain.AEProductVM
+import com.human_developing_sofr.productcalc.add_editing.products.domain.AEProductVMFactory
+import com.human_developing_sofr.productcalc.add_editing.products.domain.OnProductObtained
+import com.human_developing_sofr.productcalc.add_editing.products.domain.OnProductUpdatedListener
 import com.human_developing_sofr.productcalc.databinding.AeProductsFragmentBinding
 import com.human_developing_sofr.productcalc.product_storage.Navigation
 import com.human_developing_sofr.productcalc.product_storage.ui.ProductUi
 
-class AEProductFragment : Fragment(), OnProductUpdatedListener, OnProductObtained {
+class AEProductFragment : Fragment(),
+    OnProductUpdatedListener, OnProductObtained, OnChangingButtonClick {
     private lateinit var mBinding: AeProductsFragmentBinding
     private lateinit var mViewModel: AEProductVM
-    private lateinit var mFields: ProductFieldsImpl
+    private lateinit var mUiManager: AEProductUi
     private var mId : Int? = null
 
     override fun onCreateView(
@@ -28,12 +30,21 @@ class AEProductFragment : Fragment(), OnProductUpdatedListener, OnProductObtaine
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        mId = arguments?.getInt("id")
-        if (mId == -1) mId = null
         mBinding = AeProductsFragmentBinding.inflate(
             inflater, container, false
         )
-        mFields = ProductFieldsImpl(mBinding.aeFields, mId)
+        mId = arguments?.getInt("id")
+        if (mId == -1) mId = null
+        mUiManager = AEProductUi.Base(
+            ProductFieldsImpl(
+                mBinding.aeFields,
+                mId
+            ),
+            AddEditRestUi.AEProductUi(
+                mBinding, this
+            )
+        )
+        mUiManager.makeValid(mId)
         return mBinding.root
     }
 
@@ -43,29 +54,7 @@ class AEProductFragment : Fragment(), OnProductUpdatedListener, OnProductObtaine
             this, this,
             arguments?.getLong("time"))
         ).get(AEProductVM::class.java)
-        if (mId == null) {
-            mBinding.aeToolBar.menu.getItem(0).isVisible = false
-            mBinding.aeAddButton.setOnClickListener {
-                mViewModel.saveProduct(
-                    mFields.product()
-                )
-            }
-        } else {
-            mBinding.aeToolBar.menu.getItem(0).setOnMenuItemClickListener {
-                mViewModel.deleteProduct(
-                    mFields.product()
-                )
-                true
-            }
-            mBinding.aeToolBar.setTitle(R.string.editing_tool_label)
-            mBinding.aeAddButton.setText(R.string.edit_button_label)
-            mViewModel.productById(mId!!)
-            mBinding.aeAddButton.setOnClickListener {
-                mViewModel.updateProduct(
-                    mFields.product()
-                )
-            }
-        }
+        mViewModel.productById(mId)
     }
 
     override fun onProductUpdated(stringId: Int) {
@@ -92,8 +81,16 @@ class AEProductFragment : Fragment(), OnProductUpdatedListener, OnProductObtaine
     override fun onProductObtained(product: ProductUi) {
         requireActivity().runOnUiThread {
             product.map(
-                mFields
+                mUiManager
             )
+        }
+    }
+
+    override fun onClick(aeConfig: Int) {
+        when(aeConfig) {
+            AddEditConfig.valueAConfig() -> mViewModel.saveProduct(mUiManager.product())
+            AddEditConfig.valueEConfig() -> mViewModel.updateProduct(mUiManager.product())
+            AddEditConfig.valueDConfig() -> mViewModel.deleteProduct(mUiManager.product())
         }
     }
 }

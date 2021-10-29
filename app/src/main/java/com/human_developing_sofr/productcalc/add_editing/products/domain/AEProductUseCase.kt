@@ -1,7 +1,7 @@
-package com.human_developing_sofr.productcalc.ae_products.domain
+package com.human_developing_sofr.productcalc.add_editing.products.domain
 
 import android.content.Context
-import com.human_developing_sofr.productcalc.ae_products.data.DomainToDataProduct
+import com.human_developing_sofr.productcalc.add_editing.products.data.DomainToDataProduct
 import com.human_developing_sofr.productcalc.history.domain.AllDayId
 import com.human_developing_sofr.productcalc.product_storage.data.DataToDomainProduct
 import com.human_developing_sofr.productcalc.product_storage.data.ProductDBStorage

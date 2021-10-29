@@ -2,7 +2,7 @@ package com.human_developing_sofr.productcalc.product_storage.ui
 
 import android.content.Context
 import androidx.annotation.StringRes
-import com.human_developing_sofr.productcalc.ae_products.domain.WrongProductException
+import com.human_developing_sofr.productcalc.add_editing.products.domain.WrongProductException
 import com.human_developing_sofr.productcalc.product_storage.StringContext
 
 interface ProductUi {

@@ -1,4 +1,4 @@
-package com.human_developing_sofr.productcalc.ae_products.domain
+package com.human_developing_sofr.productcalc.add_editing.products.domain
 
 import androidx.annotation.StringRes
 

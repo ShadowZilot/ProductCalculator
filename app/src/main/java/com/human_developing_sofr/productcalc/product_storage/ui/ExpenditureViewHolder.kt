@@ -11,7 +11,7 @@ class ExpenditureViewHolder(
 ) : RecyclerView.ViewHolder(mBinding.root),
     ExpenditureUi.Mapper<Unit> {
 
-    override fun map(id: Int,
+    override fun map(id: Int?,
                      name: String, cost: Float, note: String) {
         mBinding.apply {
             val stringProvider = StringContext.Base(this.root.context)
@@ -21,7 +21,7 @@ class ExpenditureViewHolder(
                 R.string.formatted_summary_price, cost.toString()
             )
             this.root.setOnClickListener {
-                mListener.onClick(id)
+                mListener.onClick(id!!)
             }
         }
     }

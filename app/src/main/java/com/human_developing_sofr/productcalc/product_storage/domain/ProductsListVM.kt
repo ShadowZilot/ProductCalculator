@@ -4,13 +4,11 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.human_developing_sofr.productcalc.R
-import com.human_developing_sofr.productcalc.ae_products.ui.AEProductFragment
-import com.human_developing_sofr.productcalc.edit_day_money.domain.EditMoneyUseCase
+import com.human_developing_sofr.productcalc.add_editing.products.ui.AEProductFragment
 import com.human_developing_sofr.productcalc.edit_day_money.ui.EditingMoneyFragment
 import com.human_developing_sofr.productcalc.history.domain.AllDayId
 import com.human_developing_sofr.productcalc.history.domain.FreshDayRecognition

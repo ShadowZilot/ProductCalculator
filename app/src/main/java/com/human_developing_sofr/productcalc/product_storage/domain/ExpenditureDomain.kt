@@ -6,7 +6,7 @@ interface ExpenditureDomain {
     fun <T> map(mapper: Mapper<T>): T
 
     class Base(
-        private val mId: Int,
+        private val mId: Int?,
         private val mName: String,
         private val mPrice: Float,
         private val mNote: String
@@ -31,7 +31,7 @@ interface ExpenditureDomain {
 
     interface Mapper<T> {
         fun map(
-            id: Int,
+            id: Int?,
             name: String,
             price: Float,
             note: String

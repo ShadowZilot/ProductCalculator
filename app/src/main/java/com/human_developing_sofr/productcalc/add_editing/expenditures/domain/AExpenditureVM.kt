@@ -1,13 +1,12 @@
-package com.human_developing_sofr.productcalc.ae_expenditures.domain
+package com.human_developing_sofr.productcalc.add_editing.expenditures.domain
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.human_developing_sofr.productcalc.R
-import com.human_developing_sofr.productcalc.ae_expenditures.ui.ExpenditureUiToDomain
-import com.human_developing_sofr.productcalc.ae_expenditures.ui.OnExpenditureObserver
-import com.human_developing_sofr.productcalc.ae_expenditures.ui.WrongExpenditureException
-import com.human_developing_sofr.productcalc.ae_products.domain.OnProductUpdatedListener
+import com.human_developing_sofr.productcalc.add_editing.expenditures.ui.ExpenditureUiToDomain
+import com.human_developing_sofr.productcalc.add_editing.expenditures.ui.OnExpenditureObserver
+import com.human_developing_sofr.productcalc.add_editing.products.domain.OnProductUpdatedListener
 import com.human_developing_sofr.productcalc.product_storage.ui.ExpenditureDomainToUi
 import com.human_developing_sofr.productcalc.product_storage.ui.ExpenditureUi
 import kotlinx.coroutines.Dispatchers
@@ -44,9 +43,13 @@ class AExpenditureVM(
                         ExpenditureUiToDomain()
                     )
                 )
-                mListener.onProductUpdated(R.string.success_updated)
+                withContext(Dispatchers.Main) {
+                    mListener.onProductUpdated(R.string.success_updated)
+                }
             } catch (e : WrongExpenditureException) {
-                mListener.onProductUpdated(e.message!!)
+                withContext(Dispatchers.Main) {
+                    mListener.onProductUpdated(e.message!!)
+                }
             }
         }
     }
@@ -58,7 +61,9 @@ class AExpenditureVM(
                     ExpenditureUiToDomain()
                 )
             )
-            mListener.onProductUpdated(R.string.success_deleted)
+            withContext(Dispatchers.Main) {
+                mListener.onProductUpdated(R.string.success_deleted)
+            }
         }
     }
 
@@ -69,7 +74,9 @@ class AExpenditureVM(
                     ExpenditureUiToDomain()
                 )
             )
-            mListener.onProductUpdated(R.string.success_updated)
+            withContext(Dispatchers.Main) {
+                mListener.onProductUpdated(R.string.success_updated)
+            }
         }
     }
 }
