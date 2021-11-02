@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.human_developing_sofr.productcalc.R
 import com.human_developing_sofr.productcalc.add_editing.products.ui.AEProductFragment
+import com.human_developing_sofr.productcalc.add_editing.selecting_dialog.ui.SelectingDialog
 import com.human_developing_sofr.productcalc.edit_day_money.ui.EditingMoneyFragment
 import com.human_developing_sofr.productcalc.history.domain.AllDayId
 import com.human_developing_sofr.productcalc.history.domain.FreshDayRecognition
@@ -48,8 +49,9 @@ class ProductsListVM(
             val args = Bundle()
             args.putInt("id", id)
             args.putLong("time", mTime)
-            Navigation.Navigation.instance().navigateTo(
-                AEProductFragment::class.java,
+            Navigation.Navigation.instance().showDialog(
+                SelectingDialog(),
+                null,
                 args
             )
         }

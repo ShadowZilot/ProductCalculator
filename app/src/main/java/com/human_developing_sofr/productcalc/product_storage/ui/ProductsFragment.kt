@@ -60,9 +60,7 @@ class ProductsFragment : Fragment(), ProductsObserver,
             )
         ).get(ProductsListVM::class.java)
         mBinding.addProductButton.setOnClickListener {
-            Navigation.Navigation.instance().navigateTo(
-                AEProductFragment::class.java
-            )
+            mViewModel.navigateToAdding()
         }
         mBinding.productsToolbar.menu.getItem(0).setOnMenuItemClickListener {
             Navigation.Navigation.instance().navigateTo(

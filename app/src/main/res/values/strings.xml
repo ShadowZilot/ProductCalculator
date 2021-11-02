@@ -34,4 +34,7 @@
     <string name="ae_expenditure_title">Напишите расход</string>
     <string name="field_expenditure_helper">Название траты</string>
     <string name="expenditure_cost_helper">Стоимость</string>
+    <string name="selecting_title">Что будем добавлять?</string>
+    <string name="expenditure_label">Расходы</string>
+    <string name="product_label">Товар</string>
 </resources>
