@@ -24,7 +24,7 @@ class AExpenditureUseCase(
     }
 
     override suspend fun updateExpenditure(expenditure: ExpenditureDomain) {
-        mData.deleteProduct(expenditure.map(ExpenditureToProduct(
+        mData.updateProduct(expenditure.map(ExpenditureToProduct(
             dayIdByTime(mTime)
         )))
     }

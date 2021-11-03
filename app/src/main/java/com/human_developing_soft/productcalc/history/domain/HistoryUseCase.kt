@@ -10,7 +10,8 @@ class HistoryUseCase(
     private val mDatabase = ProductDBStorage.Instance.database(context)
 
     override suspend fun productHistory(): List<MonthDomain> {
-        // TODO Implement this method with new database
-        return emptyList()
+        return MonthSeparatingList.Base(
+            mDatabase.allDays()
+        ).separate()
     }
 }
