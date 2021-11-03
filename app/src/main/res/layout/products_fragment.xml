@@ -2,8 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/productsToolBarLayout"
@@ -19,7 +18,7 @@
             android:layout_height="wrap_content"
             app:menu="@menu/products_menu"
             app:titleTextColor="@color/white"
-            app:title="Товар" />
+            app:title="@string/list_title" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.appbar.CollapsingToolbarLayout

@@ -18,7 +18,7 @@ class SelectingVM(
     context: Context,
     private val mTime: Long,
     private val mID: Int
-) : ViewModel() {
+) : ViewModel(), ReadOnlyProperty<SelectingDialog, Int> {
     private val mData = SelectingUseCase(context)
     private var mType = 0
 
@@ -37,7 +37,7 @@ class SelectingVM(
         }
     }
 
-    fun navigateToSomeFragment(fragmentType: Int) {
+    fun navigateToSomeFragment(fragmentType: Int = mType) {
         val args = Bundle()
         args.putInt("id", mID)
         args.putLong("time", mTime)
@@ -56,5 +56,7 @@ class SelectingVM(
         }
     }
 
-    fun type() = mType
+    override fun getValue(thisRef: SelectingDialog, property: KProperty<*>): Int {
+        return mType
+    }
 }

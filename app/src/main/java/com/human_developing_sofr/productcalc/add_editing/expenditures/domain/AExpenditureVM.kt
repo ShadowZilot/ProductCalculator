@@ -44,7 +44,7 @@ class AExpenditureVM(
                     )
                 )
                 withContext(Dispatchers.Main) {
-                    mListener.onProductUpdated(R.string.success_updated)
+                    mListener.onProductUpdated(R.string.expenditure_added)
                 }
             } catch (e : WrongExpenditureException) {
                 withContext(Dispatchers.Main) {
@@ -62,7 +62,7 @@ class AExpenditureVM(
                 )
             )
             withContext(Dispatchers.Main) {
-                mListener.onProductUpdated(R.string.success_deleted)
+                mListener.onProductUpdated(R.string.expenditure_deleted)
             }
         }
     }
@@ -75,7 +75,7 @@ class AExpenditureVM(
                 )
             )
             withContext(Dispatchers.Main) {
-                mListener.onProductUpdated(R.string.success_updated)
+                mListener.onProductUpdated(R.string.expenditure_updated)
             }
         }
     }

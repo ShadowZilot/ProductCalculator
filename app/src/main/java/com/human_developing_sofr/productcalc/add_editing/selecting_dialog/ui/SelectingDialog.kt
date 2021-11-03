@@ -8,14 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
+import com.human_developing_sofr.productcalc.MainVM
 import com.human_developing_sofr.productcalc.add_editing.selecting_dialog.domain.SelectingVM
 import com.human_developing_sofr.productcalc.add_editing.selecting_dialog.domain.SelectingVMFactory
 import com.human_developing_sofr.productcalc.databinding.SelectingDialogBinding
+import kotlin.reflect.KProperty
 
 class SelectingDialog : DialogFragment() {
     private lateinit var mViewModel: SelectingVM
-    private var mIsUiHas: Int  = 0
     private lateinit var mBinding: SelectingDialogBinding
+    // TODO fix problems with determinations UI
+    private val mIsUiNeeded = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +34,7 @@ class SelectingDialog : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        mIsUiHas = mViewModel.type()
+        super.onCreateDialog(savedInstanceState)
         mBinding = SelectingDialogBinding.inflate(LayoutInflater.from(context))
         return AlertDialog.Builder(requireContext())
             .setView(mBinding.root)
@@ -43,10 +46,10 @@ class SelectingDialog : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return if (mIsUiHas == 0) {
-             null
+        return if (mIsUiNeeded == 0) {
+             mBinding.root
         } else {
-            mBinding.root
+            null
         }
     }
 
@@ -62,6 +65,6 @@ class SelectingDialog : DialogFragment() {
         mBinding.selectingCancelButton.setOnClickListener {
             dismiss()
         }
-        mViewModel.navigateToSomeFragment(mIsUiHas)
+        mViewModel.navigateToSomeFragment()
     }
 }

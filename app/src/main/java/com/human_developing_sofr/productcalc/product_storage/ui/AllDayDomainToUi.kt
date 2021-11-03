@@ -12,6 +12,9 @@ class AllDayDomainToUi : AllDayDomain.Mapper<AllDayUi> {
         for (product in products) {
             productSumma += product.map(DomainSumma())
         }
+        for (expenditure in expenditures) {
+            productSumma += expenditure.map(ExpenditureDomainPrice())
+        }
         return AllDayUi.Base(
             day.map(DayDomainToUi(productSumma.toInt())),
             products.map {

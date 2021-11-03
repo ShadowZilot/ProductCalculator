@@ -37,4 +37,8 @@
     <string name="selecting_title">Что будем добавлять?</string>
     <string name="expenditure_label">Расходы</string>
     <string name="product_label">Товар</string>
+    <string name="list_title">Покупки</string>
+    <string name="expenditure_updated">Расход отредактирован</string>
+    <string name="expenditure_added">Расход успешно добавлен!</string>
+    <string name="expenditure_deleted">Расход удалён</string>
 </resources>

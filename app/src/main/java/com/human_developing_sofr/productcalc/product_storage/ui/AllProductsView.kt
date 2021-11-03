@@ -27,7 +27,7 @@ interface AllProductsView {
             expenditures: List<ExpenditureUi>,
             @StringRes errorMessage: Int
         ) {
-            if (products.isNotEmpty()) {
+            if (products.isNotEmpty() || expenditures.isNotEmpty()) {
                 mProcessManager.stopLoading(true)
                 mList.fetchList(products, expenditures)
             } else {

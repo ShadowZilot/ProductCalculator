@@ -23,7 +23,7 @@ interface AddEditRestUi {
                 this.aeExpenditureAddButton.setOnClickListener {
                     mListener.onClick(AddEditConfig.valueAConfig())
                 }
-                this.aeExpenditureToolBar.title = mString.string(R.string.ae_title)
+                this.aeExpenditureToolBar.title = mString.string(R.string.ae_expenditure_title)
                 this.aeExpenditureToolBar.menu.getItem(0).isVisible = false
             }
         }
@@ -38,7 +38,7 @@ interface AddEditRestUi {
                 this.aeExpenditureToolBar.title = mString.string(R.string.editing_tool_label)
                 this.aeExpenditureToolBar.menu.getItem(0)
                     .setOnMenuItemClickListener {
-                    mListener.onClick(AddEditConfig.valueEConfig())
+                    mListener.onClick(AddEditConfig.valueDConfig())
                     true
                 }
             }

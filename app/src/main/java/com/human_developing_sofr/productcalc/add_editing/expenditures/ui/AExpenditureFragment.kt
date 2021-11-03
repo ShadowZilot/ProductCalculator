@@ -14,6 +14,7 @@ import com.human_developing_sofr.productcalc.add_editing.expenditures.domain.AEx
 import com.human_developing_sofr.productcalc.add_editing.expenditures.domain.AExpenditureVMFactory
 import com.human_developing_sofr.productcalc.add_editing.products.domain.OnProductUpdatedListener
 import com.human_developing_sofr.productcalc.databinding.AeExpenditureFragmentBinding
+import com.human_developing_sofr.productcalc.product_storage.Navigation
 import com.human_developing_sofr.productcalc.product_storage.ui.ExpenditureUi
 
 class AExpenditureFragment : Fragment(), OnExpenditureObserver,
@@ -53,7 +54,7 @@ class AExpenditureFragment : Fragment(), OnExpenditureObserver,
         mViewModel = ViewModelProvider(
             this,
             AExpenditureVMFactory(
-                arguments?.getInt("id"),
+                mId,
                 requireContext(),
                 this,
                 this,
@@ -73,6 +74,7 @@ class AExpenditureFragment : Fragment(), OnExpenditureObserver,
             stringId,
             Toast.LENGTH_SHORT
             ).show()
+        Navigation.Navigation.instance().takeBack()
     }
 
     override fun onProductUpdated(message: String) {
