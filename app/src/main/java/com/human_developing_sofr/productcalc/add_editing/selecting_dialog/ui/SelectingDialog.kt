@@ -8,17 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
-import com.human_developing_sofr.productcalc.MainVM
 import com.human_developing_sofr.productcalc.add_editing.selecting_dialog.domain.SelectingVM
 import com.human_developing_sofr.productcalc.add_editing.selecting_dialog.domain.SelectingVMFactory
 import com.human_developing_sofr.productcalc.databinding.SelectingDialogBinding
-import kotlin.reflect.KProperty
+import java.lang.NullPointerException
 
-class SelectingDialog : DialogFragment() {
+class SelectingDialog : DialogFragment(), OnSelectingTypeGot {
     private lateinit var mViewModel: SelectingVM
     private lateinit var mBinding: SelectingDialogBinding
-    // TODO fix problems with determinations UI
-    private val mIsUiNeeded = 0
+    private var mType: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +24,7 @@ class SelectingDialog : DialogFragment() {
             mViewModel = ViewModelProvider(
                 this, SelectingVMFactory(
                     requireContext(),
+                    this,
                     it.getLong("time"),
                     it.getInt("id")
                 )
@@ -34,23 +33,24 @@ class SelectingDialog : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        super.onCreateDialog(savedInstanceState)
         mBinding = SelectingDialogBinding.inflate(LayoutInflater.from(context))
-        return AlertDialog.Builder(requireContext())
-            .setView(mBinding.root)
-            .create()
+        return if (mType == 0) {
+            AlertDialog.Builder(requireContext())
+                .setView(mBinding.root)
+                .create()
+        } else {
+            dismiss()
+            mViewModel.navigateToSomeFragment()
+            super.onCreateDialog(savedInstanceState)
+        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return if (mIsUiNeeded == 0) {
-             mBinding.root
-        } else {
-            null
-        }
+    ): View {
+        return mBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,6 +65,18 @@ class SelectingDialog : DialogFragment() {
         mBinding.selectingCancelButton.setOnClickListener {
             dismiss()
         }
-        mViewModel.navigateToSomeFragment()
+    }
+
+    override fun onGot(type: Int) {
+        try {
+            if (type == 0) {
+                mBinding.root.visibility = View.VISIBLE
+            } else {
+                mViewModel.navigateToSomeFragment(type)
+            }
+            dismiss()
+        } catch (e: UninitializedPropertyAccessException) {
+            mType = type
+        }
     }
 }

@@ -100,6 +100,7 @@ class ProductsFragment : Fragment(), ProductsObserver,
         mViewModel.fetchProducts()
     }
 
+    // TODO Collapse methods with same signatures to single method
     override fun onClick(id: Int) {
         mViewModel.navigateToAdding(id)
     }

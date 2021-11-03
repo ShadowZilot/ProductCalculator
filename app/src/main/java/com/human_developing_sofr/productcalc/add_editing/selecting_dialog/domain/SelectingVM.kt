@@ -7,20 +7,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.human_developing_sofr.productcalc.add_editing.expenditures.ui.AExpenditureFragment
 import com.human_developing_sofr.productcalc.add_editing.products.ui.AEProductFragment
-import com.human_developing_sofr.productcalc.add_editing.selecting_dialog.ui.SelectingDialog
+import com.human_developing_sofr.productcalc.add_editing.selecting_dialog.ui.OnSelectingTypeGot
 import com.human_developing_sofr.productcalc.product_storage.Navigation
 import com.human_developing_sofr.productcalc.product_storage.data.NotExpenditureException
 import kotlinx.coroutines.launch
-import kotlin.properties.ReadOnlyProperty
-import kotlin.reflect.KProperty
 
 class SelectingVM(
     context: Context,
+    private val mListener: OnSelectingTypeGot,
     private val mTime: Long,
     private val mID: Int
-) : ViewModel(), ReadOnlyProperty<SelectingDialog, Int> {
+) : ViewModel() {
     private val mData = SelectingUseCase(context)
-    private var mType = 0
+    private var mType = -1
 
     init {
         viewModelScope.launch {
@@ -34,6 +33,7 @@ class SelectingVM(
                     1
                 }
             }
+            mListener.onGot(mType)
         }
     }
 
@@ -54,9 +54,5 @@ class SelectingVM(
                 args
             )
         }
-    }
-
-    override fun getValue(thisRef: SelectingDialog, property: KProperty<*>): Int {
-        return mType
     }
 }
