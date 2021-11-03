@@ -13,7 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <com.human_developing_sofr.productcalc.history.ui.HistoryToolBar
+        <com.human_developing_soft.productcalc.history.ui.HistoryToolBar
             android:id="@+id/historyTool"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

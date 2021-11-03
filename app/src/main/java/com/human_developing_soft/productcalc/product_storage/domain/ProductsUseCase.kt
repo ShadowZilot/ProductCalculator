@@ -1,0 +1,28 @@
+package com.human_developing_soft.productcalc.product_storage.domain
+
+import android.content.Context
+import com.human_developing_soft.productcalc.product_storage.data.DayDomainToData
+import com.human_developing_soft.productcalc.product_storage.data.ProductDBStorage
+
+class ProductsUseCase(
+    context: Context
+) : ProductRepository {
+    private val mDatabase = ProductDBStorage
+        .Instance.database(context)
+
+    override suspend fun dayByDate(data: Long): AllDayDomain {
+        var allDay : AllDayDomain = AllDayDomain.Dummy()
+        for (day in mDatabase.allDays()) {
+            if (day.map(SameDayDate(data))) {
+                allDay = day.map(AllDayDataToDomain())
+            }
+        }
+        return allDay
+    }
+
+    override suspend fun createDay(day: DayDomain, date: Long) {
+        mDatabase.createDay(
+            day.map(DayDomainToData(date))
+        )
+    }
+}
