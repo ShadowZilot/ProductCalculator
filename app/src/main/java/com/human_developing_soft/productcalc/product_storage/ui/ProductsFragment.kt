@@ -8,12 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import com.human_developing_soft.productcalc.databinding.ProductsFragmentBinding
+import com.human_developing_soft.productcalc.history.ui.DateProvider
 import com.human_developing_soft.productcalc.history.ui.HistoryFragment
 import com.human_developing_soft.productcalc.product_storage.Navigation
 import com.human_developing_soft.productcalc.product_storage.domain.ProductListVMFactory
 import com.human_developing_soft.productcalc.product_storage.domain.ProductsListVM
 import com.human_developing_soft.productcalc.product_storage.domain.ProductsObserver
-import java.util.*
 
 class ProductsFragment : Fragment(), ProductsObserver,
     OnProductClickListener, OnDayEditing, OnExpenditureClickListener, FragmentResultListener {
@@ -54,7 +54,7 @@ class ProductsFragment : Fragment(), ProductsObserver,
         mViewModel = ViewModelProvider(
             this, ProductListVMFactory(
                 this,
-                Date().time,
+                arguments?.getLong("time"),
                 requireContext()
             )
         ).get(ProductsListVM::class.java)
@@ -66,6 +66,16 @@ class ProductsFragment : Fragment(), ProductsObserver,
                 HistoryFragment::class.java
             )
             true
+        }
+        arguments?.getLong("time")?.let {
+            mBinding.productsToolbar.menu.getItem(0).isVisible = false
+            mBinding.productsToolbar.title = DateProvider.Base(
+                it, requireContext()
+            ).date()
+        }
+        mViewModel.visibilityForAdding().let {
+            mBinding.moneyInfo.allMoneyEdit.visibility = it
+            mBinding.addProductButton.visibility = it
         }
     }
 

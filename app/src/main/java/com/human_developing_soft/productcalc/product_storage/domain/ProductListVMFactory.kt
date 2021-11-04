@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 
 class ProductListVMFactory(
     private val mObserver: ProductsObserver,
-    private val mTime: Long,
+    private val mTime: Long?,
     private val mContext: Context
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

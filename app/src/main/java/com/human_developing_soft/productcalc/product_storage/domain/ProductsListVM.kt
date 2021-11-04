@@ -16,12 +16,14 @@ import com.human_developing_soft.productcalc.product_storage.Navigation
 import com.human_developing_soft.productcalc.product_storage.ui.AllDayDomainToUi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 
 class ProductsListVM(
     private var mObserver: ProductsObserver?,
-    private val mTime: Long,
+    time: Long?,
     context: Context
 ) : ViewModel() {
+    private val mTime = time ?: Date().time
     private var mDayId : Int? = null
     private val mData : ProductRepository = ProductsUseCase(context)
 
