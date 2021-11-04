@@ -62,7 +62,8 @@ class ProductsListVM(
         Navigation.Navigation.instance().showDialog(
             EditingMoneyFragment(),
             listener,
-            bundleOf("dayId" to mDayId)
+            bundleOf("dayId" to mDayId,
+            "time" to mTime)
         )
     }
 

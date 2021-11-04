@@ -35,6 +35,7 @@ class EditingMoneyFragment : DialogFragment(), DayObserver, DayUpdating {
         mViewModel = ViewModelProvider(
             this, EditMoneyVMFactory(
                 requireArguments().getInt("dayId"),
+                arguments?.getLong("time"),
                 requireContext(),
                 this,
                 this

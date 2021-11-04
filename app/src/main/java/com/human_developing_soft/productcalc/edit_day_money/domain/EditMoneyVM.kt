@@ -14,10 +14,12 @@ import java.util.*
 
 class EditMoneyVM(
     private val mDayId: Int,
+    time: Long?,
     private val mObserver: DayObserver,
     private val mUpdating: DayUpdating,
     context: Context
 ) : ViewModel() {
+    private val mTime = time ?: Date().time
     private val mData = EditMoneyUseCase(context)
 
     fun fetchDay() {
@@ -35,7 +37,7 @@ class EditMoneyVM(
         viewModelScope.launch {
             mData.updateDay(
                 DayDomain.Base(mDayId, money),
-                Date().time
+                mTime
             )
             mUpdating.onDayUpdated()
         }

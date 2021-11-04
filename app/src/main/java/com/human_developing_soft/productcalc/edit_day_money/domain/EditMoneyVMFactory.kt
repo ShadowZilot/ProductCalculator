@@ -8,12 +8,13 @@ import com.human_developing_soft.productcalc.edit_day_money.ui.DayUpdating
 
 class EditMoneyVMFactory(
     private val mDayId: Int,
+    private val mTime: Long?,
     private val mContext: Context,
     private val mObserver: DayObserver,
     private val mUpdating: DayUpdating
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return EditMoneyVM(mDayId, mObserver, mUpdating, mContext) as T
+        return EditMoneyVM(mDayId, mTime, mObserver, mUpdating, mContext) as T
     }
 }

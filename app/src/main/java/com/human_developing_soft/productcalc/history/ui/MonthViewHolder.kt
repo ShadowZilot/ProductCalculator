@@ -12,6 +12,7 @@ class MonthViewHolder(
 ) : RecyclerView.ViewHolder(mBinding.root), MonthUi.Mapper<Unit> {
     override fun map(name: String, days: List<Long>) {
         mBinding.monthNameView.text = name
+        mBinding.daysGrid.removeAllViews()
         for (day in days) {
             val dayItem = HistoryDayItemBinding.inflate(
                 LayoutInflater.from(mBinding.root.context))
