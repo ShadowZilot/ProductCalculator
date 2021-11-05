@@ -12,10 +12,11 @@ import com.human_developing_soft.productcalc.add_editing.selecting_dialog.ui.Sel
 import com.human_developing_soft.productcalc.edit_day_money.ui.EditingMoneyFragment
 import com.human_developing_soft.productcalc.history.domain.AllDayId
 import com.human_developing_soft.productcalc.history.domain.FreshDayRecognition
-import com.human_developing_soft.productcalc.product_storage.Navigation
+import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.ui.AllDayDomainToUi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.*
 
 class ProductsListVM(
@@ -32,14 +33,18 @@ class ProductsListVM(
             try {
                 val allDay = mData.dayByDate(mTime)
                 mDayId = allDay.map(AllDayId())
-                mObserver?.onUpdatedProducts(
-                    allDay.map(AllDayDomainToUi())
-                )
+                withContext(Dispatchers.Main) {
+                    mObserver?.onUpdatedProducts(
+                        allDay.map(AllDayDomainToUi())
+                    )
+                }
             } catch (e : DayNotFoundException) {
                 mData.createDay(
                     DayDomain.Base(null, 0), mTime
                 )
-                mObserver?.onError(R.string.empty_products_message)
+                withContext(Dispatchers.Main) {
+                    mObserver?.onError(R.string.empty_products_message)
+                }
             }
         }
     }

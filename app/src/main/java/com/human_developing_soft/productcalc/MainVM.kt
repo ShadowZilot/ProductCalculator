@@ -3,8 +3,8 @@ package com.human_developing_soft.productcalc
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import com.human_developing_soft.productcalc.product_storage.OnNavigatedListener
-import com.human_developing_soft.productcalc.product_storage.StackItem
+import com.human_developing_soft.productcalc.navigation.OnNavigatedListener
+import com.human_developing_soft.productcalc.navigation.StackItem
 
 class MainVM : ViewModel(), OnNavigatedListener {
     private val mStack = mutableListOf<StackItem>()

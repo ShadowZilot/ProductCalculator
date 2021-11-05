@@ -7,7 +7,7 @@ import com.human_developing_soft.productcalc.product_storage.StringContext
 
 class ExpenditureViewHolder(
     private val mBinding: ExpenditureItemBinding,
-    private val mListener: OnExpenditureClickListener
+    private val mListener: OnProductClickListener
 ) : RecyclerView.ViewHolder(mBinding.root),
     ExpenditureUi.Mapper<Unit> {
 
@@ -21,7 +21,7 @@ class ExpenditureViewHolder(
                 R.string.formatted_summary_price, cost.toString()
             )
             this.root.setOnClickListener {
-                mListener.onClick(id!!)
+                mListener.onProductClick(id!!)
             }
         }
     }

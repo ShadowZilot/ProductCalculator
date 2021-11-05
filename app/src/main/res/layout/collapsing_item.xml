@@ -28,15 +28,4 @@
         tools:text="Расходы на товар = 35000 руб"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/collapsingList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:isScrollContainer="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sectionInfoView"
-        tools:listitem="@layout/product_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>

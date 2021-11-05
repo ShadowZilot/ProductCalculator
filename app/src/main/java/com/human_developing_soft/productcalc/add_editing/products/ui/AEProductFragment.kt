@@ -15,7 +15,7 @@ import com.human_developing_soft.productcalc.add_editing.products.domain.AEProdu
 import com.human_developing_soft.productcalc.add_editing.products.domain.OnProductObtained
 import com.human_developing_soft.productcalc.add_editing.products.domain.OnProductUpdatedListener
 import com.human_developing_soft.productcalc.databinding.AeProductsFragmentBinding
-import com.human_developing_soft.productcalc.product_storage.Navigation
+import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.ui.ProductUi
 
 class AEProductFragment : Fragment(),

@@ -32,6 +32,12 @@ interface ExpenditureUi {
         }
     }
 
+    class Collapsing : ExpenditureUi {
+        override fun <T> map(mapper: Mapper<T>): T {
+            throw WrongExpenditureException("Impossible map this instance")
+        }
+    }
+
     interface Mapper<T> {
         fun map(
             id: Int?,

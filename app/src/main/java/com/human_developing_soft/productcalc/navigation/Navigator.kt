@@ -1,4 +1,4 @@
-package com.human_developing_soft.productcalc.product_storage
+package com.human_developing_soft.productcalc.navigation
 
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment

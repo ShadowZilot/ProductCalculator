@@ -10,13 +10,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.human_developing_soft.productcalc.databinding.ProductsFragmentBinding
 import com.human_developing_soft.productcalc.history.ui.DateProvider
 import com.human_developing_soft.productcalc.history.ui.HistoryFragment
-import com.human_developing_soft.productcalc.product_storage.Navigation
+import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.domain.ProductListVMFactory
 import com.human_developing_soft.productcalc.product_storage.domain.ProductsListVM
 import com.human_developing_soft.productcalc.product_storage.domain.ProductsObserver
 
 class ProductsFragment : Fragment(), ProductsObserver,
-    OnProductClickListener, OnDayEditing, OnExpenditureClickListener, FragmentResultListener {
+    OnProductClickListener, OnDayEditing, FragmentResultListener {
     private lateinit var mBinding: ProductsFragmentBinding
     private lateinit var mUiManager: DayPresentation
     private lateinit var mViewModel: ProductsListVM
@@ -39,7 +39,6 @@ class ProductsFragment : Fragment(), ProductsObserver,
             AllProductsView.Base(
                 CollapsingList.Base(
                     mBinding.productsList,
-                    this,
                     this
                 ),
                 ProductsListEmptyView.Base(
@@ -86,15 +85,11 @@ class ProductsFragment : Fragment(), ProductsObserver,
     }
 
     override fun onUpdatedProducts(day: AllDayUi) {
-        requireActivity().runOnUiThread {
-            day.map(mUiManager)
-        }
+        day.map(mUiManager)
     }
 
     override fun onError(stringRes: Int) {
-        requireActivity().runOnUiThread {
-            mUiManager.raiseError(stringRes)
-        }
+        mUiManager.raiseError(stringRes)
     }
 
     override fun onProductClick(id: Int) {
@@ -108,10 +103,5 @@ class ProductsFragment : Fragment(), ProductsObserver,
     override fun onFragmentResult(requestKey: String, result: Bundle) {
         mUiManager.startLoading()
         mViewModel.fetchProducts()
-    }
-
-    // TODO Collapse methods with same signatures to single method
-    override fun onClick(id: Int) {
-        mViewModel.navigateToAdding(id)
     }
 }

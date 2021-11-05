@@ -14,7 +14,7 @@ import com.human_developing_soft.productcalc.add_editing.expenditures.domain.AEx
 import com.human_developing_soft.productcalc.add_editing.expenditures.domain.AExpenditureVMFactory
 import com.human_developing_soft.productcalc.add_editing.products.domain.OnProductUpdatedListener
 import com.human_developing_soft.productcalc.databinding.AeExpenditureFragmentBinding
-import com.human_developing_soft.productcalc.product_storage.Navigation
+import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.ui.ExpenditureUi
 
 class AExpenditureFragment : Fragment(), OnExpenditureObserver,

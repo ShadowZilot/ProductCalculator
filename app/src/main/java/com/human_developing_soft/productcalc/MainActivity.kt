@@ -3,8 +3,8 @@ package com.human_developing_soft.productcalc
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.human_developing_soft.productcalc.product_storage.Navigation
-import com.human_developing_soft.productcalc.product_storage.Navigator
+import com.human_developing_soft.productcalc.navigation.Navigation
+import com.human_developing_soft.productcalc.navigation.Navigator
 import com.human_developing_soft.productcalc.product_storage.ui.ProductsFragment
 
 class MainActivity : AppCompatActivity() {

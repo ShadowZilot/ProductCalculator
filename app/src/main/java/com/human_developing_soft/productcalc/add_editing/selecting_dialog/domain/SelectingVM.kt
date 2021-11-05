@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.human_developing_soft.productcalc.add_editing.expenditures.ui.AExpenditureFragment
 import com.human_developing_soft.productcalc.add_editing.products.ui.AEProductFragment
 import com.human_developing_soft.productcalc.add_editing.selecting_dialog.ui.OnSelectingTypeGot
-import com.human_developing_soft.productcalc.product_storage.Navigation
+import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.data.NotExpenditureException
 import kotlinx.coroutines.launch
 

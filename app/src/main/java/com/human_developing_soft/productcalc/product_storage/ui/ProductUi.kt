@@ -41,6 +41,12 @@ interface ProductUi {
         }
     }
 
+    class Collapsing : ProductUi {
+        override fun <T> map(mapper: Mapper<T>): T {
+            throw WrongProductException("Impossible map this instance")
+        }
+    }
+
 
     interface Mapper<T> {
         fun map(
