@@ -16,4 +16,6 @@ interface ProductStorage {
     suspend fun deleteProduct(product: Product)
 
     suspend fun productById(id: Int): Product
+
+    suspend fun deleteDay(id: Int)
 }

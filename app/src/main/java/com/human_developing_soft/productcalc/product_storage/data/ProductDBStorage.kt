@@ -3,6 +3,7 @@ package com.human_developing_soft.productcalc.product_storage.data
 import android.content.Context
 import androidx.room.Room
 import com.human_developing_soft.productcalc.history.ui.byDay
+import java.lang.IndexOutOfBoundsException
 import java.util.*
 
 class ProductDBStorage private constructor(
@@ -14,16 +15,7 @@ class ProductDBStorage private constructor(
         "Products.db"
     ).build()
 
-    override suspend fun allDays(): List<AllDay> {
-        val all = mDatabase.productDao().allDays().toMutableList()
-        for (i in all.indices) {
-            if (all[i].getProducts().isEmpty()
-                && all[i].getDay().getTime().byDay() != Date().time.byDay()) {
-                all.remove(all[i])
-            }
-        }
-        return all.toList()
-    }
+    override suspend fun allDays(): List<AllDay> = mDatabase.productDao().allDays()
 
     override suspend fun insertProduct(product: Product) {
         mDatabase
@@ -51,6 +43,10 @@ class ProductDBStorage private constructor(
 
     override suspend fun productById(id: Int): Product {
         return mDatabase.productDao().productById(id)
+    }
+
+    override suspend fun deleteDay(id: Int) {
+        mDatabase.productDao().deleteDay(id)
     }
 
     object Instance {

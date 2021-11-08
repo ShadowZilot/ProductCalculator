@@ -28,4 +28,7 @@ interface ProductDao {
 
     @Query("SELECT * FROM products WHERE mId = :id")
     suspend fun productById(id: Int): Product
+
+    @Query("DELETE FROM days WHERE mId = :id")
+    suspend fun deleteDay(id: Int)
 }

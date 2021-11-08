@@ -21,6 +21,16 @@ class ProductsUseCase(
     }
 
     override suspend fun createDay(day: DayDomain, date: Long) {
+        val allDays = mDatabase.allDays()
+        val emptyIds = mutableListOf<Int>()
+        for (dayItem in allDays) {
+            if (dayItem.getProducts().isEmpty()) {
+                emptyIds.add(dayItem.getDay().getId()!!)
+            }
+        }
+        for (emptyId in emptyIds) {
+            mDatabase.deleteDay(emptyId)
+        }
         mDatabase.createDay(
             day.map(DayDomainToData(date))
         )

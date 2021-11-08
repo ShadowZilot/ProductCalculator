@@ -36,6 +36,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        mNavigator.takeBack()
+        try {
+            mNavigator.takeBack()
+        } catch (e : Exception) {
+            finish()
+        }
     }
 }
