@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
+import com.human_developing_soft.productcalc.R
 import com.human_developing_soft.productcalc.add_editing.selecting_dialog.domain.SelectingVM
 import com.human_developing_soft.productcalc.add_editing.selecting_dialog.domain.SelectingVMFactory
 import com.human_developing_soft.productcalc.databinding.SelectingDialogBinding
@@ -49,6 +50,7 @@ class SelectingDialog : DialogFragment(), OnSelectingTypeGot {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        dialog?.setTitle(R.string.selecting_title)
         return mBinding.root
     }
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+<!--    <TextView
         android:id="@+id/selectingTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -12,7 +12,7 @@
         android:text="@string/selecting_title"
         android:textAppearance="@style/DialogTitleText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
     <FrameLayout
         android:id="@+id/expenditureSelectingContainer"
@@ -25,7 +25,7 @@
         android:focusable="true"
         app:layout_constraintEnd_toStartOf="@id/productSelectingContainer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/selectingTitle">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/expenditureSelect"
@@ -47,7 +47,7 @@
         android:elevation="12dp"
         app:layout_constraintStart_toEndOf="@id/expenditureSelectingContainer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/selectingTitle">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/productSelect"
