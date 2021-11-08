@@ -8,7 +8,7 @@ import com.human_developing_soft.productcalc.product_storage.StringContext
 interface ProductUi {
     fun <T> map(mapper: Mapper<T>): T
 
-    class Base(
+    data class Base(
         private val mId: Int?,
         private val mName: String,
         private val mWeight: Float,
@@ -40,13 +40,6 @@ interface ProductUi {
             throw WrongProductException(mMessage)
         }
     }
-
-    class Collapsing : ProductUi {
-        override fun <T> map(mapper: Mapper<T>): T {
-            throw WrongProductException("Impossible map this instance")
-        }
-    }
-
 
     interface Mapper<T> {
         fun map(

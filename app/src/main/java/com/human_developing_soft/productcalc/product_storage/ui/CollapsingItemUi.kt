@@ -4,7 +4,7 @@ interface CollapsingItemUi {
 
     fun <T> map(mapper: Mapper<T>): T
 
-    class Base(
+    data class Base(
         private val mType: Int,
         private val mIsCollapsed: Boolean,
         private val mSumma: Int

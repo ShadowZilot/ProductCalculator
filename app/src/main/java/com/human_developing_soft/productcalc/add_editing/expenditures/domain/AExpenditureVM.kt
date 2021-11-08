@@ -7,7 +7,7 @@ import com.human_developing_soft.productcalc.R
 import com.human_developing_soft.productcalc.add_editing.expenditures.ui.ExpenditureUiToDomain
 import com.human_developing_soft.productcalc.add_editing.expenditures.ui.OnExpenditureObserver
 import com.human_developing_soft.productcalc.add_editing.products.domain.OnProductUpdatedListener
-import com.human_developing_soft.productcalc.product_storage.ui.ExpenditureDomainToUi
+import com.human_developing_soft.productcalc.product_storage.ui.mapper.ExpenditureDomainToUi
 import com.human_developing_soft.productcalc.product_storage.ui.ExpenditureUi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

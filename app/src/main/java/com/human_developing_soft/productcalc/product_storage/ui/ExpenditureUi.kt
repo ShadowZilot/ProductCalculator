@@ -8,7 +8,7 @@ import com.human_developing_soft.productcalc.product_storage.StringContext
 interface ExpenditureUi {
     fun <T> map(mapper: Mapper<T>): T
 
-    class Base(
+    data class Base(
         private val mId: Int?,
         private val mName: String,
         private val mCost: Float,
@@ -29,12 +29,6 @@ interface ExpenditureUi {
 
         override fun <T> map(mapper: Mapper<T>): T {
             throw WrongExpenditureException(mMessage)
-        }
-    }
-
-    class Collapsing : ExpenditureUi {
-        override fun <T> map(mapper: Mapper<T>): T {
-            throw WrongExpenditureException("Impossible map this instance")
         }
     }
 

@@ -1,5 +1,8 @@
 package com.human_developing_soft.productcalc.product_storage.ui
 
+import androidx.recyclerview.widget.DiffUtil
+import com.human_developing_soft.productcalc.product_storage.ui.mapper.*
+
 interface WholeList {
     operator fun get(index: Int): Any
 
@@ -10,7 +13,9 @@ interface WholeList {
         expenditures: List<ExpenditureUi>
     )
 
-    class Base : WholeList, CollapsingListener {
+    class Base(
+        private val mListener: OnListDiffCalculated
+    ) : WholeList, CollapsingListener {
         private val mList = mutableListOf<Any>()
         private var mProductCollapse : CollapsingItemUi? = null
         private var mExpenditureCollapse : CollapsingItemUi? = null
@@ -23,15 +28,14 @@ interface WholeList {
 
         override fun fetchList(products: List<ProductUi>,
                                expenditures: List<ExpenditureUi>) {
-            mList.clear()
             mProductsList.clear()
             mExpenditureList.clear()
             mProductsList.addAll(products)
             mExpenditureList.addAll(expenditures)
-            updateList()
+            updateList(mList.toList())
         }
 
-        private fun updateList() {
+        private fun updateList(oldList: List<Any>) {
             mList.clear()
             if (mProductsList.isNotEmpty()) {
                 var productSumma = 0
@@ -67,6 +71,10 @@ interface WholeList {
             if (mExpenditureCollapse?.map(IsCollapsed()) == false) {
                 mList.addAll(mExpenditureList)
             }
+            val util = MainDiffUtil(oldList, mList)
+            mListener.onCalculated(
+                DiffUtil.calculateDiff(util)
+            )
         }
 
         override fun onItemCollapsed(type: Int) {
@@ -75,7 +83,7 @@ interface WholeList {
             } else if (type == 1) {
                 mExpenditureCollapse = mExpenditureCollapse?.map(CollapsingChanging())
             }
-            updateList()
+            updateList(mList.toList())
         }
     }
 }

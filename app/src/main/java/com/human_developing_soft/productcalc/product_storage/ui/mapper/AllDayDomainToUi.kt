@@ -1,6 +1,7 @@
-package com.human_developing_soft.productcalc.product_storage.ui
+package com.human_developing_soft.productcalc.product_storage.ui.mapper
 
 import com.human_developing_soft.productcalc.product_storage.domain.*
+import com.human_developing_soft.productcalc.product_storage.ui.AllDayUi
 
 class AllDayDomainToUi : AllDayDomain.Mapper<AllDayUi> {
     override fun map(

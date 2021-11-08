@@ -1,19 +1,18 @@
 package com.human_developing_soft.productcalc.product_storage.ui
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.human_developing_soft.productcalc.databinding.CollapsingItemBinding
 import com.human_developing_soft.productcalc.databinding.ExpenditureItemBinding
 import com.human_developing_soft.productcalc.databinding.ProductItemBinding
-import java.lang.IllegalStateException
 
 class MainProductAdapter(
     private val mClickListener: OnProductClickListener
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
-    CollapsingListener {
-    private val mList = WholeList.Base()
+    CollapsingListener, OnListDiffCalculated {
+    private val mList = WholeList.Base(this)
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -58,11 +57,13 @@ class MainProductAdapter(
         expenditure: List<ExpenditureUi>
     ) {
         mList.fetchList(products, expenditure)
-        notifyDataSetChanged()
     }
 
     override fun onItemCollapsed(type: Int) {
         mList.onItemCollapsed(type)
-        notifyDataSetChanged()
+    }
+
+    override fun onCalculated(result: DiffUtil.DiffResult) {
+        result.dispatchUpdatesTo(this)
     }
 }

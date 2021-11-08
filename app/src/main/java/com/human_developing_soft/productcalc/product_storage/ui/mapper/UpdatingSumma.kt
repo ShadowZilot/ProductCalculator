@@ -1,4 +1,6 @@
-package com.human_developing_soft.productcalc.product_storage.ui
+package com.human_developing_soft.productcalc.product_storage.ui.mapper
+
+import com.human_developing_soft.productcalc.product_storage.ui.CollapsingItemUi
 
 class UpdatingSumma(
     private val mNewSumma: Int

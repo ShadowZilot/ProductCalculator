@@ -13,7 +13,7 @@ import com.human_developing_soft.productcalc.edit_day_money.ui.EditingMoneyFragm
 import com.human_developing_soft.productcalc.history.domain.AllDayId
 import com.human_developing_soft.productcalc.history.domain.FreshDayRecognition
 import com.human_developing_soft.productcalc.navigation.Navigation
-import com.human_developing_soft.productcalc.product_storage.ui.AllDayDomainToUi
+import com.human_developing_soft.productcalc.product_storage.ui.mapper.AllDayDomainToUi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
