@@ -2,6 +2,8 @@ package com.human_developing_soft.productcalc.product_storage.data
 
 import android.content.Context
 import androidx.room.Room
+import com.human_developing_soft.productcalc.history.ui.byDay
+import java.util.*
 
 class ProductDBStorage private constructor(
     context: Context
@@ -13,9 +15,14 @@ class ProductDBStorage private constructor(
     ).build()
 
     override suspend fun allDays(): List<AllDay> {
-        return mDatabase
-            .productDao()
-            .allDays()
+        val all = mDatabase.productDao().allDays().toMutableList()
+        for (i in all.indices) {
+            if (all[i].getProducts().isEmpty()
+                && all[i].getDay().getTime().byDay() != Date().time.byDay()) {
+                all.remove(all[i])
+            }
+        }
+        return all.toList()
     }
 
     override suspend fun insertProduct(product: Product) {
