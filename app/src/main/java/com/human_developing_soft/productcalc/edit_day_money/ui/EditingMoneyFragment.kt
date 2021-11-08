@@ -1,33 +1,25 @@
 package com.human_developing_soft.productcalc.edit_day_money.ui
 
-import android.app.AlertDialog
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.human_developing_soft.productcalc.databinding.DayMoneyEditingBinding
 import com.human_developing_soft.productcalc.edit_day_money.domain.EditMoneyVM
 import com.human_developing_soft.productcalc.edit_day_money.domain.EditMoneyVMFactory
 
-class EditingMoneyFragment : DialogFragment(), DayObserver, DayUpdating {
+class EditingMoneyFragment : BottomSheetDialogFragment(), DayObserver, DayUpdating {
     private lateinit var mBinding : DayMoneyEditingBinding
     private lateinit var mViewModel : EditMoneyVM
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        mBinding = DayMoneyEditingBinding.inflate(layoutInflater)
-        return AlertDialog.Builder(context)
-            .setView(mBinding.root)
-            .create()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        mBinding = DayMoneyEditingBinding.inflate(layoutInflater)
         return mBinding.root
     }
 

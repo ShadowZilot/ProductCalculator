@@ -1,19 +1,17 @@
 package com.human_developing_soft.productcalc.add_editing.selecting_dialog.ui
 
-import android.app.AlertDialog
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.human_developing_soft.productcalc.R
 import com.human_developing_soft.productcalc.add_editing.selecting_dialog.domain.SelectingVM
 import com.human_developing_soft.productcalc.add_editing.selecting_dialog.domain.SelectingVMFactory
 import com.human_developing_soft.productcalc.databinding.SelectingDialogBinding
 
-class SelectingDialog : DialogFragment(), OnSelectingTypeGot {
+class SelectingDialog : BottomSheetDialogFragment(), OnSelectingTypeGot {
     private lateinit var mViewModel: SelectingVM
     private lateinit var mBinding: SelectingDialogBinding
     private var mType: Int = 0
@@ -32,26 +30,20 @@ class SelectingDialog : DialogFragment(), OnSelectingTypeGot {
         }
     }
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        mBinding = SelectingDialogBinding.inflate(LayoutInflater.from(context))
-        return if (mType == 0) {
-            AlertDialog.Builder(requireContext())
-                .setView(mBinding.root)
-                .create()
-        } else {
-            dismiss()
-            mViewModel.navigateToSomeFragment()
-            super.onCreateDialog(savedInstanceState)
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
+        mBinding = SelectingDialogBinding.inflate(layoutInflater)
         dialog?.setTitle(R.string.selecting_title)
-        return mBinding.root
+        return if (mType == 0) {
+            mBinding.root
+        } else {
+            dismiss()
+            mViewModel.navigateToSomeFragment()
+            null
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

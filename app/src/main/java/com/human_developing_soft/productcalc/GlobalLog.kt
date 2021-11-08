@@ -17,7 +17,7 @@ interface GlobalLog {
         private val mTag: String
     ) : GlobalLog {
 
-        constructor(instanceType: Class<Any>): this(instanceType.simpleName)
+        constructor(instanceType: Class<out Any>): this(instanceType.simpleName)
 
         override fun i(message: String) {
             Log.i(mTag, message)
