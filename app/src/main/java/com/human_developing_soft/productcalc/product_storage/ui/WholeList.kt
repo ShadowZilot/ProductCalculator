@@ -61,7 +61,7 @@ interface WholeList {
                 }
                 mExpenditureCollapse = if (mExpenditureCollapse == null) {
                     CollapsingItemUi.Base(
-                        1, false, expenditureSumma
+                        1, true, expenditureSumma
                     )
                 } else {
                     mExpenditureCollapse?.map(UpdatingSumma(expenditureSumma))
