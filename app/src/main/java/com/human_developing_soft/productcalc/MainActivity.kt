@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             val item = mViewModel.restoredList()
             mNavigator.navigateTo(
                 item.fragment(),
-                item.args()!!
+                item.args()
             )
         } else {
             mNavigator.navigateTo(
