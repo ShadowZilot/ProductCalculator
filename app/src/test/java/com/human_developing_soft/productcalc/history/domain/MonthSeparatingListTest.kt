@@ -6,14 +6,14 @@ class MonthSeparatingListTest {
     @Test
     fun simpleMonthSeparating() {
         val result = MonthSeparatingList.Base(
-            FakeDaySeparatingList(
-                TimeFactory(2021,
+            listOf(
+                AllDayFactory(2021,
                     10, 4
                 ).createTime(),
-                TimeFactory(2021,
+                AllDayFactory(2021,
                 10, 5
                 ).createTime(),
-                TimeFactory(2021,
+                AllDayFactory(2021,
                     11, 4
                 ).createTime()
             )
@@ -25,11 +25,11 @@ class MonthSeparatingListTest {
     @Test
     fun singleMonth() {
         val result = MonthSeparatingList.Base(
-            FakeDaySeparatingList(
-                TimeFactory(2021,
+            listOf(
+                AllDayFactory(2021,
                     10, 4
                 ).createTime(),
-                TimeFactory(2021,
+                AllDayFactory(2021,
                     10, 5
                 ).createTime()
             )
@@ -40,23 +40,23 @@ class MonthSeparatingListTest {
     @Test
     fun threeMonth() {
         val result = MonthSeparatingList.Base(
-            FakeDaySeparatingList(
-                TimeFactory(2021,
+            listOf(
+                AllDayFactory(2021,
                 10, 4
                 ).createTime(),
-                TimeFactory(2021,
+                AllDayFactory(2021,
                     10, 5
                 ).createTime(),
-                TimeFactory(2021,
+                AllDayFactory(2021,
                     11, 4
                 ).createTime(),
-                TimeFactory(2021,
+                AllDayFactory(2021,
                     11, 5
                 ).createTime(),
-                TimeFactory(2021,
+                AllDayFactory(2021,
                     12, 4
                 ).createTime(),
-                TimeFactory(2021,
+                AllDayFactory(2021,
                     12, 5
                 ).createTime()
             )
@@ -69,8 +69,8 @@ class MonthSeparatingListTest {
     @Test
     fun singleMonthSingleDay() {
         val result = MonthSeparatingList.Base(
-            FakeDaySeparatingList(
-                TimeFactory(2021,
+            listOf(
+                AllDayFactory(2021,
                     10, 5
                 ).createTime()
             )

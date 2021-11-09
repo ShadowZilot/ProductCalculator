@@ -3,13 +3,17 @@ package com.human_developing_soft.productcalc.history.domain
 import java.util.*
 
 class TimeFactory(
-    private val mYear: Int,
-    private val mMonth: Int,
-    private val mDay: Int
-) {
-    fun createTime(): Long {
-        return GregorianCalendar(
-            mYear, mMonth, mDay
-        ).timeInMillis
+    year: Int,
+    month: Int,
+    day: Int
+)  {
+    private val mCalendar = GregorianCalendar()
+
+    init {
+        mCalendar.set(Calendar.YEAR, year)
+        mCalendar.set(Calendar.MONTH, month)
+        mCalendar.set(Calendar.DAY_OF_MONTH, day)
     }
+
+    fun createTime() = mCalendar.timeInMillis
 }

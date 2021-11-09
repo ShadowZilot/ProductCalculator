@@ -25,6 +25,9 @@
     <style name="CancelButton" parent="Theme.ProductCalc">
         <item name="colorPrimary">@android:color/darker_gray</item>
     </style>
+    <style name="ApplyButton" parent="Theme.ProductCalc">
+
+    </style>
     <style name="DialogTitleText" parent="Theme.ProductCalc">
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
