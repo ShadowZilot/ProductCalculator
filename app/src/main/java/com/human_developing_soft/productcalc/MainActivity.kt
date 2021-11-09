@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager,
             R.id.mainHost, mViewModel.stackList(), mViewModel
         )
-        // TODO fix errors which occurs here after rotating device
         if (mViewModel.stackList().isNotEmpty()) {
             val item = mViewModel.restoredList()
             mNavigator.navigateTo(

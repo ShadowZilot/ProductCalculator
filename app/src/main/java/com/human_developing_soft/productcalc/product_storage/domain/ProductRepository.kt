@@ -2,7 +2,6 @@ package com.human_developing_soft.productcalc.product_storage.domain
 
 import com.human_developing_soft.productcalc.history.domain.MonthDomain
 
-// TODO separate this to two different interfaces
 interface ProductRepository {
     suspend fun dayByDate(data: Long): AllDayDomain {
         return AllDayDomain.Dummy()
