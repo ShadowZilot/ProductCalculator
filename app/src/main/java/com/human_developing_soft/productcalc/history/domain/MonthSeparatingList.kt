@@ -17,7 +17,7 @@ interface MonthSeparatingList {
                 try {
                     tmp.add(mInput[i].getDay().getTime())
                     if (!mInput[i].map(SameMonthProduct(mInput[i+1]))) {
-                        result.add(tmp)
+                        result.add(tmp.toList())
                         tmp.clear()
                     }
                 } catch (e : IndexOutOfBoundsException) {
