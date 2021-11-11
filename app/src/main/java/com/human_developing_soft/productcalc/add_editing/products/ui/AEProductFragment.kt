@@ -90,7 +90,9 @@ class AEProductFragment : Fragment(),
         when(aeConfig) {
             AddEditConfig.valueAConfig() -> mViewModel.saveProduct(mUiManager.product())
             AddEditConfig.valueEConfig() -> mViewModel.updateProduct(mUiManager.product())
-            AddEditConfig.valueDConfig() -> mViewModel.deleteProduct(mUiManager.product())
+            AddEditConfig.valueDConfig() -> mViewModel.deleteProduct(mUiManager.product(
+                true)
+            )
         }
     }
 }

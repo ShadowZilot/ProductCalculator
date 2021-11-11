@@ -5,7 +5,7 @@ import com.human_developing_soft.productcalc.R
 import com.human_developing_soft.productcalc.product_storage.ui.ProductUi
 
 interface ProductUiFactory {
-    fun create(context: Context): ProductUi
+    fun create(context: Context, isDeleting: Boolean): ProductUi
 
     class Base(
         private val mId: Int?,
@@ -15,7 +15,7 @@ interface ProductUiFactory {
         private val mPlaceRow: String,
         private val mNote: String
     ): ProductUiFactory {
-        override fun create(context: Context): ProductUi {
+        override fun create(context: Context, isDeleting: Boolean): ProductUi {
             return if (mName != "" &&
                 mWeight != "" &&
                 mPrice != "") {
@@ -29,8 +29,14 @@ interface ProductUiFactory {
                     mNote
                 )
             } else {
-                ProductUi.Fail(R.string.fail_empty_fields,
-                    context)
+                if (isDeleting) {
+                    ProductUi.Base(mId, "",
+                        0f, 0f,
+                        0f, "", "")
+                } else {
+                    ProductUi.Fail(R.string.fail_empty_fields,
+                        context)
+                }
             }
         }
     }

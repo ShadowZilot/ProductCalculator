@@ -19,8 +19,8 @@ interface AEProductUi : ProductFields {
             }
         }
 
-        override fun product(): ProductUi {
-            return mFields.product()
+        override fun product(isDeleting: Boolean): ProductUi {
+            return mFields.product(isDeleting)
         }
 
         override fun map(

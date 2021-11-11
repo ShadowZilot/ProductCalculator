@@ -7,7 +7,7 @@ class ProductFieldsImpl(
     private val mBinding: AeFieldsBinding,
     private val mId: Int? = null
 ) : ProductFields {
-    override fun product(): ProductUi {
+    override fun product(isDeleting: Boolean): ProductUi {
             return ProductUiFactory.Base(
                 mId,
                 mBinding.nameInput.text.toString(),
@@ -15,7 +15,7 @@ class ProductFieldsImpl(
                 mBinding.priceInput.text.toString(),
                 mBinding.placeInput.text.toString(),
                 mBinding.noteInput.text.toString(),
-            ).create(mBinding.root.context)
+            ).create(mBinding.root.context, isDeleting)
     }
 
     override fun map(

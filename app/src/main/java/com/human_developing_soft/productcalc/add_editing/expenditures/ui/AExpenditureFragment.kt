@@ -89,7 +89,9 @@ class AExpenditureFragment : Fragment(), OnExpenditureObserver,
         when(aeConfig) {
             AddEditConfig.valueAConfig() -> mViewModel.insertExpenditure(mUi.expenditure())
             AddEditConfig.valueEConfig() -> mViewModel.updateExpenditure(mUi.expenditure())
-            AddEditConfig.valueDConfig() -> mViewModel.deleteExpenditure(mUi.expenditure())
+            AddEditConfig.valueDConfig() -> mViewModel.deleteExpenditure(mUi.expenditure(
+                true)
+            )
         }
     }
 }

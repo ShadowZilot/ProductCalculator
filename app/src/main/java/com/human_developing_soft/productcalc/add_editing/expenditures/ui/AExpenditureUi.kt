@@ -18,8 +18,8 @@ interface AExpenditureUi : ExpenditureFields {
             }
         }
 
-        override fun expenditure(): ExpenditureUi {
-            return mFields.expenditure()
+        override fun expenditure(isDeleting: Boolean): ExpenditureUi {
+            return mFields.expenditure(isDeleting)
         }
 
         override fun map(id: Int?, name: String, cost: Float, note: String) {

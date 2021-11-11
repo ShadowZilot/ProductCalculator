@@ -56,26 +56,38 @@ class AExpenditureVM(
 
     fun deleteExpenditure(expenditure: ExpenditureUi) {
         viewModelScope.launch(Dispatchers.IO) {
-            mData.deleteExpenditure(
-                expenditure.map(
-                    ExpenditureUiToDomain()
+            try {
+                mData.deleteExpenditure(
+                    expenditure.map(
+                        ExpenditureUiToDomain()
+                    )
                 )
-            )
-            withContext(Dispatchers.Main) {
-                mListener.onProductUpdated(R.string.expenditure_deleted)
+                withContext(Dispatchers.Main) {
+                    mListener.onProductUpdated(R.string.expenditure_deleted)
+                }
+            } catch (e : WrongExpenditureException) {
+                withContext(Dispatchers.Main) {
+                    mListener.onProductUpdated(e.message!!)
+                }
             }
         }
     }
 
     fun updateExpenditure(expenditure: ExpenditureUi) {
         viewModelScope.launch(Dispatchers.IO) {
-            mData.updateExpenditure(
-                expenditure.map(
-                    ExpenditureUiToDomain()
+            try {
+                mData.updateExpenditure(
+                    expenditure.map(
+                        ExpenditureUiToDomain()
+                    )
                 )
-            )
-            withContext(Dispatchers.Main) {
-                mListener.onProductUpdated(R.string.expenditure_updated)
+                withContext(Dispatchers.Main) {
+                    mListener.onProductUpdated(R.string.expenditure_updated)
+                }
+            } catch (e : WrongExpenditureException) {
+                withContext(Dispatchers.Main) {
+                    mListener.onProductUpdated(e.message!!)
+                }
             }
         }
     }

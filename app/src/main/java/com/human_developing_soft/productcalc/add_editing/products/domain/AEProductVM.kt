@@ -50,12 +50,18 @@ class AEProductVM(
 
     fun updateProduct(product: ProductUi) {
         viewModelScope.launch(Dispatchers.IO) {
-            mData.updateProduct(
-                product.map(UiToDomainProduct())
-            )
-            mListener.onProductUpdated(
-                R.string.success_updated
-            )
+            try {
+                mData.updateProduct(
+                    product.map(UiToDomainProduct())
+                )
+                mListener.onProductUpdated(
+                    R.string.success_updated
+                )
+            } catch (e : WrongProductException) {
+                mListener.onProductUpdated(
+                    e.message!!
+                )
+            }
         }
     }
 

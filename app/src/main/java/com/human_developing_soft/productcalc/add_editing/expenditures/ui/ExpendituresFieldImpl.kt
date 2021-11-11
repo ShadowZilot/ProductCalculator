@@ -7,13 +7,13 @@ class ExpendituresFieldImpl(
     private val mBinding: AeExpenditureFieldsBinding,
     private val mId: Int?
 ) : ExpenditureFields {
-    override fun expenditure(): ExpenditureUi {
+    override fun expenditure(isDeleting: Boolean): ExpenditureUi {
         return ExpenditureUiFactory.Base(
             mId,
             mBinding.nameInput.text.toString(),
             mBinding.priceInput.text.toString(),
             mBinding.noteInput.text.toString()
-        ).create(mBinding.root.context)
+        ).create(mBinding.root.context, isDeleting)
     }
 
     override fun map(id: Int?, name: String, cost: Float, note: String) {
