@@ -13,8 +13,8 @@ import kotlinx.coroutines.withContext
 
 class AEProductVM(
     context: Context,
-    private val mListener: OnProductUpdatedListener,
-    private val mProductListener: OnProductObtained,
+    private var mListener: OnProductUpdatedListener,
+    private var mProductListener: OnProductObtained,
     time : Long
 ) : ViewModel() {
     private val mData: ProductRepository = AEProductUseCase(context,
@@ -26,13 +26,17 @@ class AEProductVM(
                 mData.insertProduct(
                     product.map(UiToDomainProduct())
                 )
-                mListener.onProductUpdated(
-                    R.string.success_updating_message
-                )
+                withContext(Dispatchers.Main) {
+                    mListener.onProductUpdated(
+                        R.string.success_updating_message
+                    )
+                }
             } catch (e : WrongProductException) {
-                mListener.onProductUpdated(
-                    e.message!!
-                )
+                withContext(Dispatchers.Main) {
+                    mListener.onProductUpdated(
+                        e.message!!
+                    )
+                }
             }
         }
     }
@@ -42,9 +46,11 @@ class AEProductVM(
             mData.deleteProduct(
                 product.map(UiToDomainProduct())
             )
-            mListener.onProductUpdated(
-                R.string.success_deleted
-            )
+            withContext(Dispatchers.Main) {
+                mListener.onProductUpdated(
+                    R.string.success_deleted
+                )
+            }
         }
     }
 
@@ -54,13 +60,15 @@ class AEProductVM(
                 mData.updateProduct(
                     product.map(UiToDomainProduct())
                 )
-                mListener.onProductUpdated(
-                    R.string.success_updated
-                )
+                withContext(Dispatchers.Main) {
+                    mListener.onProductUpdated(R.string.success_updated)
+                }
             } catch (e : WrongProductException) {
-                mListener.onProductUpdated(
-                    e.message!!
-                )
+                withContext(Dispatchers.Main) {
+                    mListener.onProductUpdated(
+                        e.message!!
+                    )
+                }
             }
         }
     }

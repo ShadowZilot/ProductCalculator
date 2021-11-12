@@ -4,39 +4,29 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.human_developing_soft.productcalc.navigation.Navigation
-import com.human_developing_soft.productcalc.navigation.Navigator
 import com.human_developing_soft.productcalc.product_storage.ui.ProductsFragment
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mViewModel: MainVM
-    private lateinit var mNavigator: Navigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mViewModel = ViewModelProvider(
-            this, MainVMFactory()
+            this, MainVMFactory(Navigation.Navigation.instance(
+                supportFragmentManager,
+                R.id.mainHost
+            ))
         ).get(MainVM::class.java)
-        mNavigator = Navigation.Navigation.instance(
-            supportFragmentManager,
-            R.id.mainHost, mViewModel.stackList(), mViewModel
-        )
-        if (mViewModel.stackList().isNotEmpty()) {
-            val item = mViewModel.restoredList()
-            mNavigator.navigateTo(
-                item.fragment(),
-                item.args()
-            )
-        } else {
-            mNavigator.navigateTo(
-                ProductsFragment::class.java
-            )
+        if (savedInstanceState == null) {
+            Navigation.Navigation.instance().navigateTo(ProductsFragment::class.java)
         }
     }
 
     override fun onBackPressed() {
         try {
-            mNavigator.takeBack()
+        Navigation.Navigation.instance().takeBack()
         } catch (e : Exception) {
             finish()
         }

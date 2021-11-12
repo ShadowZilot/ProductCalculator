@@ -66,32 +66,24 @@ class AEProductFragment : Fragment(),
     }
 
     override fun onProductUpdated(stringId: Int) {
-        requireActivity().runOnUiThread {
-            Toast.makeText(
-                requireContext(),
-                stringId,
-                Toast.LENGTH_SHORT
-            ).show()
-            Navigation.Navigation.instance().takeBack()
-        }
+        Toast.makeText(
+            requireContext(),
+            stringId,
+            Toast.LENGTH_SHORT
+        ).show()
+        Navigation.Navigation.instance().takeBack()
     }
 
     override fun onProductUpdated(message: String) {
-        requireActivity().runOnUiThread {
-            Toast.makeText(
-                requireContext(),
-                message,
-                Toast.LENGTH_LONG
-            ).show()
-        }
+        Toast.makeText(
+            requireContext(),
+            message,
+            Toast.LENGTH_LONG
+        ).show()
     }
 
     override fun onProductObtained(product: ProductUi) {
-        requireActivity().runOnUiThread {
-            product.map(
-                mUiManager
-            )
-        }
+        product.map(mUiManager)
     }
 
     override fun onClick(aeConfig: Int) {

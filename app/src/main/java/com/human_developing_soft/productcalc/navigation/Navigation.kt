@@ -11,18 +11,25 @@ import androidx.lifecycle.LifecycleOwner
 class Navigation private constructor(
     private val mManager: FragmentManager,
     private val mHost: Int,
-    private val mStack: List<StackItem>,
-    private val mListener: OnNavigatedListener
 ) : Navigator {
+    private val mList = mutableListOf<String>()
+
     override fun navigateTo(targetFragment: Class<out Fragment>, data: Bundle?) {
         val transaction = mManager.beginTransaction()
-        transaction.replace(
+        mList.add("${mList.size}$targetFragment.name")
+        transaction.add(
             mHost,
             targetFragment,
             data,
-            targetFragment.name
+            mList.last(),
         )
-        mListener.onNavigated(targetFragment, data)
+        if (mList.size > 1) {
+            for (i in mList.size - 2..0) {
+                mManager.findFragmentByTag(mList[i])?.let {
+                    transaction.hide(it)
+                }
+            }
+        }
         transaction.commit()
     }
 
@@ -44,30 +51,27 @@ class Navigation private constructor(
             targetFragment.tag)
     }
 
-
     override fun takeBack() {
-        if (mStack.size >= 1) {
+        if (mList.size > 1) {
             val transaction = mManager.beginTransaction()
-            mListener.onBacked()
-            transaction.replace(
-                mHost,
-                mStack[mStack.size - 1].fragment(),
-                mStack[mStack.size - 1].args()
-            )
+            transaction.remove(mManager.findFragmentByTag(mList.last())!!)
+            mList.remove(mList.last())
+            transaction.show(mManager.findFragmentByTag(mList.last())!!)
             transaction.commit()
+        } else {
+            throw Exception()
         }
     }
+
 
     object Navigation {
         private var mNavigator: Navigator? = null
 
         fun instance(
             manager: FragmentManager,
-            @IdRes host: Int,
-            stack: List<StackItem>,
-            listener: OnNavigatedListener
+            @IdRes host: Int
         ): Navigator {
-            mNavigator = Navigation(manager, host, stack, listener)
+            mNavigator = Navigation(manager, host)
             return mNavigator!!
         }
 
