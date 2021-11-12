@@ -54,7 +54,15 @@ class AEProductFragment : Fragment(),
             this, this,
             arguments?.getLong("time"))
         ).get(AEProductVM::class.java)
-        mViewModel.productById(mId)
+        if (savedInstanceState != null) {
+            ProductUi.Base(savedInstanceState).map(mUiManager)
+        } else {
+            mViewModel.productById(mId)
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putAll(mUiManager.savedBundle())
     }
 
     override fun onProductUpdated(stringId: Int) {

@@ -1,5 +1,6 @@
 package com.human_developing_soft.productcalc.add_editing.products.ui
 
+import android.os.Bundle
 import com.human_developing_soft.productcalc.databinding.AeFieldsBinding
 import com.human_developing_soft.productcalc.product_storage.ui.ProductUi
 
@@ -16,6 +17,19 @@ class ProductFieldsImpl(
                 mBinding.placeInput.text.toString(),
                 mBinding.noteInput.text.toString(),
             ).create(mBinding.root.context, isDeleting)
+    }
+
+    override fun savedBundle(): Bundle {
+        val savedState = Bundle()
+        mBinding.let {
+            savedState.putInt("id", mId ?: -1)
+            savedState.putString("name", it.nameInput.text.toString())
+            savedState.putString("weight", it.weightInput.text.toString())
+            savedState.putString("price", it.priceInput.text.toString())
+            savedState.putString("place", it.placeInput.text.toString())
+            savedState.putString("note", it.noteInput.text.toString())
+        }
+        return savedState
     }
 
     override fun map(

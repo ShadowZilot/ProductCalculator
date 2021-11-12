@@ -1,5 +1,6 @@
 package com.human_developing_soft.productcalc.add_editing.products.ui
 
+import android.os.Bundle
 import com.human_developing_soft.productcalc.add_editing.common_ui.AddEditRestUi
 import com.human_developing_soft.productcalc.product_storage.ui.ProductUi
 
@@ -17,6 +18,10 @@ interface AEProductUi : ProductFields {
             } else {
                 mUi.goToEditConfig()
             }
+        }
+
+        override fun savedBundle(): Bundle {
+            return mFields.savedBundle()
         }
 
         override fun product(isDeleting: Boolean): ProductUi {

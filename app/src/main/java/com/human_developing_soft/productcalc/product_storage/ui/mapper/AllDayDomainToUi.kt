@@ -18,10 +18,10 @@ class AllDayDomainToUi : AllDayDomain.Mapper<AllDayUi> {
         }
         return AllDayUi.Base(
             day.map(DayDomainToUi(productSumma.toInt())),
-            products.map {
+            products.reversed().map {
                 it.map(DomainToUiProduct())
             },
-            expenditures.map {
+            expenditures.reversed().map {
                 it.map(ExpenditureDomainToUi())
             }
         )
