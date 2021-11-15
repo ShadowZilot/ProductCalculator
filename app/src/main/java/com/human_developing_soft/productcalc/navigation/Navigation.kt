@@ -27,6 +27,7 @@ class Navigation private constructor(
             for (i in mList.size - 2..0) {
                 mManager.findFragmentByTag(mList[i])?.let {
                     transaction.hide(it)
+                    it.onPause()
                 }
             }
         }
@@ -57,6 +58,7 @@ class Navigation private constructor(
             transaction.remove(mManager.findFragmentByTag(mList.last())!!)
             mList.remove(mList.last())
             transaction.show(mManager.findFragmentByTag(mList.last())!!)
+            mManager.findFragmentByTag(mList.last())!!.onResume()
             transaction.commit()
         } else {
             throw Exception()

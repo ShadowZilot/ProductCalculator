@@ -18,6 +18,7 @@ interface ProductUi {
         private val mPlaceRow: String,
         private val mNote: String
     ) : ProductUi {
+
         constructor(savedProduct: Bundle) : this(
             if (savedProduct.getInt("id") == -1) null
             else savedProduct.getInt("id"),

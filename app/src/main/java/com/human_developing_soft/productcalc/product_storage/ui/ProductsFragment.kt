@@ -78,8 +78,8 @@ class ProductsFragment : Fragment(), ProductsObserver,
         }
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
         mUiManager.startLoading()
         mViewModel.fetchProducts()
     }
