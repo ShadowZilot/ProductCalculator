@@ -40,4 +40,7 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="FragmentRoot" parent="Theme.ProductCalc">
+        <item name="android:background">#3A3939</item>
+    </style>
 </resources>

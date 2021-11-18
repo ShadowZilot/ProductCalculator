@@ -26,7 +26,6 @@ class Navigation private constructor(
         if (mList.size > 1) {
             for (i in mList.size - 2..0) {
                 mManager.findFragmentByTag(mList[i])?.let {
-                    transaction.hide(it)
                     it.onPause()
                 }
             }
@@ -57,14 +56,12 @@ class Navigation private constructor(
             val transaction = mManager.beginTransaction()
             transaction.remove(mManager.findFragmentByTag(mList.last())!!)
             mList.remove(mList.last())
-            transaction.show(mManager.findFragmentByTag(mList.last())!!)
             mManager.findFragmentByTag(mList.last())!!.onResume()
             transaction.commit()
         } else {
             throw Exception()
         }
     }
-
 
     object Navigation {
         private var mNavigator: Navigator? = null
