@@ -16,8 +16,8 @@ import kotlinx.coroutines.withContext
 class AExpenditureVM(
     private val mId: Int?,
     context: Context,
-    private val mObserver: OnExpenditureObserver,
-    private val mListener: OnProductUpdatedListener,
+    private var mObserver: OnExpenditureObserver,
+    private var mListener: OnProductUpdatedListener,
     time: Long
 ) : ViewModel() {
     private val mData = AExpenditureUseCase(time, context)
@@ -90,5 +90,13 @@ class AExpenditureVM(
                 }
             }
         }
+    }
+
+    fun redefineReferences(
+        observer: OnExpenditureObserver,
+        listener: OnProductUpdatedListener
+    ) {
+        mObserver = observer
+        mListener = listener
     }
 }

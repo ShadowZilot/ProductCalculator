@@ -65,6 +65,11 @@ class AEProductFragment : Fragment(),
         outState.putAll(mUiManager.savedBundle())
     }
 
+    override fun onResume() {
+        super.onResume()
+        mViewModel.redefineReferences(this, this)
+    }
+
     override fun onProductUpdated(stringId: Int) {
         Toast.makeText(
             requireContext(),

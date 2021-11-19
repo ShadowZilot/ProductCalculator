@@ -87,4 +87,12 @@ class AEProductVM(
             }
         }
     }
+
+    fun redefineReferences(
+        observer: OnProductObtained,
+        listener: OnProductUpdatedListener
+    ) {
+        mProductListener = observer
+        mListener = listener
+    }
 }

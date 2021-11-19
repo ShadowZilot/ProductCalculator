@@ -44,6 +44,11 @@ class EditingMoneyFragment : BottomSheetDialogFragment(), DayObserver, DayUpdati
         mViewModel.fetchDay()
     }
 
+    override fun onResume() {
+        super.onResume()
+        mViewModel.redefineReferences(this, this)
+    }
+
     override fun onDayObtain(money: Int) {
         mBinding.moneyInput.setText(money.toString())
     }

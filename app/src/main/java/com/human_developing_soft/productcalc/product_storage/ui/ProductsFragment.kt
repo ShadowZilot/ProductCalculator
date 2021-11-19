@@ -80,6 +80,7 @@ class ProductsFragment : Fragment(), ProductsObserver,
 
     override fun onResume() {
         super.onResume()
+        mViewModel.redefineReferences(this)
         mUiManager.startLoading()
         mViewModel.fetchProducts()
     }

@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class HistoryVM(
     context: Context,
-    private val mObserver: OnHistoryObtained
+    private var mObserver: OnHistoryObtained
 ) : ViewModel() {
     private val mData = HistoryUseCase(context)
 
@@ -33,5 +33,9 @@ class HistoryVM(
             ProductsFragment::class.java,
             args
         )
+    }
+
+    fun redefineReferences(observer: OnHistoryObtained) {
+        mObserver = observer
     }
 }

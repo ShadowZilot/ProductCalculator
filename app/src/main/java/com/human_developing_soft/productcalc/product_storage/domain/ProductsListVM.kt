@@ -63,6 +63,10 @@ class ProductsListVM(
         }
     }
 
+    fun redefineReferences(observer: ProductsObserver) {
+        mObserver = observer
+    }
+
     fun navigateToEditingDay(listener: FragmentResultListener) {
         Navigation.Navigation.instance().showDialog(
             EditingMoneyFragment(),

@@ -45,6 +45,7 @@ class HistoryFragment : Fragment(), OnDayItemClicked, OnHistoryObtained {
 
     override fun onStart() {
         super.onStart()
+        mViewModel.redefineReferences(this)
         mUiController.beginLoading()
         mViewModel.updateData(MonthProvider.Base(requireContext()))
     }

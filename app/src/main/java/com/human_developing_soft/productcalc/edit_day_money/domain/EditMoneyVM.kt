@@ -15,8 +15,8 @@ import java.util.*
 class EditMoneyVM(
     private val mDayId: Int,
     time: Long?,
-    private val mObserver: DayObserver,
-    private val mUpdating: DayUpdating,
+    private var mObserver: DayObserver,
+    private var mUpdating: DayUpdating,
     context: Context
 ) : ViewModel() {
     private val mTime = time ?: Date().time
@@ -41,5 +41,11 @@ class EditMoneyVM(
             )
             mUpdating.onDayUpdated()
         }
+    }
+
+    fun redefineReferences(observer: DayObserver,
+                           updating: DayUpdating) {
+        mObserver = observer
+        mUpdating = updating
     }
 }

@@ -64,6 +64,11 @@ class AExpenditureFragment : Fragment(), OnExpenditureObserver,
         mViewModel.fetchExpenditure()
     }
 
+    override fun onResume() {
+        super.onResume()
+        mViewModel.redefineReferences(this, this)
+    }
+
     override fun onExpenditureObtained(expenditure: ExpenditureUi) {
         expenditure.map(mUi)
     }
