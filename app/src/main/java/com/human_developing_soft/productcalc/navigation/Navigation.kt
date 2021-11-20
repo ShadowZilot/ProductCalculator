@@ -1,6 +1,7 @@
 package com.human_developing_soft.productcalc.navigation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.IdRes
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
@@ -9,7 +10,7 @@ import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.LifecycleOwner
 
 class Navigation private constructor(
-    private val mManager: FragmentManager,
+    private var mManager: FragmentManager,
     private val mHost: Int,
 ) : Navigator {
     private val mList = mutableListOf<String>()
@@ -25,12 +26,12 @@ class Navigation private constructor(
         )
         if (mList.size > 1) {
             for (i in mList.size - 2..0) {
-                mManager.findFragmentByTag(mList[i])?.let {
-                    it.onPause()
-                }
+                mManager.findFragmentByTag(mList[i])?.onPause()
             }
         }
         transaction.commit()
+        Log.d(this::class.java.simpleName,
+            "Navigated to ${targetFragment::class.java.simpleName}, size = ${mList.size}")
     }
 
     override fun showDialog(
@@ -52,6 +53,7 @@ class Navigation private constructor(
     }
 
     override fun takeBack() {
+        Log.d(this::class.java.simpleName, "Taken back, size = ${mList.size}")
         if (mList.size > 1) {
             val transaction = mManager.beginTransaction()
             transaction.remove(mManager.findFragmentByTag(mList.last())!!)
@@ -61,6 +63,10 @@ class Navigation private constructor(
         } else {
             throw Exception()
         }
+    }
+
+    override fun redefineFragmentManager(fm : FragmentManager) {
+        mManager = fm
     }
 
     object Navigation {
