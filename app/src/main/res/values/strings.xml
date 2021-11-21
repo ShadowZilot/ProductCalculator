@@ -19,7 +19,7 @@
     <string name="edit_button_label">Изменить</string>
     <string name="wasted_money">Денег потрачено = %d</string>
     <string name="all_money">Всего денег = %d</string>
-    <string name="rest_money">Остаток = %d</string>
+    <string name="rest_money">Остаток = </string>
     <string name="editing_tool_label">Редактирование</string>
     <string name="delete_label">Удалить</string>
     <string name="product_history_label">История</string>
