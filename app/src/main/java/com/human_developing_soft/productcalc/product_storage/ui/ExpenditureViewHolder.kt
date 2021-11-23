@@ -18,7 +18,7 @@ class ExpenditureViewHolder(
             this.expenditureNameView.text = name
             this.expenditureNoteView.text = note
             this.expenditureCostView.text = stringProvider.string(
-                R.string.formatted_summary_price, cost.toString()
+                R.string.formatted_summary_price, cost
             )
             this.root.setOnClickListener {
                 mListener.onProductClick(id!!)

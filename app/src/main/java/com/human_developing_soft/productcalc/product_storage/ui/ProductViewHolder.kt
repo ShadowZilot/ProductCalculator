@@ -29,7 +29,7 @@ class ProductViewHolder(
         mBinding.productPriceView.text = stringProvider.string(R.string.formatted_price,
             priceForWeight.toString())
         mBinding.summaryPriceView.text = stringProvider.string(R.string.formatted_summary_price,
-            priceSummary.toString())
+            priceSummary)
         mBinding.productRowView.text = if (placeRow == "") "" else
             stringProvider.string(R.string.formatted_place_row,
             placeRow)

@@ -3,7 +3,7 @@ package com.human_developing_soft.productcalc.product_storage.ui
 import android.graphics.Color
 import android.text.SpannableString
 import android.text.Spanned
-import android.text.style.ForegroundColorSpan
+import android.text.style.BackgroundColorSpan
 import com.human_developing_soft.productcalc.R
 import com.human_developing_soft.productcalc.databinding.ProductsBudgetInfoBinding
 import com.human_developing_soft.productcalc.product_storage.StringContext
@@ -31,11 +31,13 @@ interface MoneyInfoView : DayUi.Mapper<Unit> {
             mBinding.apply {
                 val strings = StringContext.Base(this.root.context)
                 val spannable = SpannableString(
-                    "${strings.string(R.string.rest_money)} $moneyRest"
+                    String.format("%s %,d",
+                        strings.string(R.string.rest_money),
+                        moneyRest)
                 )
                 if (moneyRest < 0) {
-                    spannable.setSpan(ForegroundColorSpan(Color.RED),
-                    strings.string(R.string.rest_money).length,
+                    spannable.setSpan(BackgroundColorSpan(Color.RED),
+                    strings.string(R.string.rest_money).length+1,
                         spannable.length,
                         Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
                 }

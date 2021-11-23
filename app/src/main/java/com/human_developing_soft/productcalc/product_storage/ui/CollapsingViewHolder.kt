@@ -16,7 +16,7 @@ class CollapsingViewHolder(
         val string = StringContext.Base(mBinding.root.context)
         val res = if (type == 0)
             R.string.collapse_title_product else R.string.collapse_title_expenditure
-        mBinding.sectionInfoView.text = string.string(res, summa.toString())
+        mBinding.sectionInfoView.text = string.string(res, summa)
         mBinding.collapsingButton.rotation = if (isCollapsed) 180f else 0f
         mBinding.root.elevation = if (isCollapsed) 0f else 10f
         mBinding.root.setOnClickListener {
