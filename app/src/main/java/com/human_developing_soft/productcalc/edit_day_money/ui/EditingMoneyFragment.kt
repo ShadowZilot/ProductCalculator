@@ -41,7 +41,17 @@ class EditingMoneyFragment : BottomSheetDialogFragment(), DayObserver, DayUpdati
         mBinding.cancelButton.setOnClickListener {
             dismiss()
         }
-        mViewModel.fetchDay()
+        if (savedInstanceState != null) {
+            mBinding.moneyInput.setText(
+                savedInstanceState.getInt("savedMoney").toString())
+        } else {
+            mViewModel.fetchDay()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt("savedMoney",
+            mBinding.moneyInput.text.toString().toInt())
     }
 
     override fun onResume() {
