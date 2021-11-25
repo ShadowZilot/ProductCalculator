@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <style name="ProductNameText" parent="Theme.ProductCalc">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">22sp</item>
@@ -45,5 +46,8 @@
     </style>
     <style name="FragmentRoot" parent="Theme.ProductCalc">
         <item name="android:background">@color/white</item>
+    </style>
+    <style name="CalculatorButton" parent="Theme.ProductCalc">
+        <item name="android:layout_margin">3dp</item>
     </style>
 </resources>
