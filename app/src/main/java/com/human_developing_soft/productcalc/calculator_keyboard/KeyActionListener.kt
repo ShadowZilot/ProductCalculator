@@ -1,4 +1,4 @@
-package com.human_developing_soft.productcalc.add_editing
+package com.human_developing_soft.productcalc.calculator_keyboard
 
 import com.human_developing_soft.productcalc.calculator_keyboard.CalculationAction
 

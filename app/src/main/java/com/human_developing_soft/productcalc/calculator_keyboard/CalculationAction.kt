@@ -15,7 +15,8 @@ class Number(
 ) : CalculationAction() {
     override fun implementAction(calcString: String): String {
         val result = StringBuilder(calcString)
-        return if (calcString[calcString.lastIndex] == ')') {
+        return if (calcString.isNotEmpty()
+            && calcString[calcString.lastIndex] == ')') {
             result.append("*${mPressedNumber}")
             result.toString()
         } else {

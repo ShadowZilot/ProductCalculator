@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.textfield.TextInputEditText
-import com.human_developing_soft.productcalc.add_editing.KeyActionListener
 import com.human_developing_soft.productcalc.databinding.CalculatorKeyboardGridBinding
 
 class KeyboardEditText(context: Context,
@@ -67,6 +66,8 @@ class KeyboardEditText(context: Context,
     }
 
     override fun onKeyPressed(keyAction: CalculationAction) {
-
+        setText(
+            keyAction.implementAction(text.toString())
+        )
     }
 }

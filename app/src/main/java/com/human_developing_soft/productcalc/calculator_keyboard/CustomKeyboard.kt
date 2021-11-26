@@ -1,7 +1,8 @@
 package com.human_developing_soft.productcalc.calculator_keyboard
 
 import android.view.View
-import com.human_developing_soft.productcalc.add_editing.KeyActionListener
+import android.widget.Button
+import androidx.core.view.children
 import com.human_developing_soft.productcalc.databinding.CalculatorKeyboardGridBinding
 
 interface CustomKeyboard {
@@ -15,12 +16,20 @@ interface CustomKeyboard {
 
         init {
             mKeyboardView.root.visibility = View.GONE
+            for (view in mKeyboardView.keyboardGrid.children) {
+                view.setOnClickListener {
+                    mEventListener.onKeyPressed(
+                        KeyActionRecognition.Base(
+                            (it as Button).text.toString()
+                        ).keyAction()
+                    )
+                }
+            }
         }
 
         override fun isVisible(visibility: Boolean) {
             mKeyboardView.root.visibility =
                 if (visibility) View.VISIBLE else View.GONE
         }
-
     }
 }
