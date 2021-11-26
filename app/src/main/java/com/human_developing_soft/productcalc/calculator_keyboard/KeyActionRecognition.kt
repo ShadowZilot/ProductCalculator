@@ -20,6 +20,7 @@ interface KeyActionRecognition {
                 mKey == "." -> Point
                 mKey == "=" -> EqualOperation
                 mKey == "Del" -> EraseOne
+                mKey == "%" -> PercentOperation
                 else -> throw IllegalStateException("Unrecognized key -> $mKey")
             }
         }

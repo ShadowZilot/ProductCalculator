@@ -16,7 +16,7 @@ class Number(
     override fun implementAction(calcString: String): String {
         val result = StringBuilder(calcString)
         return if (calcString.isNotEmpty()
-            && calcString[calcString.lastIndex] == ')') {
+            && calcString.lastSymbol() == ")") {
             result.append("*${mPressedNumber}")
             result.toString()
         } else {
@@ -30,7 +30,7 @@ class MathOperator(
     private val mOperator: String
 ) : CalculationAction() {
     override fun implementAction(calcString: String): String {
-        val lastSymbol = calcString[calcString.lastIndex].toString()
+        val lastSymbol = calcString.lastSymbol()
         val result = StringBuilder(calcString)
         return if (calcString.isEmpty()
             || lastSymbol == mOperator) {
@@ -52,7 +52,7 @@ object ClearOperation : CalculationAction() {
 
 object Brackets : CalculationAction() {
     override fun implementAction(calcString: String): String {
-        val lastSymbol = calcString[calcString.lastIndex].toString()
+        val lastSymbol = calcString.lastSymbol()
         val result = StringBuilder(calcString)
         return if (isNeedToClose(calcString)) {
             result.append(")")
@@ -76,7 +76,7 @@ object Brackets : CalculationAction() {
                 break
             }
         }
-        if ("+-*/".contains(calcString[calcString.lastIndex].toString())) {
+        if ("+-*/".contains(calcString.lastSymbol())) {
             result = false
         }
         return result
@@ -109,9 +109,24 @@ object EraseOne : CalculationAction() {
     }
 }
 
+object PercentOperation : CalculationAction() {
+    override fun implementAction(calcString: String): String {
+        // TODO implement this
+        return calcString
+    }
+}
+
 object EqualOperation : CalculationAction() {
     override fun implementAction(calcString: String): String {
         // TODO implement this
         return calcString
+    }
+}
+
+fun String.lastSymbol() : String {
+    return if (this.isNotEmpty()) {
+        get(this.length-1).toString()
+    } else {
+        ""
     }
 }
