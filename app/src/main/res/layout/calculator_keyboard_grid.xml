@@ -4,6 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     android:layout_gravity="center_horizontal"
     android:columnCount="4"
     android:rowCount="5">
@@ -126,7 +127,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/CalculatorButton"
+        android:theme="@style/EqualsButton"
+        style="@style/EqualsButton"
         android:text="="
         tools:ignore="HardcodedText" />
 </GridLayout>

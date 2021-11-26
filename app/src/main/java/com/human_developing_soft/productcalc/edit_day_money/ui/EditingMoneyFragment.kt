@@ -20,6 +20,10 @@ class EditingMoneyFragment : BottomSheetDialogFragment(), DayObserver, DayUpdati
         savedInstanceState: Bundle?
     ): View {
         mBinding = DayMoneyEditingBinding.inflate(layoutInflater)
+        mBinding.moneyInput.setupKeyboardComponents(
+            mBinding.root,
+            requireActivity()
+        )
         return mBinding.root
     }
 

@@ -27,11 +27,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.human_developing_soft.productcalc.calculator_keyboard.KeyboardEditText
             android:id="@+id/moneyInput"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:inputType="number"/>
     </com.google.android.material.textfield.TextInputLayout>
 
