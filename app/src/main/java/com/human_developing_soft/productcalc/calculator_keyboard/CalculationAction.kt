@@ -99,9 +99,13 @@ object Point : CalculationAction() {
 
 object EraseOne : CalculationAction() {
     override fun implementAction(calcString: String): String {
-        return StringBuilder(calcString)
-            .deleteCharAt(calcString.lastIndex)
-            .toString()
+        return if (calcString.isNotEmpty()) {
+            StringBuilder(calcString)
+                .deleteCharAt(calcString.lastIndex)
+                .toString()
+        } else {
+            calcString
+        }
     }
 }
 

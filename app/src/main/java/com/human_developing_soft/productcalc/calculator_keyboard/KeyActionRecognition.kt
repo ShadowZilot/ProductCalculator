@@ -19,6 +19,7 @@ interface KeyActionRecognition {
                 mKey == "+/-" -> PlusSlashMinus
                 mKey == "." -> Point
                 mKey == "=" -> EqualOperation
+                mKey == "Del" -> EraseOne
                 else -> throw IllegalStateException("Unrecognized key -> $mKey")
             }
         }
