@@ -8,7 +8,8 @@ interface KeyActionRecognition {
     fun keyAction(): CalculationAction
 
     class Base(
-        private val mKey: String
+        private val mKey: String,
+        private val mListener: NotValidFormulaListener
     ) : KeyActionRecognition {
         override fun keyAction(): CalculationAction {
             return when {
@@ -18,7 +19,7 @@ interface KeyActionRecognition {
                 mKey == "()" -> Brackets
                 mKey == "+/-" -> PlusSlashMinus
                 mKey == "." -> Point
-                mKey == "=" -> EqualOperation
+                mKey == "=" -> EqualOperation(mListener)
                 mKey == "Del" -> EraseOne
                 mKey == "%" -> PercentOperation
                 else -> throw IllegalStateException("Unrecognized key -> $mKey")

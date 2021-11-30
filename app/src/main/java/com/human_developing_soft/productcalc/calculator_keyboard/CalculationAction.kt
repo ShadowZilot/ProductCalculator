@@ -1,6 +1,8 @@
 package com.human_developing_soft.productcalc.calculator_keyboard
 
-import java.lang.StringBuilder
+import javax.script.ScriptEngine
+import javax.script.ScriptEngineManager
+import javax.script.ScriptException
 
 /**
  * Human Developing Soft
@@ -11,12 +13,13 @@ sealed class CalculationAction {
 }
 
 class Number(
-    private val mPressedNumber : String
+    private val mPressedNumber: String
 ) : CalculationAction() {
     override fun implementAction(calcString: String): String {
         val result = StringBuilder(calcString)
         return if (calcString.isNotEmpty()
-            && calcString.lastSymbol() == ")") {
+            && calcString.lastSymbol() == ")"
+        ) {
             result.append("*${mPressedNumber}")
             result.toString()
         } else {
@@ -33,8 +36,9 @@ class MathOperator(
         val lastSymbol = calcString.lastSymbol()
         val result = StringBuilder(calcString)
         return if (calcString.isEmpty()
-            || lastSymbol == mOperator) {
-                calcString
+            || lastSymbol == mOperator
+        ) {
+            calcString
         } else if ("+-/*".contains(lastSymbol)) {
             result.deleteCharAt(result.lastIndex)
             result.append(mOperator)
@@ -111,21 +115,37 @@ object EraseOne : CalculationAction() {
 
 object PercentOperation : CalculationAction() {
     override fun implementAction(calcString: String): String {
-        // TODO implement this
-        return calcString
+        val lastSymbol = calcString.lastSymbol()
+        return if (!"+-/*%".contains(lastSymbol)) {
+            StringBuilder(calcString)
+                .append("%")
+                .toString()
+        } else {
+            calcString
+        }
     }
 }
 
-object EqualOperation : CalculationAction() {
+class EqualOperation(
+    private val mListener: NotValidFormulaListener
+) : CalculationAction() {
     override fun implementAction(calcString: String): String {
-        // TODO implement this
-        return calcString
+        val manager = ScriptEngineManager()
+        val engine: ScriptEngine = manager.getEngineByName("js")
+        return try {
+            engine.eval(
+                calcString.replace("%", "/100")
+            ).toString()
+        } catch (e : ScriptException) {
+            mListener.onFormulaError()
+            calcString
+        }
     }
 }
 
-fun String.lastSymbol() : String {
+fun String.lastSymbol(): String {
     return if (this.isNotEmpty()) {
-        get(this.length-1).toString()
+        get(this.length - 1).toString()
     } else {
         ""
     }

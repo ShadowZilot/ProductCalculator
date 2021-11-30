@@ -33,10 +33,10 @@ class EditMoneyVM(
         }
     }
 
-    fun updateDay(money: Int) {
+    fun updateDay(money: Float) {
         viewModelScope.launch {
             mData.updateDay(
-                DayDomain.Base(mDayId, money),
+                DayDomain.Base(mDayId, money.toInt()),
                 mTime
             )
             mUpdating.onDayUpdated()
