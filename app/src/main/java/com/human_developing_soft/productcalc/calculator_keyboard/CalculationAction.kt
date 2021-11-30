@@ -62,7 +62,9 @@ object Brackets : CalculationAction() {
             result.append(")")
             result.toString()
         } else {
-            if ("0123456789%".contains(lastSymbol)) {
+            if (calcString.isNotEmpty()
+                && "0123456789%".contains(lastSymbol)
+            ) {
                 result.append("*(")
                 result.toString()
             } else {
@@ -96,8 +98,22 @@ object PlusSlashMinus : CalculationAction() {
 
 object Point : CalculationAction() {
     override fun implementAction(calcString: String): String {
-        // TODO implement this
-        return calcString
+        val lastSymbol = calcString.lastSymbol()
+        return if (calcString.isEmpty()
+            || "(+-*/".contains(lastSymbol)
+        ) {
+            StringBuilder(calcString)
+                .append("0.")
+                .toString()
+        } else if (")%".contains(lastSymbol)) {
+            StringBuilder(calcString)
+                .append("*0.")
+                .toString()
+        } else {
+            StringBuilder(calcString)
+                .append(".")
+                .toString()
+        }
     }
 }
 
@@ -136,7 +152,7 @@ class EqualOperation(
             engine.eval(
                 calcString.replace("%", "/100")
             ).toString()
-        } catch (e : ScriptException) {
+        } catch (e: ScriptException) {
             mListener.onFormulaError()
             calcString
         }
