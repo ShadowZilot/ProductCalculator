@@ -11,7 +11,7 @@ class AEProductVMFactory(
     private val mListenerProduct: OnProductObtained,
     private val mTime : Long?
 ) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         val time = mTime ?: Date().time
         return AEProductVM(mContext, mListener, mListenerProduct, time) as T
     }

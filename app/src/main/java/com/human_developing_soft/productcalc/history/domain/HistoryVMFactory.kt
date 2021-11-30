@@ -8,7 +8,7 @@ class HistoryVMFactory(
     private val mContext: Context,
     private val mObserver: OnHistoryObtained
 ) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return HistoryVM(mContext, mObserver) as T
     }
 }

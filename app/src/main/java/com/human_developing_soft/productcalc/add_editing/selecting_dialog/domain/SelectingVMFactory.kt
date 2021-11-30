@@ -11,7 +11,7 @@ class SelectingVMFactory(
     private val mTime: Long,
     private val mId: Int
 ) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return SelectingVM(mContext, mListener, mTime, mId) as T
     }
 }

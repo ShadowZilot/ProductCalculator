@@ -13,7 +13,7 @@ class AExpenditureVMFactory(
     private val mListener: OnProductUpdatedListener,
     private val mTime: Long
 ) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return AExpenditureVM(
             mId,
             mContext,

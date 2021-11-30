@@ -13,8 +13,7 @@ class EditMoneyVMFactory(
     private val mObserver: DayObserver,
     private val mUpdating: DayUpdating
 ) : ViewModelProvider.Factory {
-
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return EditMoneyVM(mDayId, mTime, mObserver, mUpdating, mContext) as T
     }
 }

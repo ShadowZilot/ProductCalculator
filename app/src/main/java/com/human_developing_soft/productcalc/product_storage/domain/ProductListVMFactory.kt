@@ -9,7 +9,7 @@ class ProductListVMFactory(
     private val mTime: Long?,
     private val mContext: Context
 ) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return ProductsListVM(mObserver, mTime, mContext) as T
     }
 }
