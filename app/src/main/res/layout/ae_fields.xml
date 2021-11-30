@@ -41,7 +41,7 @@
                 app:layout_constraintEnd_toEndOf="@id/nameInputContainer">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/placeInput"
-                    android:inputType="numberDecimal"
+                    android:inputType="text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
             </com.google.android.material.textfield.TextInputLayout>
