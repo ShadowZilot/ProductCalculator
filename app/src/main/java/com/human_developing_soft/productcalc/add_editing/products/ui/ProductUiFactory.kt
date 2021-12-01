@@ -13,6 +13,7 @@ interface ProductUiFactory {
         private val mWeight: String,
         private val mPrice: String,
         private val mPlaceRow: String,
+        private val mSummaryPrice: String,
         private val mNote: String
     ): ProductUiFactory {
         override fun create(context: Context, isDeleting: Boolean): ProductUi {
@@ -24,7 +25,7 @@ interface ProductUiFactory {
                     mName,
                     mWeight.toFloat(),
                     mPrice.toFloat(),
-                    0f,
+                    if (mSummaryPrice.isEmpty()) 0f else mSummaryPrice.toFloat(),
                     if (mPlaceRow == "") "" else mPlaceRow,
                     mNote
                 )

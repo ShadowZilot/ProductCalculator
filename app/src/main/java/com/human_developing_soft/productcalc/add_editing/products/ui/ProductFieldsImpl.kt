@@ -1,6 +1,7 @@
 package com.human_developing_soft.productcalc.add_editing.products.ui
 
 import android.os.Bundle
+import android.view.View
 import com.human_developing_soft.productcalc.databinding.AeFieldsBinding
 import com.human_developing_soft.productcalc.product_storage.ui.ProductUi
 
@@ -15,6 +16,7 @@ class ProductFieldsImpl(
                 mBinding.weightInput.text.toString(),
                 mBinding.priceInput.text.toString(),
                 mBinding.placeInput.text.toString(),
+                mBinding.sumPriceInput.text.toString(),
                 mBinding.noteInput.text.toString(),
             ).create(mBinding.root.context, isDeleting)
     }
@@ -27,6 +29,7 @@ class ProductFieldsImpl(
             savedState.putString("weight", it.weightInput.text.toString())
             savedState.putString("price", it.priceInput.text.toString())
             savedState.putString("place", it.placeInput.text.toString())
+            savedState.putString("sumPrice", it.priceInput.text.toString())
             savedState.putString("note", it.noteInput.text.toString())
         }
         return savedState
@@ -45,6 +48,8 @@ class ProductFieldsImpl(
         mBinding.placeInput.setText(placeRow)
         mBinding.weightInput.setText(weight.toString())
         mBinding.priceInput.setText(priceForWeight.toString())
+        mBinding.sumPriceInputContainer.visibility = View.VISIBLE
+        mBinding.sumPriceInput.setText(priceSummary.toString())
         mBinding.noteInput.setText(note)
     }
 }

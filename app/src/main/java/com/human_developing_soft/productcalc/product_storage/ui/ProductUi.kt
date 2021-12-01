@@ -27,10 +27,12 @@ interface ProductUi {
             else savedProduct.getString("weight")!!.toFloatSafety(),
             if (savedProduct.getString("price")!!.isEmpty()) 0f
             else savedProduct.getString("price")!!.toFloatSafety(),
-                    savedProduct.getString("weight")!!.toFloatSafety() *
+            if (savedProduct.getString("sumPrice") != null)
+                savedProduct.getString("sumPrice")!!
+                    .toFloatSafety() else savedProduct.getString("weight")!!.toFloatSafety() *
                     savedProduct.getString("price")!!.toFloatSafety(),
-                    savedProduct.getString("place")!!,
-                    savedProduct.getString("note")!!
+            savedProduct.getString("place")!!,
+            savedProduct.getString("note")!!
         )
 
         override fun <T> map(mapper: Mapper<T>): T {

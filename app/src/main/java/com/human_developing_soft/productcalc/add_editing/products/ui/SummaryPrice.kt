@@ -11,6 +11,8 @@ package com.human_developing_soft.productcalc.add_editing.products.ui
 interface SummaryPrice {
     fun price(): Float
 
+    fun clearedNote(): String
+
     class Base(
         private val mPriceForWeight: Float,
         private val mWeight: Float,
@@ -30,6 +32,23 @@ interface SummaryPrice {
                 else builder.toString().reversed().toFloat()
             } else {
                 mPriceForWeight * mWeight
+            }
+        }
+
+        override fun clearedNote(): String {
+            return if (mNote.contains("/|/")) {
+                val builder = StringBuilder(mNote)
+                for (char in builder) {
+                    if (char == '|') {
+                        builder.deleteRange(
+                            builder.indexOf(char)-1,
+                            builder.length
+                        )
+                    }
+                }
+                builder.toString()
+            } else {
+                mNote
             }
         }
     }

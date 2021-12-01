@@ -12,16 +12,16 @@ class DomainToUiProduct : DomainProduct.Mapper<ProductUi> {
         placeRow: String,
         note: String
     ): ProductUi {
+        val sumPrice = SummaryPrice.Base(priceForWeight,
+            weight, note)
         return ProductUi.Base(
             id,
             name,
             weight,
             priceForWeight,
-            SummaryPrice.Base(
-                priceForWeight, weight, note
-            ).price(),
+            sumPrice.price(),
             placeRow,
-            note
+            sumPrice.clearedNote()
         )
     }
 }

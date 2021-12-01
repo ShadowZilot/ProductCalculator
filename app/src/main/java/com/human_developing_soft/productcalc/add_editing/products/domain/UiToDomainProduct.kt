@@ -19,7 +19,7 @@ class UiToDomainProduct : ProductUi.Mapper<DomainProduct> {
             weight,
             priceForWeight,
             placeRow,
-            note
+            note + "/|/${priceSummary}"
         )
     }
 }
