@@ -25,7 +25,8 @@ interface ProductUiFactory {
                     mName,
                     mWeight.toFloat(),
                     mPrice.toFloat(),
-                    if (mSummaryPrice.isEmpty()) 0f else mSummaryPrice.toFloat(),
+                    if (mSummaryPrice.isEmpty())
+                       mPrice.toFloat() * mWeight.toFloat() else mSummaryPrice.toFloat(),
                     if (mPlaceRow == "") "" else mPlaceRow,
                     mNote
                 )
