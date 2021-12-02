@@ -43,4 +43,5 @@
     <string name="expenditure_deleted">Расход удалён</string>
     <string name="not_valid_formula">Ошибка в выражении!</string>
     <string name="summary_price_label">Итого</string>
+    <string name="not_numbered_text">Неверный формат!</string>
 </resources>

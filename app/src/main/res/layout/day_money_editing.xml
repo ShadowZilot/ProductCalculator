@@ -30,8 +30,7 @@
         <com.human_developing_soft.productcalc.calculator_keyboard.KeyboardEditText
             android:id="@+id/moneyInput"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="number"/>
+            android:layout_height="match_parent" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

@@ -2,6 +2,7 @@ package com.human_developing_soft.productcalc.calculator_keyboard
 
 import android.content.Context
 import android.graphics.Rect
+import android.text.InputType
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -10,6 +11,8 @@ import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.human_developing_soft.productcalc.databinding.CalculatorKeyboardGridBinding
+import kotlinx.coroutines.test.withTestContext
+import java.lang.NumberFormatException
 
 class KeyboardEditText(context: Context,
                        attributeSet: AttributeSet) : TextInputEditText(context,
@@ -17,6 +20,11 @@ class KeyboardEditText(context: Context,
     private var mKeyBoardParent : ViewGroup? = null
     private var mActivity : FragmentActivity? = null
     private var mKeyBoard: CustomKeyboard? = null
+
+    init {
+        inputType = InputType.TYPE_NULL
+        setTextIsSelectable(true)
+    }
 
     /**
      * This method necessary to invoke during creating views.
@@ -41,6 +49,19 @@ class KeyboardEditText(context: Context,
         mKeyBoard = CustomKeyboard.Base(keyboardView,
             this)
         mKeyBoardParent?.addView(keyboardView.root)
+    }
+
+    fun isTextValid() : Boolean {
+        return try {
+            text.toString().toFloat()
+            true
+        } catch (e : NumberFormatException) {
+            false
+        }
+    }
+
+    fun numberedText() : Float {
+        return text.toString().toFloat()
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
