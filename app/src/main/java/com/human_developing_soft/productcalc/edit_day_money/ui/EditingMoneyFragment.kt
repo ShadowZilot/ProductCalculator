@@ -38,7 +38,7 @@ class EditingMoneyFragment : BottomSheetDialogFragment(), DayObserver, DayUpdati
                 this,
                 this
             )
-        ).get(EditMoneyVM::class.java)
+        )[EditMoneyVM::class.java]
         mBinding.applyButton.setOnClickListener {
             if (mBinding.moneyInput.isTextValid()) {
                 mViewModel.updateDay(

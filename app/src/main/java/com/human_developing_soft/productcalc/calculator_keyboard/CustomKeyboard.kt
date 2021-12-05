@@ -7,7 +7,7 @@ import androidx.core.view.children
 import com.human_developing_soft.productcalc.R
 import com.human_developing_soft.productcalc.databinding.CalculatorKeyboardGridBinding
 
-interface CustomKeyboard : NotValidFormulaListener {
+interface CustomKeyboard : NotValidFormulaListener, SelectingIndexListener {
 
     fun isVisible(visibility: Boolean)
 
@@ -15,6 +15,7 @@ interface CustomKeyboard : NotValidFormulaListener {
         private val mKeyboardView: CalculatorKeyboardGridBinding,
         private val mEventListener: KeyActionListener
     ) : CustomKeyboard {
+        private var mSelectedIndex : Int = 0
 
         init {
             mKeyboardView.root.visibility = View.GONE
@@ -24,7 +25,8 @@ interface CustomKeyboard : NotValidFormulaListener {
                         KeyActionRecognition.Base(
                             (it as Button).text.toString(),
                             this
-                        ).keyAction()
+                        ).keyAction(mSelectedIndex),
+                        mSelectedIndex
                     )
                 }
             }
@@ -40,6 +42,10 @@ interface CustomKeyboard : NotValidFormulaListener {
                 mKeyboardView.root.context,
                 R.string.not_valid_formula, Toast.LENGTH_SHORT
             ).show()
+        }
+
+        override fun onIndexChanged(changedIndex: Int) {
+            mSelectedIndex = changedIndex
         }
     }
 }

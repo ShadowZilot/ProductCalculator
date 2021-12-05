@@ -10,17 +10,16 @@ import androidx.fragment.app.FragmentActivity
 import com.human_developing_soft.productcalc.databinding.CalculatorKeyboardGridBinding
 
 
-class KeyboardEditText(context: Context,
-                       attributeSet: AttributeSet) : TextInputEditText(context,
-    attributeSet), KeyActionListener {
-    private var mKeyBoardParent : ViewGroup? = null
-    private var mActivity : FragmentActivity? = null
+class KeyboardEditText(
+    context: Context,
+    attributeSet: AttributeSet
+) : KeyboardlessEditText2(
+    context,
+    attributeSet
+), KeyActionListener {
+    private var mKeyBoardParent: ViewGroup? = null
+    private var mActivity: FragmentActivity? = null
     private var mKeyBoard: CustomKeyboard? = null
-
-    init {
-        inputType = InputType.TYPE_NULL
-        setTextIsSelectable(true)
-    }
 
     /**
      * This method necessary to invoke during creating views.
@@ -62,29 +61,22 @@ class KeyboardEditText(context: Context,
         return text.toString().toFloat()
     }
 
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        val imm: InputMethodManager = mActivity?.applicationContext?.getSystemService(
-            Context.INPUT_METHOD_SERVICE
-        ) as InputMethodManager
-        imm.hideSoftInputFromWindow(
-            windowToken,
-            InputMethodManager.HIDE_NOT_ALWAYS
-        )
-        return if (isFocused) {
-            super.onTouchEvent(event)
-        } else {
-            requestFocus()
-            performClick()
-        }
-    }
-
-    override fun onFocusChanged(focused: Boolean,
-                                direction: Int, previouslyFocusedRect: Rect?) {
+    override fun onFocusChanged(
+        focused: Boolean,
+        direction: Int, previouslyFocusedRect: Rect?
+    ) {
         super.onFocusChanged(focused, direction, previouslyFocusedRect)
         mKeyBoard?.isVisible(focused)
     }
 
-    override fun onKeyPressed(keyAction: CalculationAction) {
+    override fun onSelectionChanged(selStart: Int, selEnd: Int) {
+        super.onSelectionChanged(selStart, selEnd)
+        Log.d("Keyboard", "Selected index = $selStart")
+        mKeyBoard?.onIndexChanged(selStart)
+    }
+
+    override fun onKeyPressed(keyAction: CalculationAction, index: Int) {
+        val oldLength = text!!.length
         setText(
             keyAction.implementAction(text.toString())
         )

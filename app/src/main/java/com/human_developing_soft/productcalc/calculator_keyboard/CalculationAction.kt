@@ -14,17 +14,26 @@ sealed class CalculationAction {
 }
 
 class Number(
-    private val mPressedNumber: String
+    private val mPressedNumber: String,
+    private val mIndex: Int
 ) : CalculationAction() {
+
+    init {
+        if (mPressedNumber.length > 1) {
+            throw NumberLengthException(
+                "Await length of number = 1, obtain length ${mPressedNumber.length}")
+        }
+    }
+
     override fun implementAction(calcString: String): String {
         val result = StringBuilder(calcString)
         return if (calcString.isNotEmpty()
-            && calcString.lastSymbol() == ")"
+            && calcString.lastSymbol(mIndex) == ")"
         ) {
-            result.append("*${mPressedNumber}")
+            result.insert(mIndex, "*${mPressedNumber}")
             result.toString()
         } else {
-            result.append(mPressedNumber)
+            result.insert(mIndex, mPressedNumber)
             result.toString()
         }
     }
@@ -92,7 +101,6 @@ object Brackets : CalculationAction() {
 
 object PlusSlashMinus : CalculationAction() {
     override fun implementAction(calcString: String): String {
-        // TODO implements this
         return calcString
     }
 }
@@ -118,11 +126,18 @@ object Point : CalculationAction() {
     }
 }
 
-object EraseOne : CalculationAction() {
+class EraseOne (
+    private var mDeletingIndex: Int
+): CalculationAction() {
+
+    init {
+        mDeletingIndex -= 1
+    }
+
     override fun implementAction(calcString: String): String {
-        return if (calcString.isNotEmpty()) {
+        return if (calcString.isNotEmpty() && mDeletingIndex >= 0) {
             StringBuilder(calcString)
-                .deleteCharAt(calcString.lastIndex)
+                .deleteCharAt(mDeletingIndex)
                 .toString()
         } else {
             calcString
@@ -130,12 +145,14 @@ object EraseOne : CalculationAction() {
     }
 }
 
-object PercentOperation : CalculationAction() {
+class PercentOperation(
+    private val mIndex: Int
+) : CalculationAction() {
     override fun implementAction(calcString: String): String {
-        val lastSymbol = calcString.lastSymbol()
+        val lastSymbol = calcString.lastSymbol(mIndex)
         return if (!"+-/*%".contains(lastSymbol)) {
             StringBuilder(calcString)
-                .append("%")
+                .append("%", mIndex)
                 .toString()
         } else {
             calcString
@@ -160,9 +177,13 @@ class EqualOperation(
     }
 }
 
-fun String.lastSymbol(): String {
+fun String.lastSymbol(index : Int = this.length-1): String {
     return if (this.isNotEmpty()) {
-        get(this.length - 1).toString()
+        try {
+            get(index).toString()
+        } catch (e : IndexOutOfBoundsException) {
+            get(index-1).toString()
+        }
     } else {
         ""
     }
