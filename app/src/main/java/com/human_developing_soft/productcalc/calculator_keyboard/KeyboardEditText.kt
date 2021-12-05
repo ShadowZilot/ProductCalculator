@@ -2,17 +2,13 @@ package com.human_developing_soft.productcalc.calculator_keyboard
 
 import android.content.Context
 import android.graphics.Rect
-import android.text.InputType
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.FragmentActivity
-import com.google.android.material.textfield.TextInputEditText
 import com.human_developing_soft.productcalc.databinding.CalculatorKeyboardGridBinding
-import kotlinx.coroutines.test.withTestContext
-import java.lang.NumberFormatException
+
 
 class KeyboardEditText(context: Context,
                        attributeSet: AttributeSet) : TextInputEditText(context,
@@ -36,7 +32,7 @@ class KeyboardEditText(context: Context,
      *
      */
     fun setupKeyboardComponents(
-        keyboardParent : ViewGroup,
+        keyboardParent: ViewGroup,
         activity: FragmentActivity,
     ) {
         mKeyBoardParent = keyboardParent
@@ -46,21 +42,23 @@ class KeyboardEditText(context: Context,
             keyboardParent,
             false
         )
-        mKeyBoard = CustomKeyboard.Base(keyboardView,
-            this)
+        mKeyBoard = CustomKeyboard.Base(
+            keyboardView,
+            this
+        )
         mKeyBoardParent?.addView(keyboardView.root)
     }
 
-    fun isTextValid() : Boolean {
+    fun isTextValid(): Boolean {
         return try {
             text.toString().toFloat()
             true
-        } catch (e : NumberFormatException) {
+        } catch (e: NumberFormatException) {
             false
         }
     }
 
-    fun numberedText() : Float {
+    fun numberedText(): Float {
         return text.toString().toFloat()
     }
 
@@ -89,6 +87,14 @@ class KeyboardEditText(context: Context,
     override fun onKeyPressed(keyAction: CalculationAction) {
         setText(
             keyAction.implementAction(text.toString())
+        )
+        setSelection(
+            IndexChanging.Base(
+                keyAction,
+                index,
+                oldLength,
+                text!!.length
+            ).index()
         )
     }
 }
