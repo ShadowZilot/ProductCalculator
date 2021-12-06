@@ -64,21 +64,23 @@ object ClearOperation : CalculationAction() {
     override fun implementAction(calcString: String) = ""
 }
 
-object Brackets : CalculationAction() {
+class Brackets(
+    private val mIndex: Int
+) : CalculationAction() {
     override fun implementAction(calcString: String): String {
-        val lastSymbol = calcString.lastSymbol()
+        val lastSymbol = calcString.lastSymbol(mIndex)
         val result = StringBuilder(calcString)
         return if (isNeedToClose(calcString)) {
-            result.append(")")
+            result.insert(mIndex, ")")
             result.toString()
         } else {
             if (calcString.isNotEmpty()
-                && "0123456789%".contains(lastSymbol)
+                && "0123456789%)".contains(lastSymbol)
             ) {
-                result.append("*(")
+                result.insert(mIndex, "*(")
                 result.toString()
             } else {
-                result.append("(")
+                result.insert(mIndex, "(")
                 result.toString()
             }
         }
@@ -89,6 +91,9 @@ object Brackets : CalculationAction() {
         for (i in calcString.reversed()) {
             if (i == '(') {
                 result = true
+                break
+            } else if (i == ')') {
+                result = false
                 break
             }
         }
@@ -152,7 +157,7 @@ class PercentOperation(
         val lastSymbol = calcString.lastSymbol(mIndex)
         return if (!"+-/*%".contains(lastSymbol)) {
             StringBuilder(calcString)
-                .append("%", mIndex)
+                .insert(mIndex,"%")
                 .toString()
         } else {
             calcString

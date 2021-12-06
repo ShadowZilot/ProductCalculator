@@ -16,7 +16,7 @@ interface KeyActionRecognition {
                 "1234567890".contains(mKey) -> Number(mKey, selectedIndex)
                 "+-/*".contains(mKey) -> MathOperator(mKey)
                 mKey == "C" -> ClearOperation
-                mKey == "()" -> Brackets
+                mKey == "()" -> Brackets(selectedIndex)
                 mKey == "+/-" -> PlusSlashMinus
                 mKey == "." -> Point
                 mKey == "=" -> EqualOperation(mListener)
