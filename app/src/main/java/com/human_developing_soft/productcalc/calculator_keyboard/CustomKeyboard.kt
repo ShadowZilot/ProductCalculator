@@ -4,12 +4,15 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.core.view.children
+import androidx.core.view.isVisible
 import com.human_developing_soft.productcalc.R
 import com.human_developing_soft.productcalc.databinding.CalculatorKeyboardGridBinding
 
 interface CustomKeyboard : NotValidFormulaListener, SelectingIndexListener {
 
-    fun isVisible(visibility: Boolean)
+    fun updateVisibility(visibility: Boolean)
+
+    fun isVisible(): Boolean
 
     class Base(
         private val mKeyboardView: CalculatorKeyboardGridBinding,
@@ -32,9 +35,13 @@ interface CustomKeyboard : NotValidFormulaListener, SelectingIndexListener {
             }
         }
 
-        override fun isVisible(visibility: Boolean) {
+        override fun updateVisibility(visibility: Boolean) {
             mKeyboardView.root.visibility =
                 if (visibility) View.VISIBLE else View.GONE
+        }
+
+        override fun isVisible(): Boolean {
+            return mKeyboardView.root.isVisible
         }
 
         override fun onFormulaError() {

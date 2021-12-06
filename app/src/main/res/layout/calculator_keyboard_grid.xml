@@ -21,8 +21,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
+        android:theme="@style/ClearButton"
+        style="@style/ClearButton"
         android:text="C"
         tools:ignore="HardcodedText" />
     <Button

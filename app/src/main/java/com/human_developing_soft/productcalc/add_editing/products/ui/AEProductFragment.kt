@@ -51,9 +51,21 @@ class AEProductFragment : Fragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mViewModel = ViewModelProvider(this,
             AEProductVMFactory(requireContext(),
-            this, this,
-            arguments?.getLong("time"))
-        ).get(AEProductVM::class.java)
+                this, this,
+                arguments?.getLong("time"))
+        )[AEProductVM::class.java]
+        mBinding.aeFields.sumPriceInput.setupKeyboardComponents(
+            mBinding.aeFields.keyboardContainer,
+            requireActivity()
+        )
+        mBinding.aeFields.priceInput.setupKeyboardComponents(
+            mBinding.aeFields.keyboardContainer,
+            requireActivity()
+        )
+        mBinding.aeFields.weightInput.setupKeyboardComponents(
+            mBinding.aeFields.keyboardContainer,
+            requireActivity()
+        )
         if (savedInstanceState != null) {
             ProductUi.Base(savedInstanceState).map(mUiManager)
         } else {

@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.FragmentActivity
 import com.human_developing_soft.productcalc.databinding.CalculatorKeyboardGridBinding
 
@@ -16,7 +17,7 @@ class KeyboardEditText(
 ) : KeyboardlessEditText2(
     context,
     attributeSet
-), KeyActionListener {
+), KeyActionListener, HiddenKeyboard {
     private var mKeyBoardParent: ViewGroup? = null
     private var mActivity: FragmentActivity? = null
     private var mKeyBoard: CustomKeyboard? = null
@@ -36,6 +37,7 @@ class KeyboardEditText(
     ) {
         mKeyBoardParent = keyboardParent
         mActivity = activity
+        (mActivity as KeyboardHiding).registerKeyboard(this)
         val keyboardView = CalculatorKeyboardGridBinding.inflate(
             LayoutInflater.from(context),
             keyboardParent,
@@ -66,7 +68,13 @@ class KeyboardEditText(
         direction: Int, previouslyFocusedRect: Rect?
     ) {
         super.onFocusChanged(focused, direction, previouslyFocusedRect)
-        mKeyBoard?.isVisible(focused)
+        mKeyBoard?.updateVisibility(focused)
+        if (focused) {
+            val imm = context.getSystemService(
+                Context.INPUT_METHOD_SERVICE
+            ) as InputMethodManager
+            imm.showSoftInput(mKeyBoardParent, InputMethodManager.SHOW_IMPLICIT)
+        }
     }
 
     override fun onSelectionChanged(selStart: Int, selEnd: Int) {
@@ -88,5 +96,13 @@ class KeyboardEditText(
                 text!!.length
             ).index()
         )
+    }
+
+    override fun hide() {
+        mKeyBoard?.updateVisibility(false)
+    }
+
+    override fun isHidden(): Boolean {
+        return mKeyBoard!!.isVisible()
     }
 }

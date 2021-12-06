@@ -43,4 +43,10 @@
     <style name="FragmentRoot" parent="Theme.ProductCalc">
         <item name="android:background">#3A3939</item>
     </style>
+    <style name="EqualsButton" parent="CalculatorButton">
+        <item name="colorPrimary">@android:color/holo_green_light</item>
+    </style>
+    <style name="ClearButton" parent="CalculatorButton">
+        <item name="colorPrimary">@android:color/holo_red_light</item>
+    </style>
 </resources>
