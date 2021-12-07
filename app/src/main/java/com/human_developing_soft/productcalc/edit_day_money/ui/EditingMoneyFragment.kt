@@ -24,7 +24,8 @@ class EditingMoneyFragment : BottomSheetDialogFragment(), DayObserver, DayUpdati
         mBinding = DayMoneyEditingBinding.inflate(layoutInflater)
         mBinding.moneyInput.setupKeyboardComponents(
             mBinding.keyboardContainer,
-            requireActivity()
+            requireActivity(),
+            null
         )
         return mBinding.root
     }

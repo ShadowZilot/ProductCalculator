@@ -2,7 +2,6 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:translationZ="8dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
         <LinearLayout
@@ -110,14 +109,5 @@
                     android:layout_height="match_parent"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
-
-            <FrameLayout
-                android:id="@+id/keyboardContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
         </LinearLayout>
 </ScrollView>

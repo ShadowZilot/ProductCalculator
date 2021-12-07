@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.FragmentActivity
 import com.human_developing_soft.productcalc.databinding.CalculatorKeyboardGridBinding
 
@@ -21,6 +20,7 @@ class KeyboardEditText(
     private var mKeyBoardParent: ViewGroup? = null
     private var mActivity: FragmentActivity? = null
     private var mKeyBoard: CustomKeyboard? = null
+    private var mListener : OnKeyboardShownListener? = null
 
     /**
      * This method necessary to invoke during creating views.
@@ -34,7 +34,9 @@ class KeyboardEditText(
     fun setupKeyboardComponents(
         keyboardParent: ViewGroup,
         activity: FragmentActivity,
+        keyboardListener: OnKeyboardShownListener?
     ) {
+        mListener = keyboardListener
         mKeyBoardParent = keyboardParent
         mActivity = activity
         (mActivity as KeyboardHiding).registerKeyboard(this)
@@ -70,10 +72,9 @@ class KeyboardEditText(
         super.onFocusChanged(focused, direction, previouslyFocusedRect)
         mKeyBoard?.updateVisibility(focused)
         if (focused) {
-            val imm = context.getSystemService(
-                Context.INPUT_METHOD_SERVICE
-            ) as InputMethodManager
-            imm.showSoftInput(mKeyBoardParent, InputMethodManager.SHOW_IMPLICIT)
+            mListener?.onShow(this)
+        } else {
+            mListener?.onHide(this)
         }
     }
 
@@ -99,6 +100,8 @@ class KeyboardEditText(
     }
 
     override fun hide() {
+        clearFocus()
+        mListener?.onHide(this)
         mKeyBoard?.updateVisibility(false)
     }
 

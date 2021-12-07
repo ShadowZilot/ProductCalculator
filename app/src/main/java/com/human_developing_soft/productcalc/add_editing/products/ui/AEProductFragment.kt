@@ -55,16 +55,19 @@ class AEProductFragment : Fragment(),
                 arguments?.getLong("time"))
         )[AEProductVM::class.java]
         mBinding.aeFields.sumPriceInput.setupKeyboardComponents(
-            mBinding.aeFields.keyboardContainer,
-            requireActivity()
+            mBinding.keyboardContainer,
+            requireActivity(),
+            mUiManager
         )
         mBinding.aeFields.priceInput.setupKeyboardComponents(
-            mBinding.aeFields.keyboardContainer,
-            requireActivity()
+            mBinding.keyboardContainer,
+            requireActivity(),
+            mUiManager
         )
         mBinding.aeFields.weightInput.setupKeyboardComponents(
-            mBinding.aeFields.keyboardContainer,
-            requireActivity()
+            mBinding.keyboardContainer,
+            requireActivity(),
+            mUiManager
         )
         if (savedInstanceState != null) {
             ProductUi.Base(savedInstanceState).map(mUiManager)

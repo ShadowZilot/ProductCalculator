@@ -27,7 +27,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         layout="@layout/ae_fields"
+        app:layout_constraintVertical_bias="0"
         app:layout_constraintTop_toBottomOf="@id/aeAppBarLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/keyboardContainer"/>
+
+    <FrameLayout
+        android:id="@+id/keyboardContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:translationZ="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

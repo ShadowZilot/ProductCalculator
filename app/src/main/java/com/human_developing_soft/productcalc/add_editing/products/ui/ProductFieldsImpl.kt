@@ -2,6 +2,13 @@ package com.human_developing_soft.productcalc.add_editing.products.ui
 
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
+import androidx.annotation.RequiresApi
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.view.updateLayoutParams
+import com.human_developing_soft.productcalc.R
+import com.human_developing_soft.productcalc.calculator_keyboard.OnKeyboardShownListener
 import com.human_developing_soft.productcalc.databinding.AeFieldsBinding
 import com.human_developing_soft.productcalc.product_storage.ui.ProductUi
 
@@ -51,5 +58,29 @@ class ProductFieldsImpl(
         mBinding.sumPriceInputContainer.visibility = View.VISIBLE
         mBinding.sumPriceInput.setText(priceSummary.toString())
         mBinding.noteInput.setText(note)
+    }
+
+    override fun onShow(target : EditText) {
+        mBinding.root.updateLayoutParams<ConstraintLayout.LayoutParams> {
+            topToBottom = -1
+            startToStart = (mBinding.root.parent as View).id
+            endToEnd = (mBinding.root.parent as View).id
+            bottomToTop = (
+                    mBinding.root.parent as ConstraintLayout
+                    ).getChildAt(2).id
+        }
+    }
+
+    override fun onHide(target: EditText) {
+        mBinding.root.updateLayoutParams<ConstraintLayout.LayoutParams> {
+            topToBottom = (
+                    mBinding.root.parent as ConstraintLayout
+                    ).getChildAt(0).id
+            startToStart = (mBinding.root.parent as View).id
+            endToEnd = (mBinding.root.parent as View).id
+            bottomToTop = (
+                    mBinding.root.parent as ConstraintLayout
+                    ).getChildAt(3).id
+        }
     }
 }
