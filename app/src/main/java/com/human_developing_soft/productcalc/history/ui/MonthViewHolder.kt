@@ -17,6 +17,9 @@ class MonthViewHolder(
             val dayItem = HistoryDayItemBinding.inflate(
                 LayoutInflater.from(mBinding.root.context))
             dayItem.dayNumber.text = day.byDay()
+            dayItem.dayOfWeek.text = DayOfWeekProvider.Base(
+                mBinding.root.context
+            ).dayOfWeek(day.byDayOfWeek())
             dayItem.root.setOnClickListener {
                 mObserver.onDayClick(day)
             }
@@ -29,4 +32,10 @@ fun Long.byDay(): String {
     val calendar = GregorianCalendar.getInstance()
     calendar.time = Date(this)
     return calendar.get(Calendar.DAY_OF_MONTH).toString()
+}
+
+fun Long.byDayOfWeek(): Int {
+    val calendar = GregorianCalendar.getInstance()
+    calendar.time = Date(this)
+    return calendar.get(Calendar.DAY_OF_WEEK)-1
 }

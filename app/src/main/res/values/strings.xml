@@ -23,7 +23,7 @@
     <string name="editing_tool_label">Редактирование</string>
     <string name="delete_label">Удалить</string>
     <string name="product_history_label">История</string>
-    <string name="date_format">%d %s %d</string>
+    <string name="date_format">%d %s %d %s</string>
     <string name="cd_editing_btn">Кнопка для изменения всех денег</string>
     <string name="all_money_day">Все деньги за день</string>
     <string name="apply_label">Применить</string>

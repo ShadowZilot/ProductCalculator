@@ -12,6 +12,6 @@ class HistoryUseCase(
     override suspend fun productHistory(): List<MonthDomain> {
         return MonthSeparatingList.Base(
             mDatabase.allDays()
-        ).separate()
+        ).separate().asReversed()
     }
 }

@@ -14,4 +14,13 @@
         <item>Ноябрь</item>
         <item>Декабрь</item>
     </string-array>
+    <string-array name="days_of_week">
+        <item>Вс</item>
+        <item>Пн</item>
+        <item>Вт</item>
+        <item>Ср</item>
+        <item>Чт</item>
+        <item>Пт</item>
+        <item>Сб</item>
+    </string-array>
 </resources>

@@ -14,6 +14,7 @@ interface DateProvider {
     ) : DateProvider {
         private val mString = StringContext.Base(context)
         private val mMonthProvider = MonthProvider.Base(context)
+        private val mDayOfWeekProvider = DayOfWeekProvider.Base(context)
         private val mCalender : Calendar = GregorianCalendar.getInstance()
 
         init {
@@ -27,7 +28,8 @@ interface DateProvider {
                 mMonthProvider.monthByOrder(
                     mCalender.get(Calendar.MONTH)
                 ),
-                mCalender.get(Calendar.DAY_OF_MONTH)
+                mCalender.get(Calendar.DAY_OF_MONTH),
+                mDayOfWeekProvider.dayOfWeek(mCalender.time.time.byDayOfWeek())
             )
         }
     }
