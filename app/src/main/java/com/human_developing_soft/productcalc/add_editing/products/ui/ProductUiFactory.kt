@@ -3,6 +3,8 @@ package com.human_developing_soft.productcalc.add_editing.products.ui
 import android.content.Context
 import com.human_developing_soft.productcalc.R
 import com.human_developing_soft.productcalc.product_storage.ui.ProductUi
+import com.human_developing_soft.productcalc.product_storage.ui.toFloatSafety
+import java.lang.NumberFormatException
 
 interface ProductUiFactory {
     fun create(context: Context, isDeleting: Boolean): ProductUi
@@ -20,16 +22,23 @@ interface ProductUiFactory {
             return if (mName != "" &&
                 mWeight != "" &&
                 mPrice != "") {
-                 ProductUi.Base(
-                    mId,
-                    mName,
-                    mWeight.toFloat(),
-                    mPrice.toFloat(),
-                    if (mSummaryPrice.isEmpty())
-                       mPrice.toFloat() * mWeight.toFloat() else mSummaryPrice.toFloat(),
-                    if (mPlaceRow == "") "" else mPlaceRow,
-                    mNote
-                )
+                    try {
+                        ProductUi.Base(
+                            mId,
+                            mName,
+                            mWeight.toFloat(),
+                            mPrice.toFloat(),
+                            if (mSummaryPrice.isEmpty())
+                                mPrice.toFloat() * mWeight.toFloat() else mSummaryPrice.toFloat(),
+                            if (mPlaceRow == "") "" else mPlaceRow,
+                            mNote
+                        )
+                    } catch (e : NumberFormatException) {
+                        ProductUi.Fail(
+                            R.string.not_numbered_text,
+                            context
+                        )
+                    }
             } else {
                 if (isDeleting) {
                     ProductUi.Base(mId, "",

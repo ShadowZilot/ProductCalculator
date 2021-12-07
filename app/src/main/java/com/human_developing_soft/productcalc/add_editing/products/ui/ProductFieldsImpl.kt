@@ -3,12 +3,8 @@ package com.human_developing_soft.productcalc.add_editing.products.ui
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
-import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.updateLayoutParams
-import com.human_developing_soft.productcalc.R
-import com.human_developing_soft.productcalc.calculator_keyboard.OnKeyboardShownListener
 import com.human_developing_soft.productcalc.databinding.AeFieldsBinding
 import com.human_developing_soft.productcalc.product_storage.ui.ProductUi
 
@@ -16,6 +12,12 @@ class ProductFieldsImpl(
     private val mBinding: AeFieldsBinding,
     private val mId: Int? = null
 ) : ProductFields {
+    private val mHandling = HandlingSummaryField.Base(
+        mBinding.weightInput,
+        mBinding.priceInput,
+        mBinding.sumPriceInputContainer
+    )
+
     override fun product(isDeleting: Boolean): ProductUi {
             return ProductUiFactory.Base(
                 mId,
