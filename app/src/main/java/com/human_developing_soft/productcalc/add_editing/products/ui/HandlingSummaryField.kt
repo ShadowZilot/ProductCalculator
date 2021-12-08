@@ -37,8 +37,7 @@ interface HandlingSummaryField {
                 mSummary.visibility = View.GONE
             }
             try {
-                (((mSummary.getChildAt(0) as ViewGroup
-                        ).getChildAt(1)) as EditText).setText(
+                mSummary.keyboardLessInput().setText(
                     (mWeight.text.toString().toFloatSafety()
                             * mPriceForWeight.text.toString().toFloatSafety()
                             ).toString()
@@ -47,5 +46,15 @@ interface HandlingSummaryField {
                 // do nothing, just wait user's input
             }
         }
+    }
+}
+
+fun TextInputLayout.keyboardLessInput() : EditText {
+    return try {
+        ((this.getChildAt(0) as ViewGroup
+                ).getChildAt(1)) as EditText
+    } catch (e : ClassCastException) {
+        ((this.getChildAt(0) as ViewGroup
+                ).getChildAt(0)) as EditText
     }
 }
