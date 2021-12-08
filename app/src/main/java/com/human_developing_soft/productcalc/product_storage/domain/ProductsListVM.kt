@@ -60,6 +60,8 @@ class ProductsListVM(
                 null,
                 args
             )
+        } else {
+            mObserver?.onError(R.string.too_old_note, true)
         }
     }
 
