@@ -1,6 +1,5 @@
 package com.human_developing_soft.productcalc.calculator_keyboard
 
-import java.lang.IndexOutOfBoundsException
 import javax.script.ScriptEngine
 import javax.script.ScriptEngineManager
 import javax.script.ScriptException
@@ -170,7 +169,12 @@ class EqualOperation(
 ) : CalculationAction() {
     override fun implementAction(calcString: String): String {
         val manager = ScriptEngineManager()
-        val engine: ScriptEngine = manager.getEngineByName("js")
+        val factories = manager.engineFactories
+        if (factories.isEmpty()) {
+            mListener.onEngineError()
+            return calcString
+        }
+        val engine: ScriptEngine = factories[0].scriptEngine
         return try {
             engine.eval(
                 calcString.replace("%", "/100")

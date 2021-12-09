@@ -47,7 +47,16 @@ interface CustomKeyboard : NotValidFormulaListener, SelectingIndexListener {
         override fun onFormulaError() {
             Toast.makeText(
                 mKeyboardView.root.context,
-                R.string.not_valid_formula, Toast.LENGTH_SHORT
+                R.string.not_valid_formula,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        override fun onEngineError() {
+            Toast.makeText(
+                mKeyboardView.root.context,
+                R.string.engine_error_message,
+                Toast.LENGTH_SHORT
             ).show()
         }
 

@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="@android:color/darker_gray"
     android:layout_gravity="center_horizontal"
+    android:clickable="true"
+    android:focusable="true"
     android:columnCount="4"
     android:rowCount="6">
 

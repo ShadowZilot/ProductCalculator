@@ -7,4 +7,6 @@ package com.human_developing_soft.productcalc.calculator_keyboard
  */
 interface NotValidFormulaListener {
     fun onFormulaError()
+
+    fun onEngineError()
 }
