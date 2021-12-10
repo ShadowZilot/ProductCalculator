@@ -1,6 +1,5 @@
 package com.human_developing_soft.productcalc.calculator_keyboard
 
-import javax.script.ScriptEngine
 import javax.script.ScriptEngineManager
 import javax.script.ScriptException
 
@@ -168,13 +167,7 @@ class EqualOperation(
     private val mListener: NotValidFormulaListener
 ) : CalculationAction() {
     override fun implementAction(calcString: String): String {
-        val manager = ScriptEngineManager()
-        val factories = manager.engineFactories
-        if (factories.isEmpty()) {
-            mListener.onEngineError()
-            return calcString
-        }
-        val engine: ScriptEngine = factories[0].scriptEngine
+        val engine = ScriptEngineManager().getEngineByName("rhino")
         return try {
             engine.eval(
                 calcString.replace("%", "/100")
