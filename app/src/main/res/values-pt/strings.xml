@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Калькулятор\nТовара</string>
-    <string name="empty_products_message">Список товаров пуст\nДобавьте что-нибудь!</string>
+    <string name="app_name">Calculadora\nde Produto</string>
+    <string name="empty_products_message">A lista de produtos está vazia.\nAdicione algo!</string>
     <string name="formatted_place_row">%s</string>
-    <string name="formatted_price">Цена = %s руб</string>
-    <string name="formatted_weight">Вес = %s кг</string>
-    <string name="formatted_summary_price">Итого = %.2f руб</string>
-    <string name="add_product_label">Добавить</string>
-    <string name="product_name_label">Наименование</string>
-    <string name="ae_title">Опишите товар</string>
-    <string name="weight_label">Вес товара</string>
-    <string name="row_label">Ряд</string>
-    <string name="price_per_1_label">Цена за 1 кг</string>
-    <string name="note_label">Заметка</string>
-    <string name="success_updating_message">Товар успешно добавлен!</string>
-    <string name="fail_empty_fields">Заполните все поля!</string>
-    <string name="success_updated">Товар отредактирован</string>
-    <string name="success_deleted">Товар удалён</string>
-    <string name="edit_button_label">Изменить</string>
-    <string name="wasted_money">Денег потрачено = %,d</string>
-    <string name="all_money">Всего денег = %,d</string>
-    <string name="rest_money">Остаток = </string>
-    <string name="editing_tool_label">Редактирование</string>
-    <string name="delete_label">Удалить</string>
-    <string name="product_history_label">История</string>
+    <string name="formatted_price">Preço = %s руб</string>
+    <string name="formatted_weight">Peso = %s кг</string>
+    <string name="formatted_summary_price">Total = %.2f руб</string>
+    <string name="add_product_label">Adicionar</string>
+    <string name="product_name_label">Nome</string>
+    <string name="ae_title">Descreva o produto</string>
+    <string name="weight_label">Peso do Item</string>
+    <string name="row_label">Lugar</string>
+    <string name="price_per_1_label">Preço por 1 kg</string>
+    <string name="note_label">A anotação</string>
+    <string name="success_updating_message">Produto adicionado com sucesso!</string>
+    <string name="fail_empty_fields">Preencha todos os campos!</string>
+    <string name="success_updated">Item editado</string>
+    <string name="success_deleted">Artigo removido</string>
+    <string name="edit_button_label">Mudar</string>
+    <string name="wasted_money">Dinheiro gasto = %,d</string>
+    <string name="all_money">Dinheiro total = %,d</string>
+    <string name="rest_money">Restante = </string>
+    <string name="editing_tool_label">Editando</string>
+    <string name="delete_label">Excluir</string>
+    <string name="product_history_label">História</string>
     <string name="date_format">%d %s %d %s</string>
-    <string name="cd_editing_btn">Кнопка для изменения всех денег</string>
-    <string name="all_money_day">Все деньги за день</string>
-    <string name="apply_label">Применить</string>
-    <string name="cancel_label">Отменить</string>
-    <string name="collapse_dt_ds">Кнопка раскрывающая список с расходами</string>
-    <string name="collapse_title_product">Расходы на товар = %,d руб</string>
-    <string name="collapse_title_expenditure">Прочие расходы = %,d руб</string>
-    <string name="ae_expenditure_title">Напишите расход</string>
-    <string name="field_expenditure_helper">Название траты</string>
-    <string name="expenditure_cost_helper">Стоимость</string>
-    <string name="selecting_title">Что будем добавлять?</string>
-    <string name="expenditure_label">Расходы</string>
-    <string name="product_label">Товар</string>
-    <string name="list_title">Покупки</string>
-    <string name="expenditure_updated">Расход отредактирован</string>
-    <string name="expenditure_added">Расход успешно добавлен!</string>
-    <string name="expenditure_deleted">Расход удалён</string>
-    <string name="not_valid_formula">Ошибка в выражении!</string>
-    <string name="summary_price_label">Итого</string>
-    <string name="not_numbered_text">Неверный формат!</string>
-    <string name="too_old_note">Старую запись нельзя редактировать!</string>
-    <string name="engine_error_message">Возникла ошибка! Сообщите разработчику!</string>
+    <string name="cd_editing_btn">Botão para trocar todo o dinheiro</string>
+    <string name="all_money_day">Todo o dinheiro do dia</string>
+    <string name="apply_label">Aplicar</string>
+    <string name="cancel_label">Cancelar</string>
+    <string name="collapse_dt_ds">Botão suspenso de despesas</string>
+    <string name="collapse_title_product">Custos do produto = %,d руб</string>
+    <string name="collapse_title_expenditure">Outras despesas = %,d руб</string>
+    <string name="ae_expenditure_title">Despesa de escrita</string>
+    <string name="field_expenditure_helper">Nome gasto</string>
+    <string name="expenditure_cost_helper">Preço</string>
+    <string name="selecting_title">O que vamos adicionar?</string>
+    <string name="expenditure_label">Custos</string>
+    <string name="product_label">Produtos</string>
+    <string name="list_title">Compras</string>
+    <string name="expenditure_updated">Consumo editado</string>
+    <string name="expenditure_added">Consumo adicionado com sucesso!</string>
+    <string name="expenditure_deleted">Consumo excluído</string>
+    <string name="not_valid_formula">Erro de expressão!</string>
+    <string name="summary_price_label">Total</string>
+    <string name="not_numbered_text">Formato incorreto!</string>
+    <string name="too_old_note">A entrada antiga não pode ser editada!</string>
+    <string name="engine_error_message">Ocorreu um erro! Diga ao desenvolvedor!</string>
 </resources>
