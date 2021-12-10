@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Calculatrice\nDes biens</string>
+    <string name="empty_products_message">La liste des produits est vide\nAjoutez quelque chose!</string>
+    <string name="formatted_place_row">%s</string>
+    <string name="formatted_price">Prix = %s руб</string>
+    <string name="formatted_weight">Poids = %s кг</string>
+    <string name="formatted_summary_price">Le total = %.2f руб</string>
+    <string name="add_product_label">Ajouter</string>
+    <string name="product_name_label">Nom</string>
+    <string name="ae_title">Décrivez le produit</string>
+    <string name="weight_label">Poids de l\'article</string>
+    <string name="row_label">Lieu</string>
+    <string name="price_per_1_label">Prix pour 1kg</string>
+    <string name="note_label">La note</string>
+    <string name="success_updating_message">Produit ajouté avec succès!</string>
+    <string name="fail_empty_fields">Remplissez tous les champs!</string>
+    <string name="success_updated">Élément modifié</string>
+    <string name="success_deleted">Élément supprimé</string>
+    <string name="edit_button_label">Changer</string>
+    <string name="wasted_money">Argent dépensé = %,d</string>
+    <string name="all_money">Argent total = %,d</string>
+    <string name="rest_money">Reste = </string>
+    <string name="editing_tool_label">Édition</string>
+    <string name="delete_label">Supprimer</string>
+    <string name="product_history_label">Récit</string>
+    <string name="date_format">%d %s %d %s</string>
+    <string name="cd_editing_btn">Bouton pour changer tout l\'argent</string>
+    <string name="all_money_day">Tout l\'argent pour la journée</string>
+    <string name="apply_label">Appliquer</string>
+    <string name="cancel_label">Annuler</string>
+    <string name="collapse_dt_ds">Bouton déroulant Dépenses</string>
+    <string name="collapse_title_product">Coûts des produits = %,d руб</string>
+    <string name="collapse_title_expenditure">Autres dépenses = %,d руб</string>
+    <string name="ae_expenditure_title">Ecrire une dépense</string>
+    <string name="field_expenditure_helper">Nom de dépense</string>
+    <string name="expenditure_cost_helper">Prix</string>
+    <string name="selecting_title">Qu\'allons-nous ajouter?</string>
+    <string name="expenditure_label">Frais</string>
+    <string name="product_label">Produit</string>
+    <string name="list_title">Achats</string>
+    <string name="expenditure_updated">Consommation éditée</string>
+    <string name="expenditure_added">Consommation ajoutée avec succès!</string>
+    <string name="expenditure_deleted">Consommation supprimée</string>
+    <string name="not_valid_formula">Erreur d\'expression!</string>
+    <string name="summary_price_label">Le total</string>
+    <string name="not_numbered_text">Mauvais format!</string>
+    <string name="too_old_note">L\'ancienne entrée ne peut pas être modifiée!</string>
+    <string name="engine_error_message">Une erreur est survenue! Dites-le au développeur!</string>
+</resources>

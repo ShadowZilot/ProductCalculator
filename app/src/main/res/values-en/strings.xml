@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Product\nCalculator</string>
+    <string name="empty_products_message">Product list is empty\nLet\'s add something!</string>
+    <string name="formatted_place_row">%s</string>
+    <string name="formatted_price">Price = %s руб</string>
+    <string name="formatted_weight">Weight = %s кг</string>
+    <string name="formatted_summary_price">Total = %.2f руб</string>
+    <string name="add_product_label">Add</string>
+    <string name="product_name_label">Denomination</string>
+    <string name="ae_title">Describe product</string>
+    <string name="weight_label">Product weight</string>
+    <string name="row_label">Place</string>
+    <string name="price_per_1_label">Price for 1 kg</string>
+    <string name="note_label">Note</string>
+    <string name="success_updating_message">Product added successfully!</string>
+    <string name="fail_empty_fields">Fill all fields!</string>
+    <string name="success_updated">Item edited</string>
+    <string name="success_deleted">Item deleted</string>
+    <string name="edit_button_label">Edit</string>
+    <string name="wasted_money">Money spent = %,d</string>
+    <string name="all_money">Total money = %,d</string>
+    <string name="rest_money">Money rest = </string>
+    <string name="editing_tool_label">Editing</string>
+    <string name="delete_label">Delete</string>
+    <string name="product_history_label">History</string>
+    <string name="date_format">%1d %2s %3d %4s</string>
+    <string name="cd_editing_btn">Button for editing amount of total money</string>
+    <string name="all_money_day">All money for day</string>
+    <string name="apply_label">Apply</string>
+    <string name="cancel_label">Cancel</string>
+    <string name="collapse_dt_ds">Button expanding list of expenditures</string>
+    <string name="collapse_title_product">Product costs = %,d руб</string>
+    <string name="collapse_title_expenditure">Expenditure costs = %,d руб</string>
+    <string name="ae_expenditure_title">Describe expenditure</string>
+    <string name="field_expenditure_helper">Expenditure name</string>
+    <string name="expenditure_cost_helper">Cost</string>
+    <string name="selecting_title">What are we going to add?</string>
+    <string name="expenditure_label">Expenditures</string>
+    <string name="product_label">Product</string>
+    <string name="list_title">Purchases</string>
+    <string name="expenditure_updated">Item edited</string>
+    <string name="expenditure_added">Expenditure added successfully!</string>
+    <string name="expenditure_deleted">Item deleted</string>
+    <string name="not_valid_formula">Error in expression!</string>
+    <string name="summary_price_label">Total</string>
+    <string name="not_numbered_text">Wrong format!</string>
+    <string name="too_old_note">The old entry cannot be edited!</string>
+    <string name="engine_error_message">An error has occurred! Tell the developer!</string>
+</resources>

@@ -17,6 +17,7 @@
         android:id="@+id/emptyProgressText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:textSize="32sp"
         android:text="@string/empty_products_message"
         app:layout_constraintTop_toTopOf="parent"
