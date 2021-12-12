@@ -15,7 +15,7 @@
         <entry key="app/src/main/res/drawable/selecting_choice_bg.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/drawable/selecting_choise_bg.xml" value="0.38333333333333336" />
         <entry key="app/src/main/res/layout-land/calculator_keyboard_grid.xml" value="0.2437932332356771" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.42083333333333334" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3710667928059896" />
         <entry key="app/src/main/res/layout/ae_expenditure_fields.xml" value="0.4317708333333333" />
         <entry key="app/src/main/res/layout/ae_expenditure_fragment.xml" value="0.4317708333333333" />
         <entry key="app/src/main/res/layout/ae_fields.xml" value="0.375" />
@@ -34,10 +34,11 @@
         <entry key="app/src/main/res/layout/history_item.xml" value="0.6916010498687664" />
         <entry key="app/src/main/res/layout/product_item.xml" value="0.42083333333333334" />
         <entry key="app/src/main/res/layout/products_budget_info.xml" value="0.42083333333333334" />
-        <entry key="app/src/main/res/layout/products_fragment.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/products_fragment.xml" value="0.36323394775390616" />
         <entry key="app/src/main/res/layout/products_list_empty_layout.xml" value="0.42083333333333334" />
         <entry key="app/src/main/res/layout/selecting_dialog.xml" value="0.5" />
         <entry key="app/src/main/res/menu/editing_menu.xml" value="0.42083333333333334" />
+        <entry key="app/src/main/res/menu/main_nav_menu.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/menu/products_menu.xml" value="0.42083333333333334" />
       </map>
     </option>

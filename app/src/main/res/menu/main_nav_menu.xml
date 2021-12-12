@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/historyDestination"
+        android:icon="@drawable/ic_baseline_history_24"
+        android:title="@string/product_history_label"/>
+    <item
+        android:id="@+id/purchasesDestination"
+        android:icon="@drawable/ic_purchases"
+        android:title="@string/list_title"/>
+    <item
+        android:id="@+id/profileDestination"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/profile_label"/>
+</menu>

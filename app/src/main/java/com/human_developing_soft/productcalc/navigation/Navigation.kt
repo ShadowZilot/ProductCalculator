@@ -1,7 +1,6 @@
 package com.human_developing_soft.productcalc.navigation
 
 import android.os.Bundle
-import android.util.Log
 import androidx.annotation.IdRes
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
@@ -12,17 +11,30 @@ import androidx.lifecycle.LifecycleOwner
 class Navigation private constructor(
     private var mManager: FragmentManager,
     private val mHost: Int,
+    private val mHidingNav: OnHidingBottomNav
 ) : Navigator {
     private val mList = mutableListOf<String>()
 
-    override fun navigateTo(targetFragment: Class<out Fragment>, data: Bundle?) {
+    override fun navigateTo(targetFragment: Class<out Fragment>,
+                            data: Bundle?,
+                            isBackedStack: Boolean) {
         val transaction = mManager.beginTransaction()
-        mList.add("${mList.size}$targetFragment.name")
+        if (!isBackedStack) {
+            if (mList.isEmpty()) {
+                mList.add("${mList.size}$targetFragment.name{y}")
+            } else {
+                mList.removeLast()
+                mList.add("${mList.size}$targetFragment.name{y}")
+            }
+        } else {
+            mHidingNav.onHide()
+            mList.add("${mList.size}$targetFragment.name")
+        }
         transaction.add(
             mHost,
             targetFragment,
             data,
-            mList.last(),
+            mList.last()
         )
         if (mList.size > 1) {
             for (i in mList.size - 2..0) {
@@ -30,8 +42,6 @@ class Navigation private constructor(
             }
         }
         transaction.commit()
-        Log.d(this::class.java.simpleName,
-            "Navigated to ${targetFragment::class.java.simpleName}, size = ${mList.size}")
     }
 
     override fun showDialog(
@@ -53,11 +63,13 @@ class Navigation private constructor(
     }
 
     override fun takeBack() {
-        Log.d(this::class.java.simpleName, "Taken back, size = ${mList.size}")
         if (mList.size > 1) {
             val transaction = mManager.beginTransaction()
             transaction.remove(mManager.findFragmentByTag(mList.last())!!)
             mList.remove(mList.last())
+            if (mList.last().contains("{y}")) {
+                mHidingNav.onShow()
+            }
             mManager.findFragmentByTag(mList.last())!!.onResume()
             transaction.commit()
         } else {
@@ -74,9 +86,10 @@ class Navigation private constructor(
 
         fun instance(
             manager: FragmentManager,
-            @IdRes host: Int
+            @IdRes host: Int,
+            hidingNav: OnHidingBottomNav
         ): Navigator {
-            mNavigator = Navigation(manager, host)
+            mNavigator = Navigation(manager, host, hidingNav)
             return mNavigator!!
         }
 

@@ -10,8 +10,6 @@ import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import com.human_developing_soft.productcalc.databinding.ProductsFragmentBinding
 import com.human_developing_soft.productcalc.history.ui.DateProvider
-import com.human_developing_soft.productcalc.history.ui.HistoryFragment
-import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.domain.ProductListVMFactory
 import com.human_developing_soft.productcalc.product_storage.domain.ProductsListVM
 import com.human_developing_soft.productcalc.product_storage.domain.ProductsObserver
@@ -58,25 +56,20 @@ class ProductsFragment : Fragment(), ProductsObserver,
                 arguments?.getLong("time"),
                 requireContext()
             )
-        ).get(ProductsListVM::class.java)
+        )[ProductsListVM::class.java]
         mBinding.addProductButton.setOnClickListener {
             mViewModel.navigateToAdding()
         }
-        mBinding.productsToolbar.menu.getItem(0).setOnMenuItemClickListener {
-            Navigation.Navigation.instance().navigateTo(
-                HistoryFragment::class.java
-            )
-            true
-        }
         arguments?.getLong("time")?.let {
-            mBinding.productsToolbar.menu.getItem(0).isVisible = false
             mBinding.productsToolbar.title = DateProvider.Base(
                 it, requireContext()
             ).date()
         }
         mViewModel.visibilityForAdding().let {
             mBinding.moneyInfo.allMoneyEdit.visibility = it
-            mBinding.addProductButton.visibility = it
+            if (it == View.GONE) {
+                mBinding.addProductButton.hide()
+            }
         }
     }
 
@@ -85,6 +78,11 @@ class ProductsFragment : Fragment(), ProductsObserver,
         mViewModel.redefineReferences(this)
         mUiManager.startLoading()
         mViewModel.fetchProducts()
+        mViewModel.visibilityForAdding().let {
+            if (it == View.GONE) {
+                mBinding.addProductButton.hide()
+            }
+        }
     }
 
     override fun onUpdatedProducts(day: AllDayUi) {

@@ -47,4 +47,5 @@
     <string name="not_numbered_text">Falsches Format!</string>
     <string name="too_old_note">Der alte Eintrag kann nicht bearbeitet werden!</string>
     <string name="engine_error_message">Ein Fehler ist aufgetreten! Sag es dem Entwickler!</string>
+    <string name="profile_label">Einstellungen</string>
 </resources>

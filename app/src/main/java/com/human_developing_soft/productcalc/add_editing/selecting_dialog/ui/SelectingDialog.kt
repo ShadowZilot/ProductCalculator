@@ -26,7 +26,7 @@ class SelectingDialog : BottomSheetDialogFragment(), OnSelectingTypeGot {
                     it.getLong("time"),
                     it.getInt("id")
                 )
-            ).get(SelectingVM::class.java)
+            )[SelectingVM::class.java]
         }
     }
 

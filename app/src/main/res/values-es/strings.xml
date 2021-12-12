@@ -47,4 +47,5 @@
     <string name="not_numbered_text">¡Formato erróneo!</string>
     <string name="too_old_note">¡La entrada anterior no se puede editar!</string>
     <string name="engine_error_message">¡Se ha producido un error! ¡Dile al desarrollador!</string>
+    <string name="profile_label">Ajustes</string>
 </resources>

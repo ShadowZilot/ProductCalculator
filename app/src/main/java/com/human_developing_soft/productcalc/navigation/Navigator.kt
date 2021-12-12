@@ -7,7 +7,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentResultListener
 
 interface Navigator {
-    fun navigateTo(targetFragment: Class<out Fragment>, data: Bundle? = null)
+    fun navigateTo(targetFragment: Class<out Fragment>,
+                   data: Bundle? = null,
+                   isBackedStack : Boolean = true)
 
     fun showDialog(targetFragment: DialogFragment,
              listener: FragmentResultListener? = null,
