@@ -25,7 +25,16 @@ class MonthViewHolder(
             }
             mBinding.daysGrid.addView(dayItem.root)
         }
+        mBinding.root.updateYear(
+            days[0].years()
+        )
     }
+}
+
+fun Long.years() : Int {
+    val calendar = GregorianCalendar.getInstance()
+    calendar.time = Date(this)
+    return calendar.get(Calendar.YEAR)
 }
 
 fun Long.byDay(): String {

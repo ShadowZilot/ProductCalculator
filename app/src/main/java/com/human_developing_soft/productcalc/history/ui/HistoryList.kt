@@ -26,6 +26,11 @@ interface HistoryList {
             mList.layoutManager = LinearLayoutManager(mList.context,
                 RecyclerView.VERTICAL,
                 false)
+            mList.addOnScrollListener(
+                ListScrollingListener(
+                    mObserver
+                )
+            )
         }
 
         override fun beginLoading() {
@@ -43,6 +48,9 @@ interface HistoryList {
                 animator.duration = 100
                 animator.start()
             }
+            mObserver.onYearUpdate(
+                data[0].map(YearByMonthUi())
+            )
         }
     }
 }
