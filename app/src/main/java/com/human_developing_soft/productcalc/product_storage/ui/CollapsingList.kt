@@ -17,7 +17,8 @@ interface CollapsingList {
 
     class Base(
         private val mBinding: CollapsingListBinding,
-        productsEventListener: OnProductClickListener
+        productsEventListener: OnProductClickListener,
+        directionChanged: OnDirectionChanged
     ) : CollapsingList {
         private val mAdapter = MainProductAdapter(productsEventListener)
 
@@ -30,6 +31,9 @@ interface CollapsingList {
                 mBinding.collapsingLayout.context,
                 RecyclerView.VERTICAL
             ))
+            mBinding.root.addOnScrollListener(
+                DirectionScrollListener(directionChanged)
+            )
         }
 
         override fun hide() {

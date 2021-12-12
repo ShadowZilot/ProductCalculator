@@ -40,7 +40,8 @@ class ProductsFragment : Fragment(), ProductsObserver,
             AllProductsView.Base(
                 CollapsingList.Base(
                     mBinding.productsList,
-                    this
+                    this,
+                    mBinding.addProductButton
                 ),
                 ProductsListEmptyView.Base(
                     mBinding.emptyListProducts
