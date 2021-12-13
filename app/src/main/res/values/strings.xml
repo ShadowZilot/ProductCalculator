@@ -47,4 +47,6 @@
     <string name="too_old_note">Старую запись нельзя редактировать!</string>
     <string name="engine_error_message">Возникла ошибка! Сообщите разработчику!</string>
     <string name="profile_label">Настройки</string>
+    <string name="weight_selecting_label">Выберите единицу веса</string>
+    <string name="currency_selecting_label">Выберите вашу валюту</string>
 </resources>

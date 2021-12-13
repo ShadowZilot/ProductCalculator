@@ -26,16 +26,22 @@ class Navigation private constructor(
                 mList.removeLast()
                 mList.add("${mList.size}$targetFragment.name{y}")
             }
+            transaction.replace(
+                mHost,
+                targetFragment,
+                data,
+                mList.last()
+            )
         } else {
             mHidingNav.onHide()
             mList.add("${mList.size}$targetFragment.name")
+            transaction.add(
+                mHost,
+                targetFragment,
+                data,
+                mList.last()
+            )
         }
-        transaction.add(
-            mHost,
-            targetFragment,
-            data,
-            mList.last()
-        )
         if (mList.size > 1) {
             for (i in mList.size - 2..0) {
                 mManager.findFragmentByTag(mList[i])?.onPause()

@@ -48,4 +48,6 @@
     <string name="too_old_note">L\'ancienne entrée ne peut pas être modifiée!</string>
     <string name="engine_error_message">Une erreur est survenue! Dites-le au développeur!</string>
     <string name="profile_label">Réglages</string>
+    <string name="weight_selecting_label">Sélectionnez l\'unité de poids</string>
+    <string name="currency_selecting_label">Choisissez votre devise</string>
 </resources>

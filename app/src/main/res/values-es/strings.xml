@@ -48,4 +48,6 @@
     <string name="too_old_note">¡La entrada anterior no se puede editar!</string>
     <string name="engine_error_message">¡Se ha producido un error! ¡Dile al desarrollador!</string>
     <string name="profile_label">Ajustes</string>
+    <string name="weight_selecting_label">Seleccionar unidad de peso</string>
+    <string name="currency_selecting_label">Elija su moneda</string>
 </resources>
