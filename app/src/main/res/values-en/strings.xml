@@ -3,9 +3,9 @@
     <string name="app_name">Product\nCalculator</string>
     <string name="empty_products_message">Product list is empty\nLet\'s add something!</string>
     <string name="formatted_place_row">%s</string>
-    <string name="formatted_price">Price = %s руб</string>
-    <string name="formatted_weight">Weight = %s кг</string>
-    <string name="formatted_summary_price">Total = %.2f руб</string>
+    <string name="formatted_price">Price = %,.2f руб</string>
+    <string name="formatted_weight">Weight = %,.2f кг</string>
+    <string name="formatted_summary_price">Total = %,.2f руб</string>
     <string name="add_product_label">Add</string>
     <string name="product_name_label">Denomination</string>
     <string name="ae_title">Describe product</string>
@@ -24,7 +24,7 @@
     <string name="editing_tool_label">Editing</string>
     <string name="delete_label">Delete</string>
     <string name="product_history_label">History</string>
-    <string name="date_format">%1d %2s %3d %4s</string>
+    <string name="date_format">y E d LLLL</string>
     <string name="cd_editing_btn">Button for editing amount of total money</string>
     <string name="all_money_day">All money for day</string>
     <string name="apply_label">Apply</string>

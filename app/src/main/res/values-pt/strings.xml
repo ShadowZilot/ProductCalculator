@@ -3,9 +3,9 @@
     <string name="app_name">Calculadora\nde Produto</string>
     <string name="empty_products_message">A lista de produtos está vazia.\nAdicione algo!</string>
     <string name="formatted_place_row">%s</string>
-    <string name="formatted_price">Preço = %s руб</string>
-    <string name="formatted_weight">Peso = %s кг</string>
-    <string name="formatted_summary_price">Total = %.2f руб</string>
+    <string name="formatted_price">Preço = %,.2f руб</string>
+    <string name="formatted_weight">Peso = %,.2f кг</string>
+    <string name="formatted_summary_price">Total = %,.2f руб</string>
     <string name="add_product_label">Adicionar</string>
     <string name="product_name_label">Nome</string>
     <string name="ae_title">Descreva o produto</string>
@@ -24,7 +24,7 @@
     <string name="editing_tool_label">Editando</string>
     <string name="delete_label">Excluir</string>
     <string name="product_history_label">História</string>
-    <string name="date_format">%d %s %d %s</string>
+    <string name="date_format">y LLLL d E</string>
     <string name="cd_editing_btn">Botão para trocar todo o dinheiro</string>
     <string name="all_money_day">Todo o dinheiro do dia</string>
     <string name="apply_label">Aplicar</string>

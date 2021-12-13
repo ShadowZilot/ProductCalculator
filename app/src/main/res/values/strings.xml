@@ -2,9 +2,9 @@
     <string name="app_name">Калькулятор\nТовара</string>
     <string name="empty_products_message">Список товаров пуст\nДобавьте что-нибудь!</string>
     <string name="formatted_place_row">%s</string>
-    <string name="formatted_price">Цена = %s руб</string>
-    <string name="formatted_weight">Вес = %s кг</string>
-    <string name="formatted_summary_price">Итого = %.2f руб</string>
+    <string name="formatted_price">Цена = %,.2f руб</string>
+    <string name="formatted_weight">Вес = %,.2f кг</string>
+    <string name="formatted_summary_price">Итого = %,.2f руб</string>
     <string name="add_product_label">Добавить</string>
     <string name="product_name_label">Наименование</string>
     <string name="ae_title">Опишите товар</string>
@@ -23,7 +23,7 @@
     <string name="editing_tool_label">Редактирование</string>
     <string name="delete_label">Удалить</string>
     <string name="product_history_label">История</string>
-    <string name="date_format">%1d %2s %3d %4s</string>
+    <string name="date_format">y LLLL d E</string>
     <string name="cd_editing_btn">Кнопка для изменения всех денег</string>
     <string name="all_money_day">Все деньги за день</string>
     <string name="apply_label">Применить</string>
