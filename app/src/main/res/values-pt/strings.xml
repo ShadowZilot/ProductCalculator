@@ -3,15 +3,15 @@
     <string name="app_name">Calculadora\nde Produto</string>
     <string name="empty_products_message">A lista de produtos está vazia.\nAdicione algo!</string>
     <string name="formatted_place_row">%s</string>
-    <string name="formatted_price">Preço = %,.2f руб</string>
-    <string name="formatted_weight">Peso = %,.2f кг</string>
-    <string name="formatted_summary_price">Total = %,.2f руб</string>
+    <string name="formatted_price">Preço = %,.2f ⚖️/🪙</string>
+    <string name="formatted_weight">Peso = %,.2f ⚖️</string>
+    <string name="formatted_summary_price">Total = %,.2f 🪙</string>
     <string name="add_product_label">Adicionar</string>
     <string name="product_name_label">Nome</string>
     <string name="ae_title">Descreva o produto</string>
     <string name="weight_label">Peso do Item</string>
     <string name="row_label">Lugar</string>
-    <string name="price_per_1_label">Preço por 1 kg</string>
+    <string name="price_per_1_label">Preço por 1 ⚖️</string>
     <string name="note_label">A anotação</string>
     <string name="success_updating_message">Produto adicionado com sucesso!</string>
     <string name="fail_empty_fields">Preencha todos os campos!</string>
@@ -30,8 +30,8 @@
     <string name="apply_label">Aplicar</string>
     <string name="cancel_label">Cancelar</string>
     <string name="collapse_dt_ds">Botão suspenso de despesas</string>
-    <string name="collapse_title_product">Custos do produto = %,d руб</string>
-    <string name="collapse_title_expenditure">Outras despesas = %,d руб</string>
+    <string name="collapse_title_product">Custos do produto = %,d 🪙</string>
+    <string name="collapse_title_expenditure">Outras despesas = %,d 🪙</string>
     <string name="ae_expenditure_title">Despesa de escrita</string>
     <string name="field_expenditure_helper">Nome gasto</string>
     <string name="expenditure_cost_helper">Preço</string>

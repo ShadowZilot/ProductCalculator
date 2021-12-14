@@ -66,7 +66,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                app:suffixText="руб"
+                app:suffixText="⚖️/🪙"
                 app:helperText="@string/price_per_1_label"
                 android:inputType="numberDecimal">
 

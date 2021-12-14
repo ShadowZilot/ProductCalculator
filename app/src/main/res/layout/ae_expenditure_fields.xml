@@ -34,7 +34,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            app:suffixText="руб"
+            app:suffixText="⚖️/🪙️"
             app:helperText="@string/expenditure_cost_helper"
             android:inputType="numberDecimal"
             app:layout_constraintTop_toBottomOf="@id/nameInputContainer"

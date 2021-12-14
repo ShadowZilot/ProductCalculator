@@ -1,4 +1,4 @@
-package com.human_developing_soft.productcalc.settings.ui
+package com.human_developing_soft.productcalc.profile.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
