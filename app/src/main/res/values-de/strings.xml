@@ -3,7 +3,7 @@
     <string name="app_name">Produktrechner</string>
     <string name="empty_products_message">Produktliste ist leer.\nFügen Sie etwas hinzu!</string>
     <string name="formatted_place_row">%s</string>
-    <string name="formatted_price">Preis = %,.2f ⚖️/🪙</string>
+    <string name="formatted_price">Preis = %,.2f 🪙</string>
     <string name="formatted_weight">Gewicht = %,.2f ⚖️</string>
     <string name="formatted_summary_price">Summe = %,.2f 🪙</string>
     <string name="add_product_label">Hinzufügen</string>
@@ -50,7 +50,9 @@
     <string name="profile_label">Einstellungen</string>
     <string name="weight_selecting_label">Gewichtseinheit auswählen</string>
     <string name="currency_selecting_label">Wählen Sie Ihre Währung</string>
-    <string name="about_app_label">О приложении</string>
-    <string name="app_icon_cd">Иконка приложения</string>
-    <string name="version_label">Версия %s</string>
+    <string name="about_app_label">Über die App</string>
+    <string name="app_icon_cd">Anwendungssymbol</string>
+    <string name="version_label">Ausführung %s</string>
+    <string name="share_label">Teile das</string>
+    <string name="info_label">Die Info</string>
 </resources>

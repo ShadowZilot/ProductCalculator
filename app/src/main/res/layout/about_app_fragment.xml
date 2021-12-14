@@ -20,6 +20,7 @@
             android:id="@+id/aboutAppToolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:menu="@menu/about_app_menu"
             app:titleTextColor="@color/white"
             app:title="@string/about_app_label"/>
     </com.google.android.material.appbar.AppBarLayout>

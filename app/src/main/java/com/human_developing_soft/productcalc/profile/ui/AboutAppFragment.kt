@@ -1,5 +1,6 @@
 package com.human_developing_soft.productcalc.profile.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -39,5 +40,16 @@ class AboutAppFragment : BaseFragment() {
         mBinding.versionTitle.text = StringContext.Base(requireContext()).string(
             R.string.version_label, BuildConfig.VERSION_NAME
         )
+        mBinding.aboutAppToolbar.menu.getItem(0).setOnMenuItemClickListener {
+            val shareIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT,
+                    "https://play.google.com/store/apps/details?id=com.human_developing_soft.productcalc")
+                type = "text/*"
+            }
+            startActivity(Intent.createChooser(shareIntent, null))
+            analytic()?.logEvent(FirebaseAnalytics.Event.SHARE) {}
+            return@setOnMenuItemClickListener true
+        }
     }
 }

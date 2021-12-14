@@ -1,55 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Калькулятор\nТовара</string>
-    <string name="empty_products_message">Список товаров пуст\nДобавьте что-нибудь!</string>
+    <string name="app_name">Product\nCalculator</string>
+    <string name="empty_products_message">Product list is empty\nLet\'s add something!</string>
     <string name="formatted_place_row">%s</string>
-    <string name="formatted_price">Цена = %,.2f ⚖️/🪙</string>
-    <string name="formatted_weight">Вес = %,.2f ⚖️</string>
-    <string name="formatted_summary_price">Итого = %,.2f 🪙</string>
-    <string name="add_product_label">Добавить</string>
-    <string name="product_name_label">Наименование</string>
-    <string name="ae_title">Опишите товар</string>
-    <string name="weight_label">Вес товара</string>
-    <string name="row_label">Ряд</string>
-    <string name="price_per_1_label">Цена за 1 ⚖️</string>
-    <string name="note_label">Заметка</string>
-    <string name="success_updating_message">Товар успешно добавлен!</string>
-    <string name="fail_empty_fields">Заполните все поля!</string>
-    <string name="success_updated">Товар отредактирован</string>
-    <string name="success_deleted">Товар удалён</string>
-    <string name="edit_button_label">Изменить</string>
-    <string name="wasted_money">Денег потрачено = %,d</string>
-    <string name="all_money">Всего денег = %,d</string>
-    <string name="rest_money">Остаток = </string>
-    <string name="editing_tool_label">Редактирование</string>
-    <string name="delete_label">Удалить</string>
-    <string name="product_history_label">История</string>
-    <string name="date_format">y LLLL d E</string>
-    <string name="cd_editing_btn">Кнопка для изменения всех денег</string>
-    <string name="all_money_day">Все деньги за день</string>
-    <string name="apply_label">Применить</string>
-    <string name="cancel_label">Отменить</string>
-    <string name="collapse_dt_ds">Кнопка раскрывающая список с расходами</string>
-    <string name="collapse_title_product">Расходы на товар = %,d 🪙</string>
-    <string name="collapse_title_expenditure">Прочие расходы = %,d 🪙</string>
-    <string name="ae_expenditure_title">Напишите расход</string>
-    <string name="field_expenditure_helper">Название траты</string>
-    <string name="expenditure_cost_helper">Стоимость</string>
-    <string name="selecting_title">Что будем добавлять?</string>
-    <string name="expenditure_label">Расходы</string>
-    <string name="product_label">Товар</string>
-    <string name="list_title">Покупки</string>
-    <string name="expenditure_updated">Расход отредактирован</string>
-    <string name="expenditure_added">Расход успешно добавлен!</string>
-    <string name="expenditure_deleted">Расход удалён</string>
-    <string name="not_valid_formula">Ошибка в выражении!</string>
-    <string name="summary_price_label">Итого</string>
-    <string name="not_numbered_text">Неверный формат!</string>
-    <string name="too_old_note">Старую запись нельзя редактировать!</string>
-    <string name="engine_error_message">Возникла ошибка! Сообщите разработчику!</string>
-    <string name="profile_label">Настройки</string>
-    <string name="weight_selecting_label">Выберите единицу веса</string>
-    <string name="currency_selecting_label">Выберите вашу валюту</string>
-    <string name="about_app_label">О приложении</string>
-    <string name="app_icon_cd">Иконка приложения</string>
-    <string name="version_label">Версия %s</string>
+    <string name="formatted_price">Price = %,.2f 🪙</string>
+    <string name="formatted_weight">Weight = %,.2f ⚖️</string>
+    <string name="formatted_summary_price">Total = %,.2f 🪙</string>
+    <string name="add_product_label">Add</string>
+    <string name="product_name_label">Denomination</string>
+    <string name="ae_title">Describe product</string>
+    <string name="weight_label">Product weight</string>
+    <string name="row_label">Place</string>
+    <string name="price_per_1_label">Price for 1 ⚖️</string>
+    <string name="note_label">Note</string>
+    <string name="success_updating_message">Product added successfully!</string>
+    <string name="fail_empty_fields">Fill all fields!</string>
+    <string name="success_updated">Item edited</string>
+    <string name="success_deleted">Item deleted</string>
+    <string name="edit_button_label">Edit</string>
+    <string name="wasted_money">Money spent = %,d</string>
+    <string name="all_money">Total money = %,d</string>
+    <string name="rest_money">Money rest = </string>
+    <string name="editing_tool_label">Editing</string>
+    <string name="delete_label">Delete</string>
+    <string name="product_history_label">History</string>
+    <string name="date_format">y E d LLLL</string>
+    <string name="cd_editing_btn">Button for editing amount of total money</string>
+    <string name="all_money_day">All money for day</string>
+    <string name="apply_label">Apply</string>
+    <string name="cancel_label">Cancel</string>
+    <string name="collapse_dt_ds">Button expanding list of expenditures</string>
+    <string name="collapse_title_product">Product costs = %,d 🪙</string>
+    <string name="collapse_title_expenditure">Expenditure costs = %,d 🪙</string>
+    <string name="ae_expenditure_title">Describe expenditure</string>
+    <string name="field_expenditure_helper">Expenditure name</string>
+    <string name="expenditure_cost_helper">Cost</string>
+    <string name="selecting_title">What are we going to add?</string>
+    <string name="expenditure_label">Expenditures</string>
+    <string name="product_label">Product</string>
+    <string name="list_title">Purchases</string>
+    <string name="expenditure_updated">Item edited</string>
+    <string name="expenditure_added">Expenditure added successfully!</string>
+    <string name="expenditure_deleted">Item deleted</string>
+    <string name="not_valid_formula">Error in expression!</string>
+    <string name="summary_price_label">Total</string>
+    <string name="not_numbered_text">Wrong format!</string>
+    <string name="too_old_note">The old entry cannot be edited!</string>
+    <string name="engine_error_message">An error has occurred! Tell the developer!</string>
+    <string name="profile_label">Settings</string>
+    <string name="weight_selecting_label">Select unit of weight</string>
+    <string name="currency_selecting_label">Choose your currency</string>
+    <string name="about_app_label">About app</string>
+    <string name="app_icon_cd">app\'s icon</string>
+    <string name="version_label">Version %s</string>
+    <string name="share_label">Share</string>
+    <string name="info_label">Info</string>
 </resources>

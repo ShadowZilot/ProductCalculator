@@ -3,7 +3,7 @@
     <string name="app_name">Calculatrice\nDes biens</string>
     <string name="empty_products_message">La liste des produits est vide\nAjoutez quelque chose!</string>
     <string name="formatted_place_row">%s</string>
-    <string name="formatted_price">Prix = %,.2f ⚖️/🪙</string>
+    <string name="formatted_price">Prix = %,.2f 🪙</string>
     <string name="formatted_weight">Poids = %,.2f ⚖️</string>
     <string name="formatted_summary_price">Le total = %,.2f 🪙</string>
     <string name="add_product_label">Ajouter</string>
@@ -50,7 +50,9 @@
     <string name="profile_label">Réglages</string>
     <string name="weight_selecting_label">Sélectionnez l\'unité de poids</string>
     <string name="currency_selecting_label">Choisissez votre devise</string>
-    <string name="about_app_label">О приложении</string>
-    <string name="app_icon_cd">Иконка приложения</string>
-    <string name="version_label">Версия %s</string>
+    <string name="about_app_label">À propos de l\'application</string>
+    <string name="app_icon_cd">Icône d\'application</string>
+    <string name="version_label">Version %s</string>
+    <string name="share_label">Partagez ceci</string>
+    <string name="info_label">Info</string>
 </resources>
