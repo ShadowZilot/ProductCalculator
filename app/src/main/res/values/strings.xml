@@ -49,4 +49,7 @@
     <string name="profile_label">Настройки</string>
     <string name="weight_selecting_label">Выберите единицу веса</string>
     <string name="currency_selecting_label">Выберите вашу валюту</string>
+    <string name="about_app_label">О приложении</string>
+    <string name="app_icon_cd">Иконка приложения</string>
+    <string name="version_label">Версия %s</string>
 </resources>

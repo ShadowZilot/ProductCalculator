@@ -7,7 +7,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.human_developing_soft.productcalc.R
 import com.human_developing_soft.productcalc.history.ui.HistoryFragment
 import com.human_developing_soft.productcalc.product_storage.ui.ProductsFragment
-import com.human_developing_soft.productcalc.profile.ui.SettingsFragment
+import com.human_developing_soft.productcalc.profile.ui.AboutAppFragment
 
 /**
  * Human Developing Soft
@@ -38,7 +38,7 @@ class CustomBottomNav(
                 }
                 R.id.profileDestination -> {
                     navComponent.navigateTo(
-                        SettingsFragment::class.java,
+                        AboutAppFragment::class.java,
                         isBackedStack = false
                     )
                     true
