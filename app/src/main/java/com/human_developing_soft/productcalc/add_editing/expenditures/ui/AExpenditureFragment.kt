@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
+import com.human_developing_soft.productcalc.BaseFragment
 import com.human_developing_soft.productcalc.add_editing.common_ui.AddEditRestUi
 import com.human_developing_soft.productcalc.add_editing.common_ui.OnChangingButtonClick
 import com.human_developing_soft.productcalc.add_editing.common_ui.OnChangingButtonClick.AddEditConfig
@@ -17,7 +18,7 @@ import com.human_developing_soft.productcalc.databinding.AeExpenditureFragmentBi
 import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.ui.ExpenditureUi
 
-class AExpenditureFragment : Fragment(), OnExpenditureObserver,
+class AExpenditureFragment : BaseFragment(), OnExpenditureObserver,
     OnProductUpdatedListener, OnChangingButtonClick {
     private lateinit var mBinding: AeExpenditureFragmentBinding
     private lateinit var mViewModel: AExpenditureVM
@@ -78,7 +79,7 @@ class AExpenditureFragment : Fragment(), OnExpenditureObserver,
             requireContext(),
             stringId,
             Toast.LENGTH_SHORT
-            ).show()
+        ).show()
         Navigation.Navigation.instance().takeBack()
     }
 
@@ -91,12 +92,28 @@ class AExpenditureFragment : Fragment(), OnExpenditureObserver,
     }
 
     override fun onClick(aeConfig: Int) {
-        when(aeConfig) {
-            AddEditConfig.valueAConfig() -> mViewModel.insertExpenditure(mUi.expenditure())
-            AddEditConfig.valueEConfig() -> mViewModel.updateExpenditure(mUi.expenditure())
-            AddEditConfig.valueDConfig() -> mViewModel.deleteExpenditure(mUi.expenditure(
-                true)
-            )
+        var nameAction = ""
+        when (aeConfig) {
+            AddEditConfig.valueAConfig() -> {
+                mViewModel.insertExpenditure(mUi.expenditure())
+                nameAction = "Add"
+            }
+            AddEditConfig.valueEConfig() -> {
+                mViewModel.updateExpenditure(mUi.expenditure())
+                nameAction = "Edit"
+            }
+            AddEditConfig.valueDConfig() -> {
+                mViewModel.deleteExpenditure(
+                    mUi.expenditure(
+                        true
+                    )
+                )
+                nameAction = "Delete"
+            }
         }
+        analytic()?.logEvent(
+            "AEExpenditureFragment_action",
+            bundleOf(Pair("Action", nameAction))
+        )
     }
 }

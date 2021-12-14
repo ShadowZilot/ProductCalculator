@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
+import com.human_developing_soft.productcalc.BaseFragment
 import com.human_developing_soft.productcalc.add_editing.common_ui.AddEditRestUi
 import com.human_developing_soft.productcalc.add_editing.common_ui.OnChangingButtonClick
 import com.human_developing_soft.productcalc.add_editing.common_ui.OnChangingButtonClick.AddEditConfig
@@ -18,7 +19,7 @@ import com.human_developing_soft.productcalc.databinding.AeProductsFragmentBindi
 import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.ui.ProductUi
 
-class AEProductFragment : Fragment(),
+class AEProductFragment : BaseFragment(),
     OnProductUpdatedListener, OnProductObtained, OnChangingButtonClick {
     private lateinit var mBinding: AeProductsFragmentBinding
     private lateinit var mViewModel: AEProductVM
@@ -107,12 +108,28 @@ class AEProductFragment : Fragment(),
     }
 
     override fun onClick(aeConfig: Int) {
+        var nameEvent = ""
         when(aeConfig) {
-            AddEditConfig.valueAConfig() -> mViewModel.saveProduct(mUiManager.product())
-            AddEditConfig.valueEConfig() -> mViewModel.updateProduct(mUiManager.product())
-            AddEditConfig.valueDConfig() -> mViewModel.deleteProduct(mUiManager.product(
-                true)
-            )
+            AddEditConfig.valueAConfig() -> {
+                mViewModel.saveProduct(mUiManager.product())
+                nameEvent = "Add"
+            }
+            AddEditConfig.valueEConfig() -> {
+                mViewModel.updateProduct(mUiManager.product())
+                nameEvent = "Edit"
+            }
+            AddEditConfig.valueDConfig() -> {
+                mViewModel.deleteProduct(
+                    mUiManager.product(
+                        true
+                    )
+                )
+                nameEvent = "Delete"
+            }
         }
+        analytic()?.logEvent(
+            "AEProductFragment_action",
+            bundleOf(Pair("Action", nameEvent))
+        )
     }
 }

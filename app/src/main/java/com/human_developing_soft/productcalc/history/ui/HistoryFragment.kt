@@ -4,15 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.logEvent
+import com.human_developing_soft.productcalc.BaseFragment
 import com.human_developing_soft.productcalc.databinding.HistoryFragmentBinding
 import com.human_developing_soft.productcalc.history.domain.HistoryVM
 import com.human_developing_soft.productcalc.history.domain.HistoryVMFactory
 import com.human_developing_soft.productcalc.history.domain.OnHistoryObtained
 import com.human_developing_soft.productcalc.product_storage.ui.ProductsListEmptyView
 
-class HistoryFragment : Fragment(), OnDayItemClicked, OnHistoryObtained {
+class HistoryFragment : BaseFragment(), OnDayItemClicked, OnHistoryObtained {
     private lateinit var mBinding: HistoryFragmentBinding
     private lateinit var mUiController: HistoryList
     private lateinit var mViewModel: HistoryVM
@@ -37,10 +39,14 @@ class HistoryFragment : Fragment(), OnDayItemClicked, OnHistoryObtained {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        analytic()?.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
+            param(FirebaseAnalytics.Param.SCREEN_NAME, "History")
+            param(FirebaseAnalytics.Param.SCREEN_CLASS, this::class.java.simpleName)
+        }
         mViewModel = ViewModelProvider(this,
             HistoryVMFactory(requireContext(),
                 this)
-        ).get(HistoryVM::class.java)
+        )[HistoryVM::class.java]
     }
 
     override fun onStart() {

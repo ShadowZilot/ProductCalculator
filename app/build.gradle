@@ -4,6 +4,10 @@ plugins {
     id 'kotlin-kapt'
 }
 
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
+
 android {
     compileSdk 31
 
@@ -50,6 +54,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
     implementation("androidx.room:room-ktx:$room_version")
+    implementation platform('com.google.firebase:firebase-bom:29.0.2')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'io.apisense:rhino-android:1.1.1'
     annotationProcessor "androidx.room:room-compiler:$room_version"
     kapt("androidx.room:room-compiler:$room_version")

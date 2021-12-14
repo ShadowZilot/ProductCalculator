@@ -5,16 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.logEvent
+import com.human_developing_soft.productcalc.BaseFragment
 import com.human_developing_soft.productcalc.databinding.ProductsFragmentBinding
 import com.human_developing_soft.productcalc.history.ui.DateProvider
 import com.human_developing_soft.productcalc.product_storage.domain.ProductListVMFactory
 import com.human_developing_soft.productcalc.product_storage.domain.ProductsListVM
 import com.human_developing_soft.productcalc.product_storage.domain.ProductsObserver
 
-class ProductsFragment : Fragment(), ProductsObserver,
+class ProductsFragment : BaseFragment(), ProductsObserver,
     OnProductClickListener, OnDayEditing, FragmentResultListener {
     private lateinit var mBinding: ProductsFragmentBinding
     private lateinit var mUiManager: DayPresentation
@@ -50,6 +52,10 @@ class ProductsFragment : Fragment(), ProductsObserver,
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        analytic()?.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
+            param(FirebaseAnalytics.Param.SCREEN_NAME, "ProductsList")
+            param(FirebaseAnalytics.Param.SCREEN_CLASS, this::class.java.simpleName)
+        }
         mViewModel = ViewModelProvider(
             this, ProductListVMFactory(
                 this,
