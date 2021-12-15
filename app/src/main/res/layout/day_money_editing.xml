@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@id/moneyInputContainer"
         app:layout_constraintEnd_toStartOf="@id/applyButton" />
 
-    1<FrameLayout
+    <FrameLayout
         android:id="@+id/keyboardContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
