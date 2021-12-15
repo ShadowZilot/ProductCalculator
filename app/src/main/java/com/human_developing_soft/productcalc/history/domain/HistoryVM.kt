@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.human_developing_soft.productcalc.history.ui.MonthProvider
 import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.ui.ProductsFragment
+import com.human_developing_soft.productcalc.review.ui.ReviewContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -37,5 +38,13 @@ class HistoryVM(
 
     fun redefineReferences(observer: OnHistoryObtained) {
         mObserver = observer
+    }
+
+    fun launchReview() {
+        viewModelScope.launch(Dispatchers.IO) {
+            ReviewContext.Internet(
+                ReviewContext.Base()
+            )
+        }
     }
 }

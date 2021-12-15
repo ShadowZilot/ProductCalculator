@@ -13,6 +13,7 @@ import com.human_developing_soft.productcalc.history.domain.HistoryVM
 import com.human_developing_soft.productcalc.history.domain.HistoryVMFactory
 import com.human_developing_soft.productcalc.history.domain.OnHistoryObtained
 import com.human_developing_soft.productcalc.product_storage.ui.ProductsListEmptyView
+import com.human_developing_soft.productcalc.review.ui.ReviewContext
 
 class HistoryFragment : BaseFragment(), OnDayItemClicked, OnHistoryObtained {
     private lateinit var mBinding: HistoryFragmentBinding
@@ -47,6 +48,7 @@ class HistoryFragment : BaseFragment(), OnDayItemClicked, OnHistoryObtained {
             HistoryVMFactory(requireContext(),
                 this)
         )[HistoryVM::class.java]
+        mViewModel.launchReview()
     }
 
     override fun onStart() {

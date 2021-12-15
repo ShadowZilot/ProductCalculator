@@ -11,5 +11,5 @@
     <item
         android:id="@+id/profileDestination"
         android:icon="@drawable/ic_settings"
-        android:title="@string/about_app_label"/>
+        android:title="@string/info_label"/>
 </menu>

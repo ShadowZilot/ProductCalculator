@@ -55,4 +55,7 @@
     <string name="version_label">Version %s</string>
     <string name="share_label">Share</string>
     <string name="info_label">Info</string>
+    <string name="review_title_label">Like the app?\nAppreciate it at its true worth!</string>
+    <string name="rate_button_label">Rate</string>
+    <string name="star_image_cd">Star image</string>
 </resources>

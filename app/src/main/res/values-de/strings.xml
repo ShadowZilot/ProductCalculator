@@ -55,4 +55,5 @@
     <string name="version_label">Ausführung %s</string>
     <string name="share_label">Teile das</string>
     <string name="info_label">Die Info</string>
+    <string name="review_title_label">Like the app?\nAppreciate it at its true worth!</string>
 </resources>

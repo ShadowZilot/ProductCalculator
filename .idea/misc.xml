@@ -12,6 +12,7 @@
         <entry key="app/src/main/res/drawable/ic_collapsing.xml" value="0.38333333333333336" />
         <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.37222222222222223" />
         <entry key="app/src/main/res/drawable/money_info_bg.xml" value="0.36944444444444446" />
+        <entry key="app/src/main/res/drawable/rate_btn_bg.xml" value="0.163" />
         <entry key="app/src/main/res/drawable/section_info_bg.xml" value="0.38333333333333336" />
         <entry key="app/src/main/res/drawable/selecting_choice_bg.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/drawable/selecting_choise_bg.xml" value="0.38333333333333336" />
@@ -37,6 +38,7 @@
         <entry key="app/src/main/res/layout/products_budget_info.xml" value="0.42083333333333334" />
         <entry key="app/src/main/res/layout/products_fragment.xml" value="0.36323394775390616" />
         <entry key="app/src/main/res/layout/products_list_empty_layout.xml" value="0.42083333333333334" />
+        <entry key="app/src/main/res/layout/review_fragment.xml" value="0.38958333333333334" />
         <entry key="app/src/main/res/layout/selecting_dialog.xml" value="0.5" />
         <entry key="app/src/main/res/layout/settings_fragment.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/menu/about_app_menu.xml" value="0.4036458333333333" />

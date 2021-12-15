@@ -50,7 +50,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                app:suffixText="кг"
+                app:suffixText="⚖️"
                 app:helperText="@string/weight_label">
                 <com.human_developing_soft.productcalc.calculator_keyboard.KeyboardEditText
                     android:id="@+id/weightInput"
