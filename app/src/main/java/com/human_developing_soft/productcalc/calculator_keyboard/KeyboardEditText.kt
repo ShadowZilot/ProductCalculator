@@ -2,12 +2,14 @@ package com.human_developing_soft.productcalc.calculator_keyboard
 
 import android.content.Context
 import android.graphics.Rect
+import android.text.Editable
 import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import com.human_developing_soft.productcalc.databinding.CalculatorKeyboardGridBinding
+import java.lang.Exception
 
 
 class KeyboardEditText(

@@ -169,9 +169,12 @@ class EqualOperation(
     override fun implementAction(calcString: String): String {
         val engine = ScriptEngineManager().getEngineByName("rhino")
         return try {
-            engine.eval(
-                calcString.replace("%", "/100")
-            ).toString()
+            String.format(
+                "%.2f",
+                engine.eval(
+                    calcString.replace("%", "/100")
+                ).toString().toFloat()
+            ).replace(",", ".")
         } catch (e: ScriptException) {
             mListener.onFormulaError()
             calcString
