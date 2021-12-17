@@ -2,6 +2,7 @@ package com.human_developing_soft.productcalc.product_storage.ui
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
 import com.human_developing_soft.productcalc.R
 import com.human_developing_soft.productcalc.databinding.CollapsingItemBinding
@@ -12,11 +13,13 @@ class CollapsingViewHolder(
     private val mListener: CollapsingListener
 ) : RecyclerView.ViewHolder(mBinding.root),
     CollapsingItemUi.Mapper<Unit> {
+    @SuppressLint("SetTextI18n")
     override fun map(type: Int, isCollapsed: Boolean, summa: Int) {
         val string = StringContext.Base(mBinding.root.context)
         val res = if (type == 0)
             R.string.collapse_title_product else R.string.collapse_title_expenditure
-        mBinding.sectionInfoView.text = string.string(res, summa)
+        mBinding.sectionInfoView.text = string.string(res, summa) +
+                " ${string.string(R.string.money_emoji)}"
         mBinding.collapsingButton.rotation = if (isCollapsed) 180f else 0f
         mBinding.root.elevation = if (isCollapsed) 0f else 10f
         mBinding.root.setOnClickListener {

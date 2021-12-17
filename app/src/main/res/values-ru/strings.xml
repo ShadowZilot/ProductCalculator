@@ -2,15 +2,15 @@
     <string name="app_name">Калькулятор\nТовара</string>
     <string name="empty_products_message">Список товаров пуст\nДобавьте что-нибудь!</string>
     <string name="formatted_place_row">%s</string>
-    <string name="formatted_price">Цена = %,.2f 🪙</string>
-    <string name="formatted_weight">Вес = %,.2f ⚖️</string>
-    <string name="formatted_summary_price">Итого = %,.2f 🪙</string>
+    <string name="formatted_price">%,.2f</string>
+    <string name="formatted_weight">%,.2f</string>
+    <string name="formatted_summary_price">%,.2f</string>
     <string name="add_product_label">Добавить</string>
     <string name="product_name_label">Наименование</string>
     <string name="ae_title">Опишите товар</string>
     <string name="weight_label">Вес товара</string>
     <string name="row_label">Ряд</string>
-    <string name="price_per_1_label">Цена за 1 ⚖️</string>
+    <string name="price_per_1_label">Цена️</string>
     <string name="note_label">Заметка</string>
     <string name="success_updating_message">Товар успешно добавлен!</string>
     <string name="fail_empty_fields">Заполните все поля!</string>
@@ -29,8 +29,8 @@
     <string name="apply_label">Применить</string>
     <string name="cancel_label">Отменить</string>
     <string name="collapse_dt_ds">Кнопка раскрывающая список с расходами</string>
-    <string name="collapse_title_product">Расходы на товар = %,d 🪙</string>
-    <string name="collapse_title_expenditure">Прочие расходы = %,d 🪙</string>
+    <string name="collapse_title_product">Расходы на товар = %,d</string>
+    <string name="collapse_title_expenditure">Прочие расходы = %,d</string>
     <string name="ae_expenditure_title">Напишите расход</string>
     <string name="field_expenditure_helper">Название траты</string>
     <string name="expenditure_cost_helper">Стоимость</string>

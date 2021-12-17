@@ -34,9 +34,9 @@
         android:layout_height="wrap_content"
         android:textAppearance="@style/ProductInfoText"
         android:layout_marginEnd="24dp"
-        tools:text="Вес = 100 кг"
+        tools:text="100"
         app:layout_constraintTop_toBottomOf="@id/productRowView"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/productPriceView"
@@ -44,9 +44,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:textAppearance="@style/ProductInfoText"
-        tools:text="Цена за 1 кг = 25 🪙"
+        tools:text="25"
         app:layout_constraintEnd_toEndOf="@id/productWeightView"
         app:layout_constraintTop_toBottomOf="@id/productWeightView"/>
+
+    <View
+        android:id="@+id/totalDivider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/teal_200"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/productPriceView"
+        app:layout_constraintBottom_toTopOf="@id/summaryPriceView"
+        app:layout_constraintStart_toStartOf="@id/summaryPriceView"/>
 
     <TextView
         android:id="@+id/summaryPriceView"
@@ -54,7 +65,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textAppearance="@style/ProductInfoText"
-        tools:text="Итого = 1000 руб"
+        tools:text="1000"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/productPriceView"
         app:layout_constraintTop_toBottomOf="@id/productPriceView"/>
 
@@ -69,5 +82,4 @@
         app:layout_constraintStart_toStartOf="@id/productRowView"
         app:layout_constraintEnd_toStartOf="@id/productPriceView"
         app:layout_constraintBottom_toBottomOf="@id/summaryPriceView"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

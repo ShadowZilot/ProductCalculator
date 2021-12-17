@@ -3,15 +3,15 @@
     <string name="app_name">Producto\nCalculadora</string>
     <string name="empty_products_message">La lista de productos está vacía.\n¡Agregue algo!</string>
     <string name="formatted_place_row">%s</string>
-    <string name="formatted_price">Precio = %,.2f 🪙</string>
-    <string name="formatted_weight">Peso = %,.2f ⚖️</string>
-    <string name="formatted_summary_price">Total = %,.2f 🪙</string>
+    <string name="formatted_price">Precio = %,.2f</string>
+    <string name="formatted_weight">%,.2f</string>
+    <string name="formatted_summary_price">%,.2f</string>
     <string name="add_product_label">Agregar</string>
     <string name="product_name_label">Nombre</string>
     <string name="ae_title">Describe el producto</string>
     <string name="weight_label">Peso del artículo</string>
     <string name="row_label">Lugar</string>
-    <string name="price_per_1_label">Precio por 1 ⚖️</string>
+    <string name="price_per_1_label">Precio️</string>
     <string name="note_label">La nota</string>
     <string name="success_updating_message">Producto agregado exitosamente!</string>
     <string name="fail_empty_fields">Complete todos los campos!</string>
@@ -30,8 +30,8 @@
     <string name="apply_label">Solicitar</string>
     <string name="cancel_label">Cancelar</string>
     <string name="collapse_dt_ds">Botón desplegable de gastos</string>
-    <string name="collapse_title_product">Costos de producto = %,d 🪙</string>
-    <string name="collapse_title_expenditure">Otros gastos = %,d 🪙</string>
+    <string name="collapse_title_product">Costos de producto = %,d</string>
+    <string name="collapse_title_expenditure">Otros gastos = %,d</string>
     <string name="ae_expenditure_title">Gastos de escritura</string>
     <string name="field_expenditure_helper">Gastar nombre</string>
     <string name="expenditure_cost_helper">Precio</string>

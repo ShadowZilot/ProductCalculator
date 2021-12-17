@@ -3,15 +3,15 @@
     <string name="app_name">Product\nCalculator</string>
     <string name="empty_products_message">Product list is empty\nLet\'s add something!</string>
     <string name="formatted_place_row">%s</string>
-    <string name="formatted_price">Price = %,.2f 🪙</string>
-    <string name="formatted_weight">Weight = %,.2f ⚖️</string>
-    <string name="formatted_summary_price">Total = %,.2f 🪙</string>
+    <string name="formatted_price">%,.2f</string>
+    <string name="formatted_weight">%,.2f</string>
+    <string name="formatted_summary_price">%,.2f</string>
     <string name="add_product_label">Add</string>
     <string name="product_name_label">Denomination</string>
     <string name="ae_title">Describe product</string>
     <string name="weight_label">Product weight</string>
     <string name="row_label">Place</string>
-    <string name="price_per_1_label">Price for 1 ⚖️</string>
+    <string name="price_per_1_label">Price️</string>
     <string name="note_label">Note</string>
     <string name="success_updating_message">Product added successfully!</string>
     <string name="fail_empty_fields">Fill all fields!</string>
@@ -30,8 +30,8 @@
     <string name="apply_label">Apply</string>
     <string name="cancel_label">Cancel</string>
     <string name="collapse_dt_ds">Button expanding list of expenditures</string>
-    <string name="collapse_title_product">Product costs = %,d 🪙</string>
-    <string name="collapse_title_expenditure">Expenditure costs = %,d 🪙</string>
+    <string name="collapse_title_product">Product costs = %,d</string>
+    <string name="collapse_title_expenditure">Expenditure costs = %,d</string>
     <string name="ae_expenditure_title">Describe expenditure</string>
     <string name="field_expenditure_helper">Expenditure name</string>
     <string name="expenditure_cost_helper">Cost</string>
@@ -58,4 +58,6 @@
     <string name="review_title_label">Like the app?\nAppreciate it at its true worth!</string>
     <string name="rate_button_label">Rate</string>
     <string name="star_image_cd">Star image</string>
+    <string name="weight_emoji" translatable="false">⚖️</string>
+    <string name="money_emoji" translatable="false">🪙</string>
 </resources>
