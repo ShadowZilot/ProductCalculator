@@ -4,9 +4,11 @@ import android.content.Context
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.human_developing_soft.productcalc.SharedPreferencesShell
 import com.human_developing_soft.productcalc.history.ui.MonthProvider
 import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.ui.ProductsFragment
+import com.human_developing_soft.productcalc.review.domain.ReviewNeeded
 import com.human_developing_soft.productcalc.review.ui.ReviewContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -40,10 +42,12 @@ class HistoryVM(
         mObserver = observer
     }
 
-    fun launchReview() {
+    fun launchReview(shell: SharedPreferencesShell) {
         viewModelScope.launch(Dispatchers.IO) {
             ReviewContext.Internet(
-                ReviewContext.Base()
+                ReviewContext.Base(ReviewNeeded.Base(
+                    shell
+                ))
             )
         }
     }

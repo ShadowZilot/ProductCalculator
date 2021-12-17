@@ -1,7 +1,7 @@
 package com.human_developing_soft.productcalc.review.ui
 
-import com.human_developing_soft.productcalc.SharedPreferencesShell
 import com.human_developing_soft.productcalc.navigation.Navigation
+import com.human_developing_soft.productcalc.review.domain.ReviewNeeded
 import java.net.InetAddress
 
 
@@ -30,10 +30,10 @@ interface ReviewContext {
     }
 
     class Base(
-        private val mReviewInfo: SharedPreferencesShell
+        private val mReviewInfo: ReviewNeeded
     ) : ReviewContext {
         override fun showReview() {
-            if ((1..10).random() == 2) {
+            if (mReviewInfo.isReviewNeed()) {
                 Navigation.Navigation.instance().showDialog(
                     ReviewFragment()
                 )

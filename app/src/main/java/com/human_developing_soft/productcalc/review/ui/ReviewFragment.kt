@@ -9,8 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.human_developing_soft.productcalc.AnalyticsApp
+import com.human_developing_soft.productcalc.SharedPreferencesShell
 import com.human_developing_soft.productcalc.databinding.ReviewFragmentBinding
-import kotlinx.coroutines.withTimeoutOrNull
+import com.human_developing_soft.productcalc.review.domain.sLastReview
+import com.human_developing_soft.productcalc.sReviewGlobal
+import java.util.*
 
 /**
  * Human Developing Soft
@@ -49,6 +52,11 @@ class ReviewFragment : BottomSheetDialogFragment() {
             (requireActivity().application as AnalyticsApp)
                 .instance()
                 ?.logEvent("User_go_to_rate", Bundle())
+            SharedPreferencesShell.Base(requireContext(),
+                sReviewGlobal).edit {
+                    it.putLong(sLastReview, Date().time)
+                    it.apply()
+            }
             mIsGoRate = true
         }
     }

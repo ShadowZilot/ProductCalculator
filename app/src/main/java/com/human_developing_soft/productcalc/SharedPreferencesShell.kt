@@ -16,6 +16,8 @@ interface SharedPreferencesShell {
 
     fun valueFloat(key: String, defVal: Float = 0f): Float
 
+    fun valueLong(key: String, defVal: Long = 0L): Long
+
     fun valueString(key: String, defVal: String = ""): String
 
     fun edit(editing: (editor: SharedPreferences.Editor) -> Unit)
@@ -34,6 +36,9 @@ interface SharedPreferencesShell {
 
         override fun valueFloat(key: String, defVal: Float) = mPreference
             .getFloat(key, defVal)
+
+        override fun valueLong(key: String, defVal: Long) = mPreference
+            .getLong(key, defVal)
 
         override fun valueString(key: String, defVal: String) = mPreference
             .getString(key, defVal)!!
