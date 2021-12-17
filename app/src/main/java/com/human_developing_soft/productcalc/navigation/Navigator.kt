@@ -17,5 +17,5 @@ interface Navigator {
 
     fun takeBack()
 
-    fun redefineFragmentManager(fm : FragmentManager)
+    fun redefineReferences(fm: FragmentManager, bottomNav: OnHidingBottomNav)
 }

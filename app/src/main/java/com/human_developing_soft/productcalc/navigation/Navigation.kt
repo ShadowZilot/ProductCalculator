@@ -11,7 +11,7 @@ import androidx.lifecycle.LifecycleOwner
 class Navigation private constructor(
     private var mManager: FragmentManager,
     private val mHost: Int,
-    private val mHidingNav: OnHidingBottomNav
+    private var mHidingNav: OnHidingBottomNav? = null
 ) : Navigator {
     private val mList = mutableListOf<String>()
 
@@ -33,7 +33,7 @@ class Navigation private constructor(
                 mList.last()
             )
         } else {
-            mHidingNav.onHide()
+            mHidingNav?.onHide()
             mList.add("${mList.size}$targetFragment.name")
             transaction.add(
                 mHost,
@@ -74,7 +74,7 @@ class Navigation private constructor(
             transaction.remove(mManager.findFragmentByTag(mList.last())!!)
             mList.remove(mList.last())
             if (mList.last().contains("{y}")) {
-                mHidingNav.onShow()
+                mHidingNav?.onShow()
             }
             mManager.findFragmentByTag(mList.last())!!.onResume()
             transaction.commit()
@@ -83,8 +83,9 @@ class Navigation private constructor(
         }
     }
 
-    override fun redefineFragmentManager(fm : FragmentManager) {
+    override fun redefineReferences(fm: FragmentManager, bottomNav: OnHidingBottomNav) {
         mManager = fm
+        mHidingNav = bottomNav
     }
 
     object Navigation {

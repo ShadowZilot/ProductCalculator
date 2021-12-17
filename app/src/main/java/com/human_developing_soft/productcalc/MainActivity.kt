@@ -1,14 +1,11 @@
 package com.human_developing_soft.productcalc
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.human_developing_soft.productcalc.calculator_keyboard.HiddenKeyboard
 import com.human_developing_soft.productcalc.calculator_keyboard.KeyboardHiding
 import com.human_developing_soft.productcalc.databinding.ActivityMainBinding
 import com.human_developing_soft.productcalc.navigation.Navigation
-import com.human_developing_soft.productcalc.navigation.OnHidingBottomNav
 import com.human_developing_soft.productcalc.product_storage.ui.ProductsFragment
 
 class MainActivity : AppCompatActivity(), KeyboardHiding {
@@ -27,8 +24,12 @@ class MainActivity : AppCompatActivity(), KeyboardHiding {
             Navigation.Navigation.instance().navigateTo(ProductsFragment::class.java,
                 isBackedStack = false)
         } else {
-            Navigation.Navigation.instance().redefineFragmentManager(
-                supportFragmentManager)
+            mBinding.bottomNav.visibility = savedInstanceState.getInt(
+                "bottomNavVisibility")
+            Navigation.Navigation.instance().redefineReferences(
+                supportFragmentManager,
+                mBinding.bottomNav
+            )
         }
         mBinding.bottomNav.setupWithNavComponent(
             Navigation.Navigation.instance())
@@ -47,6 +48,11 @@ class MainActivity : AppCompatActivity(), KeyboardHiding {
         } catch (e : Exception) {
             finish()
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("bottomNavVisibility", mBinding.bottomNav.visibility)
     }
 
     override fun registerKeyboard(keyboard: HiddenKeyboard) {
