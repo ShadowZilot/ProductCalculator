@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.logEvent
-import com.human_developing_soft.productcalc.BaseFragment
+import com.human_developing_soft.productcalc.main.ui.BaseFragment
 import com.human_developing_soft.productcalc.databinding.ProductsFragmentBinding
 import com.human_developing_soft.productcalc.history.ui.DateProvider
 import com.human_developing_soft.productcalc.product_storage.domain.ProductListVMFactory

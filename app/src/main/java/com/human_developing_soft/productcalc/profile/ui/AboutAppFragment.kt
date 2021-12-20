@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.logEvent
-import com.human_developing_soft.productcalc.BaseFragment
+import com.human_developing_soft.productcalc.main.ui.BaseFragment
 import com.human_developing_soft.productcalc.BuildConfig
 import com.human_developing_soft.productcalc.R
 import com.human_developing_soft.productcalc.databinding.AboutAppFragmentBinding

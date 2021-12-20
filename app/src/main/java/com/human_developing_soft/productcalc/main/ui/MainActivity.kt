@@ -1,21 +1,30 @@
-package com.human_developing_soft.productcalc
+package com.human_developing_soft.productcalc.main.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.human_developing_soft.productcalc.BuildConfig
+import com.human_developing_soft.productcalc.R
 import com.human_developing_soft.productcalc.calculator_keyboard.HiddenKeyboard
 import com.human_developing_soft.productcalc.calculator_keyboard.KeyboardHiding
 import com.human_developing_soft.productcalc.databinding.ActivityMainBinding
+import com.human_developing_soft.productcalc.main.domain.MainVMFactory
+import com.human_developing_soft.productcalc.main.domain.MainViewModel
 import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.ui.ProductsFragment
 
-class MainActivity : AppCompatActivity(), KeyboardHiding {
+class MainActivity : AppCompatActivity(), KeyboardHiding, FillingResultListener {
     private var mKeyboards = mutableListOf<HiddenKeyboard>()
     private lateinit var mBinding : ActivityMainBinding
+    private lateinit var mViewModel : MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+        mViewModel = ViewModelProvider(this, MainVMFactory(
+            this, this
+        ))[MainViewModel::class.java]
         if (savedInstanceState == null) {
             Navigation.Navigation.instance(
                 supportFragmentManager,
@@ -24,6 +33,9 @@ class MainActivity : AppCompatActivity(), KeyboardHiding {
             Navigation.Navigation.instance().navigateTo(ProductsFragment::class.java,
                 isBackedStack = false)
         } else {
+            if (BuildConfig.DEBUG) {
+                mViewModel.setupDatabase()
+            }
             mBinding.bottomNav.visibility = savedInstanceState.getInt(
                 "bottomNavVisibility")
             Navigation.Navigation.instance().redefineReferences(
@@ -61,6 +73,10 @@ class MainActivity : AppCompatActivity(), KeyboardHiding {
 
     override fun removeKeyboard(keyboard: HiddenKeyboard) {
         mKeyboards.remove(keyboard)
+    }
+
+    override fun onFillingComplete() {
+
     }
 }
 

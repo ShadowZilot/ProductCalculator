@@ -1,7 +1,8 @@
-package com.human_developing_soft.productcalc
+package com.human_developing_soft.productcalc.main.ui
 
 import androidx.fragment.app.Fragment
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.human_developing_soft.productcalc.main.domain.AnalyticsApp
 
 /**
  * Human Developing Soft

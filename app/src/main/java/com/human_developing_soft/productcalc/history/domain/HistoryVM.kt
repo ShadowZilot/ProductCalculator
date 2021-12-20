@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.human_developing_soft.productcalc.SharedPreferencesShell
+import com.human_developing_soft.productcalc.main.data.SharedPreferencesShell
 import com.human_developing_soft.productcalc.history.ui.MonthProvider
 import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.ui.ProductsFragment

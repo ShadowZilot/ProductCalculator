@@ -8,8 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.human_developing_soft.productcalc.AnalyticsApp
-import com.human_developing_soft.productcalc.SharedPreferencesShell
+import com.human_developing_soft.productcalc.main.domain.AnalyticsApp
+import com.human_developing_soft.productcalc.main.data.SharedPreferencesShell
 import com.human_developing_soft.productcalc.databinding.ReviewFragmentBinding
 import com.human_developing_soft.productcalc.review.domain.sLastReview
 import com.human_developing_soft.productcalc.sReviewGlobal

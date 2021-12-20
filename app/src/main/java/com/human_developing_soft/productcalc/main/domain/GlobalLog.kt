@@ -1,4 +1,4 @@
-package com.human_developing_soft.productcalc
+package com.human_developing_soft.productcalc.main.domain
 
 import android.util.Log
 

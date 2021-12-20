@@ -1,4 +1,4 @@
-package com.human_developing_soft.productcalc
+package com.human_developing_soft.productcalc.main.data
 
 import android.content.Context
 import android.content.SharedPreferences

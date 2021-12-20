@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.logEvent
-import com.human_developing_soft.productcalc.BaseFragment
-import com.human_developing_soft.productcalc.SharedPreferencesShell
+import com.human_developing_soft.productcalc.main.ui.BaseFragment
+import com.human_developing_soft.productcalc.main.data.SharedPreferencesShell
 import com.human_developing_soft.productcalc.databinding.HistoryFragmentBinding
 import com.human_developing_soft.productcalc.history.domain.HistoryVM
 import com.human_developing_soft.productcalc.history.domain.HistoryVMFactory
@@ -49,7 +49,8 @@ class HistoryFragment : BaseFragment(), OnDayItemClicked, OnHistoryObtained {
             HistoryVMFactory(requireContext(),
                 this)
         )[HistoryVM::class.java]
-        mViewModel.launchReview(SharedPreferencesShell.Base(requireContext(),
+        mViewModel.launchReview(
+            SharedPreferencesShell.Base(requireContext(),
             sReviewGlobal))
     }
 

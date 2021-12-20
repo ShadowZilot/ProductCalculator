@@ -1,6 +1,6 @@
 package com.human_developing_soft.productcalc.review.domain
 
-import com.human_developing_soft.productcalc.SharedPreferencesShell
+import com.human_developing_soft.productcalc.main.data.SharedPreferencesShell
 import com.human_developing_soft.productcalc.product_storage.domain.days
 import java.util.*
 
