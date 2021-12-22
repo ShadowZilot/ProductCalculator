@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProductCalc">
         <activity
-            android:name="com.human_developing_soft.productcalc.MainActivity"
+            android:name="com.human_developing_soft.productcalc.main.ui.MainActivity"
             android:windowSoftInputMode="adjustPan"
             android:screenOrientation="locked"
             android:exported="true">

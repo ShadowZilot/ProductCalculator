@@ -2,9 +2,6 @@ package com.human_developing_soft.productcalc.product_storage.data
 
 import android.content.Context
 import androidx.room.Room
-import com.human_developing_soft.productcalc.history.ui.byDay
-import java.lang.IndexOutOfBoundsException
-import java.util.*
 
 class ProductDBStorage private constructor(
     context: Context

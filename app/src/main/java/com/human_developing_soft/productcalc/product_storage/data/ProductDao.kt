@@ -8,10 +8,10 @@ interface ProductDao {
     @Query("SELECT * FROM days")
     suspend fun allDays(): List<AllDay>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertProduct(newProduct: Product)
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun createDay(newDay: Day)
 
     @Query("SELECT * FROM days WHERE mId = :id")

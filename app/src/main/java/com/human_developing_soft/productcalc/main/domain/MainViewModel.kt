@@ -1,6 +1,7 @@
 package com.human_developing_soft.productcalc.main.domain
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.human_developing_soft.productcalc.main.ui.ArraysProvider
@@ -8,6 +9,7 @@ import com.human_developing_soft.productcalc.main.ui.FillingResultListener
 import com.human_developing_soft.productcalc.product_storage.domain.days
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.*
 
 /**
@@ -25,16 +27,18 @@ class MainViewModel(
     )
 
     fun setupDatabase() {
-        viewModelScope.launch(Dispatchers.Main) {
-            var startDate = Date().time - (365L * 86400L * 1000L * 2L)
+        viewModelScope.launch(Dispatchers.IO) {
+            var endDate = Date().time - (365L * 86400L * 1000L * 1f).toLong()
             val currentDate = Date().time
-            while (currentDate.days() >= startDate.days()) {
+            while (endDate.days() <= currentDate.days()) {
                 mAutoFilling.autoFillDay(
-                    startDate
+                    endDate
                 )
-                startDate -= 86400000L
+                endDate += 86400L * 1000
             }
-            mListener.onFillingComplete()
+            withContext(Dispatchers.Main) {
+                mListener.onFillingComplete()
+            }
         }
     }
 }

@@ -11,32 +11,28 @@ import com.human_developing_soft.productcalc.main.ui.ArraysProvider
 interface AutoFilling {
     suspend fun autoFillDay(date: Long)
 
-    suspend fun clearDatabase()
-
     class Base(
-        private  val mRepository: AutoFillUseCase,
+        private val mRepository: AutoFillUseCase,
         private val mArrays: ArraysProvider
     ) : AutoFilling {
         private var mDayId = 0
 
         override suspend fun autoFillDay(date: Long) {
-            val dayConstructor = DayConstructor.Base(
-                mDayId,
-                date,
-                ExpenditureConstructor.Base(
+            mRepository.injectDay(
+                DayConstructor.Base(
                     mDayId,
-                    mArrays.array(R.array.expenditure_list).toList()
-                ),
-                ProductConstructor.Base(
-                    mDayId,
-                    mArrays.array(R.array.product_list).toList()
-                )
+                    date,
+                    ExpenditureConstructor.Base(
+                        mDayId,
+                        mArrays.array(R.array.expenditure_list).toList()
+                    ),
+                    ProductConstructor.Base(
+                        mDayId,
+                        mArrays.array(R.array.product_list).toList()
+                    )
+                ).constructedDay()
             )
-            mRepository.injectDay(dayConstructor.constructedDay())
-        }
-
-        override suspend fun clearDatabase() {
-            mRepository.deleteAllDays()
+            mDayId++
         }
     }
 }

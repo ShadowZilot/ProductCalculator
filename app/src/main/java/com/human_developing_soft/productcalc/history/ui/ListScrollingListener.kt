@@ -14,11 +14,15 @@ class ListScrollingListener(
     override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
         val firstVisible = (recyclerView.layoutManager as LinearLayoutManager)
             .findFirstCompletelyVisibleItemPosition()
-        val year = (recyclerView
-            .layoutManager
-            ?.findViewByPosition(firstVisible) as YearConstraintLayout)
-            .year()
-        mYearObserver.onYearUpdate(year)
+        try {
+            val year = (recyclerView
+                .layoutManager
+                ?.findViewByPosition(firstVisible) as YearConstraintLayout)
+                .year()
+            mYearObserver.onYearUpdate(year)
+        } catch (e : NullPointerException) {
+            mYearObserver.onYearUpdate(-1)
+        }
     }
 
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {}
