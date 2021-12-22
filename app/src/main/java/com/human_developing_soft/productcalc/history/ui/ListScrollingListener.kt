@@ -13,7 +13,7 @@ class ListScrollingListener(
 ) : RecyclerView.OnScrollListener() {
     override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
         val firstVisible = (recyclerView.layoutManager as LinearLayoutManager)
-            .findFirstCompletelyVisibleItemPosition()
+            .findFirstVisibleItemPosition()
         try {
             val year = (recyclerView
                 .layoutManager

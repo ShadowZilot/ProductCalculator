@@ -1,8 +1,9 @@
 package com.human_developing_soft.productcalc.main.domain
 
 import android.content.Context
-import android.util.Log
-import com.human_developing_soft.productcalc.product_storage.data.*
+import com.human_developing_soft.productcalc.product_storage.data.AllDay
+import com.human_developing_soft.productcalc.product_storage.data.DayDomainToData
+import com.human_developing_soft.productcalc.product_storage.data.ProductDBStorage
 import com.human_developing_soft.productcalc.product_storage.domain.DayDomain
 import com.human_developing_soft.productcalc.product_storage.domain.ProductRepository
 

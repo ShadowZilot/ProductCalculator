@@ -1,11 +1,8 @@
 package com.human_developing_soft.productcalc.main.domain
 
-import android.annotation.SuppressLint
-import android.util.Log
 import com.human_developing_soft.productcalc.product_storage.data.AllDay
 import com.human_developing_soft.productcalc.product_storage.data.Day
 import com.human_developing_soft.productcalc.product_storage.data.Product
-import java.text.SimpleDateFormat
 
 /**
  * Human Developing Soft
@@ -22,7 +19,6 @@ interface DayConstructor {
         private val mProductConstructor: ProductConstructor
     ) : DayConstructor {
 
-        @SuppressLint("SimpleDateFormat")
         override fun constructedDay(): AllDay {
             val productSize = (5..12).random()
             val expenditureSize = (2..5).random()

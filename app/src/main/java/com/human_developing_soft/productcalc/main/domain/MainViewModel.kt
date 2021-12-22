@@ -1,7 +1,6 @@
 package com.human_developing_soft.productcalc.main.domain
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.human_developing_soft.productcalc.main.ui.ArraysProvider
@@ -28,7 +27,7 @@ class MainViewModel(
 
     fun setupDatabase() {
         viewModelScope.launch(Dispatchers.IO) {
-            var endDate = Date().time - (365L * 86400L * 1000L * 1f).toLong()
+            var endDate = Date().time - (365L * 86400L * 1000L * 2f).toLong()
             val currentDate = Date().time
             while (endDate.days() <= currentDate.days()) {
                 mAutoFilling.autoFillDay(

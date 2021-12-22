@@ -24,34 +24,34 @@
         <item>Sa</item>
     </string-array>
     <string-array name="expenditure_list">
-        <item>Проезд 🚘</item>
-        <item>Бензин ⛽</item>
-        <item>Еда 🥪</item>
-        <item>Доставка 🚚</item>
-        <item>Упаковки 📦</item>
-        <item>Канцелярия 📌</item>
-        <item>Тара 🧺</item>
-        <item>Аренда 🏠</item>
+        <item>Passage 🚘</item>
+        <item>Petrol ⛽</item>
+        <item>Food 🥪</item>
+        <item>Delivery 🚚</item>
+        <item>Packaging 📦</item>
+        <item>Chancery 📌</item>
+        <item>Container 🧺</item>
+        <item>Rent 🏠</item>
     </string-array>
     <string-array name="product_list">
-        <item>Помидоры 🍅</item>
-        <item>Огурцы 🥒</item>
-        <item>Яблоки 🍎</item>
-        <item>Апельсины 🍊</item>
-        <item>Мандарины 🍊</item>
-        <item>Баклажаны 🍆</item>
-        <item>Морковка 🥕</item>
-        <item>Свекла</item>
-        <item>Лук 🧅</item>
-        <item>Картошка 🥔</item>
-        <item>Арбузы 🍉</item>
-        <item>Дыни 🍈</item>
-        <item>Лимоны 🍋</item>
-        <item>Вишня 🍒</item>
-        <item>Абрикосы</item>
-        <item>Персики 🍑</item>
-        <item>Виноград 🍇</item>
-        <item>Хурьма</item>
-        <item>Ананасы 🍍</item>
+        <item>Tomatoes 🍅</item>
+        <item>Cucumbers 🥒</item>
+        <item>Apples 🍎</item>
+        <item>Oranges 🍊</item>
+        <item>Tangerines 🍊</item>
+        <item>Eggplant 🍆</item>
+        <item>Carrot 🥕</item>
+        <item>Beet</item>
+        <item>Onion 🧅</item>
+        <item>Potato 🥔</item>
+        <item>Watermelon 🍉</item>
+        <item>Melons 🍈</item>
+        <item>Lemons 🍋</item>
+        <item>Cherry 🍒</item>
+        <item>Apricots</item>
+        <item>Peaches 🍑</item>
+        <item>Grape 🍇</item>
+        <item>Persimmon</item>
+        <item>Pineapple 🍍</item>
     </string-array>
 </resources>
