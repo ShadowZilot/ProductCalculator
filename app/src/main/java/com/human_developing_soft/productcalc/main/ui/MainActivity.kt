@@ -3,7 +3,6 @@ package com.human_developing_soft.productcalc.main.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.human_developing_soft.productcalc.BuildConfig
 import com.human_developing_soft.productcalc.R
 import com.human_developing_soft.productcalc.calculator_keyboard.HiddenKeyboard
 import com.human_developing_soft.productcalc.calculator_keyboard.KeyboardHiding
@@ -12,6 +11,8 @@ import com.human_developing_soft.productcalc.main.domain.MainVMFactory
 import com.human_developing_soft.productcalc.main.domain.MainViewModel
 import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.ui.ProductsFragment
+
+const val sAutoFill = false
 
 class MainActivity : AppCompatActivity(), KeyboardHiding, FillingResultListener {
     private var mKeyboards = mutableListOf<HiddenKeyboard>()
@@ -26,6 +27,9 @@ class MainActivity : AppCompatActivity(), KeyboardHiding, FillingResultListener 
             this, this
         ))[MainViewModel::class.java]
         if (savedInstanceState == null) {
+            if (sAutoFill) {
+                mViewModel.setupDatabase()
+            }
             Navigation.Navigation.instance(
                 supportFragmentManager,
                 R.id.mainHost,
@@ -33,9 +37,6 @@ class MainActivity : AppCompatActivity(), KeyboardHiding, FillingResultListener 
             Navigation.Navigation.instance().navigateTo(ProductsFragment::class.java,
                 isBackedStack = false)
         } else {
-            if (BuildConfig.DEBUG) {
-                mViewModel.setupDatabase()
-            }
             mBinding.bottomNav.visibility = savedInstanceState.getInt(
                 "bottomNavVisibility")
             Navigation.Navigation.instance().redefineReferences(
