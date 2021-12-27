@@ -6,6 +6,7 @@ interface DomainProduct {
 
     class Base(
         private val mId: Int?,
+        private val mProductNameId: Int?,
         private val mName: String,
         private val mWeight: Float,
         private val mPriceForWeight: Float,
@@ -15,6 +16,7 @@ interface DomainProduct {
         override fun <T> map(mapper: Mapper<T>): T {
             return mapper.map(
                 mId,
+                mProductNameId,
                 mName,
                 mWeight,
                 mPriceForWeight,
@@ -33,6 +35,7 @@ interface DomainProduct {
     interface Mapper<T> {
         fun map(
             id: Int?,
+            productNameId: Int?,
             name: String,
             weight: Float,
             priceForWeight: Float,

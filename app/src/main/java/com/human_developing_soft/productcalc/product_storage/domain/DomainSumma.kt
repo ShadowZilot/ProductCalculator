@@ -5,6 +5,7 @@ import com.human_developing_soft.productcalc.add_editing.products.ui.SummaryPric
 class DomainSumma : DomainProduct.Mapper<Float> {
     override fun map(
         id: Int?,
+        productNameId: Int?,
         name: String,
         weight: Float,
         priceForWeight: Float,

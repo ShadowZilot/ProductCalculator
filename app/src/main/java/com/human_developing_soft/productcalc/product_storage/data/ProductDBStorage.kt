@@ -2,6 +2,7 @@ package com.human_developing_soft.productcalc.product_storage.data
 
 import android.content.Context
 import androidx.room.Room
+import com.human_developing_soft.productcalc.product_storage.data.migrations.MigrationFrom2To3
 
 class ProductDBStorage private constructor(
     context: Context
@@ -9,8 +10,9 @@ class ProductDBStorage private constructor(
     private val mDatabase: ProductDatabase = Room.databaseBuilder(
         context.applicationContext,
         ProductDatabase::class.java,
-        "Products.db"
-    ).build()
+        "Products.db")
+        .addMigrations(MigrationFrom2To3())
+        .build()
 
     override suspend fun allDays(): List<AllDay> = mDatabase.productDao().allDays()
 

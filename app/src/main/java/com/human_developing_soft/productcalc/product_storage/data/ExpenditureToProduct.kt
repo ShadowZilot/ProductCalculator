@@ -9,6 +9,7 @@ class ExpenditureToProduct(
         return Product(
             id,
             mDayId,
+            null,
             name,
             1f,
             price,

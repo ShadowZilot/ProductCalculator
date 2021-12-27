@@ -4,6 +4,7 @@ class CheckingExpenditure : ProductMapper<Boolean> {
     override fun map(
         id: Int,
         dayId: Int,
+        productNameId: Int?,
         name: String,
         weight: Float,
         priceForWeight: Float,

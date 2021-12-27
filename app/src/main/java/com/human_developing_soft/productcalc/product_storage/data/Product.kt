@@ -10,6 +10,8 @@ data class Product(
     private val mId: Int?,
     @ColumnInfo(name = "dayId")
     private val mDayId: Int?,
+    @ColumnInfo(name = "productNameId")
+    private val mProductNameId: Int?,
     @ColumnInfo(name = "name")
     private val mName: String,
     @ColumnInfo(name = "weight")
@@ -25,6 +27,7 @@ data class Product(
         return mapper.map(
             mId!!,
             mDayId!!,
+            mProductNameId,
             mName,
             mWeight,
             mPriceForWeight,
@@ -36,6 +39,8 @@ data class Product(
     fun getId() = mId
 
     fun getDayId() = mDayId
+
+    fun getProductNameId() = mProductNameId
 
     fun getName() = mName
 

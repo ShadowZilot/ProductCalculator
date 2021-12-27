@@ -6,6 +6,7 @@ class DataToDomainProduct : ProductMapper<DomainProduct> {
     override fun map(
         id: Int,
         dayId: Int,
+        productNameId: Int?,
         name: String,
         weight: Float,
         priceForWeight: Float,
@@ -14,6 +15,7 @@ class DataToDomainProduct : ProductMapper<DomainProduct> {
     ): DomainProduct {
         return DomainProduct.Base(
             id,
+            productNameId,
             name,
             weight,
             priceForWeight,

@@ -15,6 +15,7 @@ class UiToDomainProduct : ProductUi.Mapper<DomainProduct> {
     ): DomainProduct {
         return DomainProduct.Base(
             id,
+            null,
             name,
             weight,
             priceForWeight,

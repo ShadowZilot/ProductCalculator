@@ -8,6 +8,7 @@ class DomainToDataProduct(
 ) : DomainProduct.Mapper<Product> {
     override fun map(
         id: Int?,
+        productNameId: Int?,
         name: String,
         weight: Float,
         priceForWeight: Float,
@@ -17,6 +18,7 @@ class DomainToDataProduct(
         return Product(
             id,
             mDayId,
+            productNameId,
             name,
             weight,
             priceForWeight,

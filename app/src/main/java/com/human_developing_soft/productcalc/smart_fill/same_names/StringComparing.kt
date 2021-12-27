@@ -1,4 +1,4 @@
-package com.human_developing_soft.productcalc.smart_fill
+package com.human_developing_soft.productcalc.smart_fill.same_names
 
 /**
  * Human Developing Soft

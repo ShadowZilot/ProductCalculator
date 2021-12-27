@@ -1,5 +1,6 @@
 package com.human_developing_soft.productcalc.smart_fill
 
+import com.human_developing_soft.productcalc.smart_fill.same_names.StringComparing
 import org.junit.Assert.*
 import org.junit.Test
 

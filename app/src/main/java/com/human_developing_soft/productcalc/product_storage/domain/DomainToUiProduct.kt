@@ -6,6 +6,7 @@ import com.human_developing_soft.productcalc.product_storage.ui.ProductUi
 class DomainToUiProduct : DomainProduct.Mapper<ProductUi> {
     override fun map(
         id: Int?,
+        productNameId: Int?,
         name: String,
         weight: Float,
         priceForWeight: Float,

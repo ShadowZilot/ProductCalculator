@@ -18,6 +18,7 @@ interface ProductConstructor {
             return Product(
                 null,
                 mDayInt,
+                null,
                 mPossibleList.random(),
                 (45..350).random().toFloat(),
                 (15..150).random().toFloat(),

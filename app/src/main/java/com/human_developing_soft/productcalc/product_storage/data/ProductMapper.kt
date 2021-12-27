@@ -4,6 +4,7 @@ interface ProductMapper<T> {
     fun map(
         id: Int,
         dayId: Int,
+        productNameId: Int?,
         name: String,
         weight: Float,
         priceForWeight: Float,
