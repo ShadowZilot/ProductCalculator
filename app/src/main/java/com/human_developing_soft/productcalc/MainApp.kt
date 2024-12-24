@@ -3,11 +3,11 @@ package com.human_developing_soft.productcalc
 import android.app.Application
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.ktx.BuildConfig
-import com.human_developing_soft.productcalc.main.domain.AnalyticsApp
 import com.human_developing_soft.productcalc.main.data.SharedPreferencesShell
+import com.human_developing_soft.productcalc.main.domain.AnalyticsApp
 import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.review.domain.sBeginUseApp
-import java.util.*
+import java.util.Date
 
 const val sReviewGlobal = "review"
 const val sFirstRun = "firstRun"

@@ -15,9 +15,11 @@ class Navigation private constructor(
 ) : Navigator {
     private val mList = mutableListOf<String>()
 
-    override fun navigateTo(targetFragment: Class<out Fragment>,
-                            data: Bundle?,
-                            isBackedStack: Boolean) {
+    override fun navigateTo(
+        targetFragment: Class<out Fragment>,
+        data: Bundle?,
+        isBackedStack: Boolean
+    ) {
         val transaction = mManager.beginTransaction()
         if (!isBackedStack) {
             if (mList.isEmpty()) {
@@ -65,7 +67,8 @@ class Navigation private constructor(
         }
         targetFragment.show(
             mManager,
-            targetFragment.tag)
+            targetFragment.tag
+        )
     }
 
     override fun takeBack() {
@@ -100,12 +103,7 @@ class Navigation private constructor(
             return mNavigator!!
         }
 
-        fun instance(): Navigator {
-            if (mNavigator == null) {
-                throw Exception("Navigation is not initialized yet!")
-            } else {
-                return mNavigator!!
-            }
-        }
+        fun instance(): Navigator =
+            mNavigator ?: throw Exception("Navigation is not initialized yet!")
     }
 }
