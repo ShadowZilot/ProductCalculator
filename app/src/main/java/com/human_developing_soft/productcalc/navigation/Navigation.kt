@@ -86,11 +86,6 @@ class Navigation private constructor(
         }
     }
 
-    override fun redefineReferences(fm: FragmentManager, bottomNav: OnHidingBottomNav) {
-        mManager = fm
-        mHidingNav = bottomNav
-    }
-
     object Navigation {
         private var mNavigator: Navigator? = null
 

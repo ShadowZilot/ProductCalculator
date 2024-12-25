@@ -16,6 +16,4 @@ interface Navigator {
              data: Bundle? = null)
 
     fun takeBack()
-
-    fun redefineReferences(fm: FragmentManager, bottomNav: OnHidingBottomNav)
 }
