@@ -1,164 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:tools="http://schemas.android.com/tools"
+<com.human_developing_soft.productcalc.calculator_keyboard.ui.CalculatorKeyboardLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/keyboard_grid"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
+    android:background="?attr/colorButtonNormal"
     android:clickable="true"
-    android:focusable="true"
     android:columnCount="4"
-    android:rowCount="6">
+    android:elevation="16dp"
+    android:focusable="true"
+    android:paddingHorizontal="28dp"
+    android:paddingVertical="8dp"
+    android:rowCount="5">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
-        android:layout_columnSpan="4"
-        android:layout_gravity="end"
-        android:text="Del"
-        tools:ignore="HardcodedText" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:theme="@style/ClearButton"
         style="@style/ClearButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tag="C"
         android:text="C"
+        android:theme="@style/ClearButton"
         tools:ignore="HardcodedText" />
+
     <Button
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
+        android:tag="()"
         android:text="()"
+        android:theme="@style/CalculatorButton"
         tools:ignore="HardcodedText" />
+
     <Button
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
+        android:tag="%"
         android:text="%"
+        android:theme="@style/CalculatorButton"
         tools:ignore="HardcodedText" />
-    <!--TODO change char '/' to normal division symbol-->
-    <Button
+
+    <ImageButton
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_division"
+        android:tag="/"
         android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
-        android:text="/"
         tools:ignore="HardcodedText" />
+
     <Button
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
+        android:tag="7"
         android:text="7"
+        android:theme="@style/CalculatorButton"
         tools:ignore="HardcodedText" />
+
     <Button
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
+        android:tag="8"
         android:text="8"
+        android:theme="@style/CalculatorButton"
         tools:ignore="HardcodedText" />
+
     <Button
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
+        android:tag="9"
         android:text="9"
+        android:theme="@style/CalculatorButton"
         tools:ignore="HardcodedText" />
-    <Button
+
+    <ImageButton
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_multiply"
+        android:tag="*"
         android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
-        android:text="*"
         tools:ignore="HardcodedText" />
+
     <Button
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
+        android:tag="4"
         android:text="4"
+        android:theme="@style/CalculatorButton"
         tools:ignore="HardcodedText" />
+
     <Button
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
+        android:tag="5"
         android:text="5"
+        android:theme="@style/CalculatorButton"
         tools:ignore="HardcodedText" />
+
     <Button
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
+        android:tag="6"
         android:text="6"
+        android:theme="@style/CalculatorButton"
         tools:ignore="HardcodedText" />
-    <Button
+
+    <ImageButton
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_minus"
+        android:tag="-"
         android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
-        android:text="-"
         tools:ignore="HardcodedText" />
+
     <Button
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
+        android:tag="1"
         android:text="1"
+        android:theme="@style/CalculatorButton"
         tools:ignore="HardcodedText" />
+
     <Button
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
+        android:tag="2"
         android:text="2"
+        android:theme="@style/CalculatorButton"
         tools:ignore="HardcodedText" />
+
     <Button
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
+        android:tag="3"
         android:text="3"
+        android:theme="@style/CalculatorButton"
         tools:ignore="HardcodedText" />
-    <Button
+
+    <ImageButton
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_plus"
+        android:tag="+"
         android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
-        android:text="+"
         tools:ignore="HardcodedText" />
-    <Button
+
+    <ImageButton
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_backspace"
+        android:tag="Del"
         android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
-        android:text="+/-"
         tools:ignore="HardcodedText" />
+
     <Button
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
+        android:tag="0"
         android:text="0"
-        tools:ignore="HardcodedText" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:theme="@style/CalculatorButton"
-        style="@style/CalculatorButton"
-        android:text="."
         tools:ignore="HardcodedText" />
+
     <Button
+        style="@style/CalculatorButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/EqualsButton"
-        style="@style/EqualsButton"
-        android:text="="
+        android:tag="."
+        android:text="."
+        android:theme="@style/CalculatorButton"
         tools:ignore="HardcodedText" />
-</GridLayout>
+
+    <ImageButton
+        style="@style/EqualsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_equal"
+        android:tag="="
+        android:theme="@style/EqualsButton"
+        tools:ignore="HardcodedText" />
+</com.human_developing_soft.productcalc.calculator_keyboard.ui.CalculatorKeyboardLayout>

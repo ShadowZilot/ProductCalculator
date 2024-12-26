@@ -26,7 +26,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <com.human_developing_soft.productcalc.calculator_keyboard.KeyboardEditText
+        <com.human_developing_soft.productcalc.calculator_keyboard.ui.KeyboardEditText
             android:id="@+id/moneyInput"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -52,7 +52,7 @@
                 android:layout_marginEnd="8dp"
                 app:suffixText="@string/weight_emoji"
                 app:helperText="@string/weight_label">
-                <com.human_developing_soft.productcalc.calculator_keyboard.KeyboardEditText
+                <com.human_developing_soft.productcalc.calculator_keyboard.ui.KeyboardEditText
                     android:id="@+id/weightInput"
                     android:inputType="numberDecimal"
                     android:layout_width="match_parent"
@@ -70,7 +70,7 @@
                 app:helperText="@string/price_per_1_label"
                 android:inputType="numberDecimal">
 
-                <com.human_developing_soft.productcalc.calculator_keyboard.KeyboardEditText
+                <com.human_developing_soft.productcalc.calculator_keyboard.ui.KeyboardEditText
                     android:id="@+id/priceInput"
                     android:inputType="numberDecimal"
                     android:visibility="visible"
@@ -89,7 +89,7 @@
                 android:visibility="gone"
                 app:helperText="@string/summary_price_label">
 
-                <com.human_developing_soft.productcalc.calculator_keyboard.KeyboardEditText
+                <com.human_developing_soft.productcalc.calculator_keyboard.ui.KeyboardEditText
                     android:id="@+id/sumPriceInput"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

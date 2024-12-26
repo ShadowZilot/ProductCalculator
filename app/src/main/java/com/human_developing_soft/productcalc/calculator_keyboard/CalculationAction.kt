@@ -104,12 +104,6 @@ class Brackets(
     }
 }
 
-object PlusSlashMinus : CalculationAction() {
-    override fun implementAction(calcString: String): String {
-        return calcString
-    }
-}
-
 object Point : CalculationAction() {
     override fun implementAction(calcString: String): String {
         val lastSymbol = calcString.lastSymbol()

@@ -17,7 +17,6 @@ interface KeyActionRecognition {
                 "+-/*".contains(mKey) -> MathOperator(mKey)
                 mKey == "C" -> ClearOperation
                 mKey == "()" -> Brackets(selectedIndex)
-                mKey == "+/-" -> PlusSlashMinus
                 mKey == "." -> Point
                 mKey == "=" -> EqualOperation(mListener)
                 mKey == "Del" -> EraseOne(selectedIndex)

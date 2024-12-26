@@ -18,7 +18,7 @@ interface CustomKeyboard : NotValidFormulaListener, SelectingIndexListener {
         private val mKeyboardView: CalculatorKeyboardGridBinding,
         private val mEventListener: KeyActionListener
     ) : CustomKeyboard {
-        private var mSelectedIndex : Int = 0
+        private var mSelectedIndex: Int = 0
 
         init {
             mKeyboardView.root.visibility = View.GONE
@@ -26,7 +26,7 @@ interface CustomKeyboard : NotValidFormulaListener, SelectingIndexListener {
                 view.setOnClickListener {
                     mEventListener.onKeyPressed(
                         KeyActionRecognition.Base(
-                            (it as Button).text.toString(),
+                            it.tag.toString(),
                             this
                         ).keyAction(mSelectedIndex),
                         mSelectedIndex

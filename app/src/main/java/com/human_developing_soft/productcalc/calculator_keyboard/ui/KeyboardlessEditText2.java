@@ -1,4 +1,4 @@
-package com.human_developing_soft.productcalc.calculator_keyboard;
+package com.human_developing_soft.productcalc.calculator_keyboard.ui;
 
 /*
 The MIT License (MIT)

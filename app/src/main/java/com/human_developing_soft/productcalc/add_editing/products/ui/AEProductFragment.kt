@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
-import com.human_developing_soft.productcalc.main.ui.BaseFragment
 import com.human_developing_soft.productcalc.add_editing.common_ui.AddEditRestUi
 import com.human_developing_soft.productcalc.add_editing.common_ui.OnChangingButtonClick
 import com.human_developing_soft.productcalc.add_editing.common_ui.OnChangingButtonClick.AddEditConfig
@@ -16,6 +15,7 @@ import com.human_developing_soft.productcalc.add_editing.products.domain.AEProdu
 import com.human_developing_soft.productcalc.add_editing.products.domain.OnProductObtained
 import com.human_developing_soft.productcalc.add_editing.products.domain.OnProductUpdatedListener
 import com.human_developing_soft.productcalc.databinding.AeProductsFragmentBinding
+import com.human_developing_soft.productcalc.main.ui.BaseFragment
 import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.ui.ProductUi
 
