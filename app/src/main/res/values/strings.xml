@@ -60,4 +60,6 @@
     <string name="star_image_cd">Star image</string>
     <string name="weight_emoji" translatable="false">⚖️</string>
     <string name="money_emoji" translatable="false">🪙</string>
+    <string name="share_app_label">Tell about app</string>
+    <string name="copy_link_label">Copy link</string>
 </resources>

@@ -1,78 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/about_app_bg"
     android:clickable="true"
-    android:focusable="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/aboutAppToolbarContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/aboutAppToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:menu="@menu/about_app_menu"
-            app:titleTextColor="@color/white"
-            app:title="@string/about_app_label"/>
-    </com.google.android.material.appbar.AppBarLayout>
+    android:fitsSystemWindows="true"
+    android:focusable="true">
 
     <ImageView
         android:id="@+id/appIcon"
         android:layout_width="128dp"
         android:layout_height="128dp"
-        android:src="@mipmap/product_logo"
         android:contentDescription="@string/app_icon_cd"
-        app:layout_constraintVertical_bias="0.2"
+        android:src="@mipmap/product_logo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aboutAppToolbarContainer"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
 
     <TextView
         android:id="@+id/appTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
         android:layout_marginTop="16dp"
-        android:textStyle="bold"
-        android:textSize="28sp"
-        android:textAlignment="center"
         android:text="@string/app_name"
-        app:layout_constraintTop_toBottomOf="@id/appIcon"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/appIcon" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/shareAppButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="32dp"
+        android:background="@drawable/rate_btn_bg"
+        android:letterSpacing="0.07"
+        android:text="@string/share_app_label"
+        android:textAllCaps="false"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/developerTitle"
+        app:layout_constraintTop_toBottomOf="@id/appTitle" />
 
     <TextView
         android:id="@+id/developerTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="18sp"
         android:text="Human Developing Soft"
-        app:layout_constraintVertical_bias="0.75"
-        app:layout_constraintTop_toBottomOf="@id/appIcon"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appIcon"
+        app:layout_constraintVertical_bias="0.8"
         tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/versionTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Версия 1.2.2"
         android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/developerTitle"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/developerTitle"
+        tools:text="Версия 1.2.2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

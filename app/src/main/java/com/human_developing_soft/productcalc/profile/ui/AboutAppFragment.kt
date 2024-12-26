@@ -1,6 +1,5 @@
 package com.human_developing_soft.productcalc.profile.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,9 @@ import com.human_developing_soft.productcalc.main.ui.BaseFragment
 import com.human_developing_soft.productcalc.BuildConfig
 import com.human_developing_soft.productcalc.R
 import com.human_developing_soft.productcalc.databinding.AboutAppFragmentBinding
+import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.StringContext
+import com.human_developing_soft.productcalc.share_dialog.ShareAppFragment
 
 /**
  * Human Developing Soft
@@ -26,8 +27,10 @@ class AboutAppFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        mBinding = AboutAppFragmentBinding.inflate(inflater,
-            container, false)
+        mBinding = AboutAppFragmentBinding.inflate(
+            inflater,
+            container, false
+        )
         return mBinding.root
     }
 
@@ -40,16 +43,8 @@ class AboutAppFragment : BaseFragment() {
         mBinding.versionTitle.text = StringContext.Base(requireContext()).string(
             R.string.version_label, BuildConfig.VERSION_NAME
         )
-        mBinding.aboutAppToolbar.menu.getItem(0).setOnMenuItemClickListener {
-            val shareIntent = Intent().apply {
-                action = Intent.ACTION_SEND
-                putExtra(Intent.EXTRA_TEXT,
-                    "https://play.google.com/store/apps/details?id=com.human_developing_soft.productcalc")
-                type = "text/*"
-            }
-            startActivity(Intent.createChooser(shareIntent, null))
-            analytic()?.logEvent(FirebaseAnalytics.Event.SHARE) {}
-            return@setOnMenuItemClickListener true
+        mBinding.shareAppButton.setOnClickListener {
+            Navigation.Navigation.instance().navigateTo(ShareAppFragment::class.java)
         }
     }
 }

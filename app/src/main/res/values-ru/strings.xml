@@ -57,4 +57,6 @@
     <string name="review_title_label">Нравиться приложение?\nОцените его по достоинтсву!</string>
     <string name="rate_button_label">Оценить</string>
     <string name="star_image_cd">Изображение звёзд</string>
+    <string name="share_app_label">Рассказать о приложении</string>
+    <string name="copy_link_label">Скопировать ссылку</string>
 </resources>
