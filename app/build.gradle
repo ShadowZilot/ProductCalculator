@@ -16,8 +16,6 @@ android {
         applicationId "com.human_developing_soft.productcalc"
         minSdk 21
         targetSdk 34
-        versionCode 7
-        versionName "1.6.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
@@ -32,6 +30,12 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
+            defaultConfig.versionCode 7
+            defaultConfig.versionName "1.6.0"
+        }
+        debug {
+            defaultConfig.versionCode 999999
+            defaultConfig.versionName "99.99.99"
         }
     }
     viewBinding {
