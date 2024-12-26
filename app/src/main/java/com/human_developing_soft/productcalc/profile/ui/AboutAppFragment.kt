@@ -35,7 +35,7 @@ class AboutAppFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         analytic()?.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
             param(FirebaseAnalytics.Param.SCREEN_NAME, "About App")
-            param(FirebaseAnalytics.Param.SCREEN_CLASS, this::class.simpleName!!)
+            param(FirebaseAnalytics.Param.SCREEN_CLASS, this::class.simpleName ?: "Unknown screen")
         }
         mBinding.versionTitle.text = StringContext.Base(requireContext()).string(
             R.string.version_label, BuildConfig.VERSION_NAME
