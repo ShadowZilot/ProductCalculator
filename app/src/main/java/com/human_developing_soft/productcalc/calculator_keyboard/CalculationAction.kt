@@ -1,5 +1,6 @@
 package com.human_developing_soft.productcalc.calculator_keyboard
 
+import java.util.Locale
 import javax.script.ScriptEngineManager
 import javax.script.ScriptException
 
@@ -19,7 +20,8 @@ class Number(
     init {
         if (mPressedNumber.length > 1) {
             throw NumberLengthException(
-                "Await length of number = 1, obtain length ${mPressedNumber.length}")
+                "Await length of number = 1, obtain length ${mPressedNumber.length}"
+            )
         }
     }
 
@@ -129,9 +131,9 @@ object Point : CalculationAction() {
     }
 }
 
-class EraseOne (
+class EraseOne(
     private var mDeletingIndex: Int
-): CalculationAction() {
+) : CalculationAction() {
 
     init {
         mDeletingIndex -= 1
@@ -155,7 +157,7 @@ class PercentOperation(
         val lastSymbol = calcString.lastSymbol(mIndex)
         return if (!"+-/*%".contains(lastSymbol)) {
             StringBuilder(calcString)
-                .insert(mIndex,"%")
+                .insert(mIndex, "%")
                 .toString()
         } else {
             calcString
@@ -169,12 +171,19 @@ class EqualOperation(
     override fun implementAction(calcString: String): String {
         val engine = ScriptEngineManager().getEngineByName("rhino")
         return try {
-            String.format(
-                "%.2f",
-                engine.eval(
-                    calcString.replace("%", "/100")
-                ).toString().toFloat()
-            ).replace(",", ".")
+            val calculationResult = engine.eval(
+                calcString.replace("%", "/100")
+            )
+            if (calculationResult != null) {
+                calculationResult.toString()
+                String.format(
+                    Locale.getDefault(),
+                    "%.2f", calculationResult.toString().toFloat(),
+                ).replace(",", ".")
+            } else {
+                mListener.onFormulaError()
+                calcString
+            }
         } catch (e: ScriptException) {
             mListener.onFormulaError()
             calcString
@@ -182,12 +191,12 @@ class EqualOperation(
     }
 }
 
-fun String.lastSymbol(index : Int = this.length-1): String {
+fun String.lastSymbol(index: Int = this.length - 1): String {
     return if (this.isNotEmpty()) {
         try {
             get(index).toString()
-        } catch (e : IndexOutOfBoundsException) {
-            get(index-1).toString()
+        } catch (e: IndexOutOfBoundsException) {
+            get(index - 1).toString()
         }
     } else {
         ""
