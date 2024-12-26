@@ -16,36 +16,37 @@ const val sAutoFill = false
 
 class MainActivity : AppCompatActivity(), KeyboardHiding, FillingResultListener {
     private var mKeyboards = mutableListOf<HiddenKeyboard>()
-    private lateinit var mBinding : ActivityMainBinding
-    private lateinit var mViewModel : MainViewModel
+    private lateinit var mBinding: ActivityMainBinding
+    private lateinit var mViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
-        mViewModel = ViewModelProvider(this, MainVMFactory(
-            this, this
-        ))[MainViewModel::class.java]
+        mViewModel = ViewModelProvider(
+            this, MainVMFactory(
+                this, this
+            )
+        )[MainViewModel::class.java]
+        Navigation.Navigation.instance(
+            supportFragmentManager,
+            R.id.mainHost,
+            mBinding.bottomNav
+        )
         if (savedInstanceState == null) {
             if (sAutoFill) {
                 mViewModel.setupDatabase()
             }
-            Navigation.Navigation.instance(
-                supportFragmentManager,
-                R.id.mainHost,
-                mBinding.bottomNav)
-            Navigation.Navigation.instance().navigateTo(ProductsFragment::class.java,
-                isBackedStack = false)
-        } else {
-            mBinding.bottomNav.visibility = savedInstanceState.getInt(
-                "bottomNavVisibility")
-            Navigation.Navigation.instance().redefineReferences(
-                supportFragmentManager,
-                mBinding.bottomNav
+            Navigation.Navigation.instance().navigateTo(
+                ProductsFragment::class.java,
+                isBackedStack = false
             )
+        } else {
+            mBinding.bottomNav.visibility = savedInstanceState.getInt("bottomNavVisibility")
         }
         mBinding.bottomNav.setupWithNavComponent(
-            Navigation.Navigation.instance())
+            Navigation.Navigation.instance()
+        )
     }
 
     override fun onBackPressed() {
@@ -58,7 +59,7 @@ class MainActivity : AppCompatActivity(), KeyboardHiding, FillingResultListener 
                     it.hide()
                 }
             }
-        } catch (e : Exception) {
+        } catch (e: Exception) {
             finish()
         }
     }
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity(), KeyboardHiding, FillingResultListener 
     }
 }
 
-fun List<HiddenKeyboard>.isAllHidden() : Boolean {
+fun List<HiddenKeyboard>.isAllHidden(): Boolean {
     var result = true
     for (i in 0 until this.size) {
         if (this[i].isHidden()) {
