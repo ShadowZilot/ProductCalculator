@@ -59,4 +59,5 @@
     <string name="star_image_cd">Изображение звёзд</string>
     <string name="share_app_label">Рассказать о приложении</string>
     <string name="copy_link_label">Скопировать ссылку</string>
+    <string name="feedback_button_label">Обратная связь</string>
 </resources>

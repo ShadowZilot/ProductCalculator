@@ -62,4 +62,5 @@
     <string name="money_emoji" translatable="false">🪙</string>
     <string name="share_app_label">Tell about app</string>
     <string name="copy_link_label">Copy link</string>
+    <string name="feedback_button_label">Share feedback</string>
 </resources>

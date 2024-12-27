@@ -68,7 +68,7 @@ class EditingMoneyFragment : BottomSheetDialogFragment(), DayObserver, DayUpdati
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putInt(
             "savedMoney",
-            mBinding.moneyInput.text.toString().toInt()
+            mBinding.moneyInput.text.toString().toIntOrNull() ?: 0
         )
     }
 
