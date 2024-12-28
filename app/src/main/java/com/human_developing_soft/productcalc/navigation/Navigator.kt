@@ -3,7 +3,6 @@ package com.human_developing_soft.productcalc.navigation
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentResultListener
 
 interface Navigator {

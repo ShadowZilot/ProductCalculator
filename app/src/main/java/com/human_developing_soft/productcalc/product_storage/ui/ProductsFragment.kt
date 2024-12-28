@@ -1,57 +1,45 @@
 package com.human_developing_soft.productcalc.product_storage.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.logEvent
-import com.human_developing_soft.productcalc.main.ui.BaseFragment
 import com.human_developing_soft.productcalc.databinding.ProductsFragmentBinding
 import com.human_developing_soft.productcalc.history.ui.DateProvider
+import com.human_developing_soft.productcalc.main.ui.BaseFragment
 import com.human_developing_soft.productcalc.product_storage.domain.ProductListVMFactory
 import com.human_developing_soft.productcalc.product_storage.domain.ProductsListVM
 import com.human_developing_soft.productcalc.product_storage.domain.ProductsObserver
 
-class ProductsFragment : BaseFragment(), ProductsObserver,
+class ProductsFragment : BaseFragment<ProductsFragmentBinding>(
+    bindingInflater = { inflater, container ->
+        ProductsFragmentBinding.inflate(inflater, container, false)
+    }
+), ProductsObserver,
     OnProductClickListener, OnDayEditing, FragmentResultListener {
-    private lateinit var mBinding: ProductsFragmentBinding
     private lateinit var mUiManager: DayPresentation
     private lateinit var mViewModel: ProductsListVM
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        mBinding = ProductsFragmentBinding.inflate(
-            inflater,
-            container,
-            false
-        )
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mUiManager = DayPresentation.Base(
             MoneyInfoView.Base(
-                mBinding.moneyInfo,
+                binding.moneyInfo,
                 this
             ),
             AllProductsView.Base(
                 CollapsingList.Base(
-                    mBinding.productsList,
+                    binding.productsList,
                     this,
-                    mBinding.addProductButton
+                    binding.addProductButton
                 ),
                 ProductsListEmptyView.Base(
-                    mBinding.emptyListProducts
+                    binding.emptyListProducts
                 )
             )
         )
-        return mBinding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         analytic()?.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
             param(FirebaseAnalytics.Param.SCREEN_NAME, "ProductsList")
             param(FirebaseAnalytics.Param.SCREEN_CLASS, this::class.java.simpleName)
@@ -63,18 +51,18 @@ class ProductsFragment : BaseFragment(), ProductsObserver,
                 requireContext()
             )
         )[ProductsListVM::class.java]
-        mBinding.addProductButton.setOnClickListener {
+        binding.addProductButton.setOnClickListener {
             mViewModel.navigateToAdding()
         }
         arguments?.getLong("time")?.let {
-            mBinding.productsToolbar.title = DateProvider.Base(
+            binding.productsToolbar.title = DateProvider.Base(
                 it, requireContext()
             ).date()
         }
         mViewModel.visibilityForAdding().let {
-            mBinding.moneyInfo.allMoneyEdit.visibility = it
+            binding.moneyInfo.allMoneyEdit.visibility = it
             if (it == View.GONE) {
-                mBinding.addProductButton.hide()
+                binding.addProductButton.hide()
             }
         }
     }
@@ -86,7 +74,7 @@ class ProductsFragment : BaseFragment(), ProductsObserver,
         mViewModel.fetchProducts()
         mViewModel.visibilityForAdding().let {
             if (it == View.GONE) {
-                mBinding.addProductButton.hide()
+                binding.addProductButton.hide()
             }
         }
     }

@@ -1,9 +1,7 @@
 package com.human_developing_soft.productcalc.add_editing.products.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
@@ -19,54 +17,47 @@ import com.human_developing_soft.productcalc.main.ui.BaseFragment
 import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.ui.ProductUi
 
-class AEProductFragment : BaseFragment(),
+class AEProductFragment : BaseFragment<AeProductsFragmentBinding>(
+    bindingInflater = { inflater, container ->
+        AeProductsFragmentBinding.inflate(inflater, container, false)
+    }
+),
     OnProductUpdatedListener, OnProductObtained, OnChangingButtonClick {
-    private lateinit var mBinding: AeProductsFragmentBinding
     private lateinit var mViewModel: AEProductVM
     private lateinit var mUiManager: AEProductUi
-    private var mId : Int? = null
+    private var mId: Int? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        mBinding = AeProductsFragmentBinding.inflate(
-            inflater, container, false
-        )
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mId = arguments?.getInt("id")
         if (mId == -1) mId = null
         mUiManager = AEProductUi.Base(
             ProductFieldsImpl(
-                mBinding.aeFields,
+                binding.aeFields,
                 mId
             ),
-            AddEditRestUi.AEProductUi(
-                mBinding, this
-            )
+            AddEditRestUi.AEProductUi(binding, this)
         )
         mUiManager.makeValid(mId)
-        return mBinding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        mViewModel = ViewModelProvider(this,
-            AEProductVMFactory(requireContext(),
+        mViewModel = ViewModelProvider(
+            this,
+            AEProductVMFactory(
+                requireContext(),
                 this, this,
-                arguments?.getLong("time"))
+                arguments?.getLong("time")
+            )
         )[AEProductVM::class.java]
-        mBinding.aeFields.sumPriceInput.setupKeyboardComponents(
-            mBinding.keyboardContainer,
+        binding.aeFields.sumPriceInput.setupKeyboardComponents(
+            binding.keyboardContainer,
             requireActivity(),
             mUiManager
         )
-        mBinding.aeFields.priceInput.setupKeyboardComponents(
-            mBinding.keyboardContainer,
+        binding.aeFields.priceInput.setupKeyboardComponents(
+            binding.keyboardContainer,
             requireActivity(),
             mUiManager
         )
-        mBinding.aeFields.weightInput.setupKeyboardComponents(
-            mBinding.keyboardContainer,
+        binding.aeFields.weightInput.setupKeyboardComponents(
+            binding.keyboardContainer,
             requireActivity(),
             mUiManager
         )
@@ -109,15 +100,17 @@ class AEProductFragment : BaseFragment(),
 
     override fun onClick(aeConfig: Int) {
         var nameEvent = ""
-        when(aeConfig) {
+        when (aeConfig) {
             AddEditConfig.valueAConfig() -> {
                 mViewModel.saveProduct(mUiManager.product())
                 nameEvent = "Add"
             }
+
             AddEditConfig.valueEConfig() -> {
                 mViewModel.updateProduct(mUiManager.product())
                 nameEvent = "Edit"
             }
+
             AddEditConfig.valueDConfig() -> {
                 mViewModel.deleteProduct(
                     mUiManager.product(
