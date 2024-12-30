@@ -14,7 +14,7 @@ import com.human_developing_soft.productcalc.product_storage.domain.ProductListV
 import com.human_developing_soft.productcalc.product_storage.domain.ProductsListVM
 import com.human_developing_soft.productcalc.product_storage.domain.ProductsObserver
 
-class ProductsFragment : BaseFragment<ProductsFragmentBinding>(
+class ProductsFragment : BaseFragment<ProductsFragmentBinding, Any>(
     bindingInflater = { inflater, container ->
         ProductsFragmentBinding.inflate(inflater, container, false)
     }

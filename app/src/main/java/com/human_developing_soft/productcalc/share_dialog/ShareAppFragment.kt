@@ -11,7 +11,7 @@ import com.human_developing_soft.productcalc.databinding.ShareAppFragmentBinding
 import com.human_developing_soft.productcalc.main.domain.AnalyticsApp
 import com.human_developing_soft.productcalc.main.ui.BaseFragment
 
-class ShareAppFragment : BaseFragment<ShareAppFragmentBinding>(
+class ShareAppFragment : BaseFragment<ShareAppFragmentBinding, Any>(
     bindingInflater = { inflater, container ->
         ShareAppFragmentBinding.inflate(inflater, container, false)
     }

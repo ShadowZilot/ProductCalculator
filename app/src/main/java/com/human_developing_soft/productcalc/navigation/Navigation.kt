@@ -81,8 +81,6 @@ class Navigation private constructor(
             }
             mManager.findFragmentByTag(mList.last())!!.onResume()
             transaction.commit()
-        } else {
-            throw Exception()
         }
     }
 

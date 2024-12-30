@@ -1,16 +1,14 @@
 package com.human_developing_soft.productcalc.profile.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.logEvent
-import com.human_developing_soft.productcalc.main.ui.BaseFragment
 import com.human_developing_soft.productcalc.BuildConfig
 import com.human_developing_soft.productcalc.R
 import com.human_developing_soft.productcalc.databinding.AboutAppFragmentBinding
-import com.human_developing_soft.productcalc.feedback.FeedbackFragment
+import com.human_developing_soft.productcalc.feedback.ui.FeedbackFragment
+import com.human_developing_soft.productcalc.main.ui.BaseFragment
 import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.StringContext
 import com.human_developing_soft.productcalc.share_dialog.ShareAppFragment
@@ -20,7 +18,7 @@ import com.human_developing_soft.productcalc.share_dialog.ShareAppFragment
  *
  * @author Egor Ponomarev
  */
-class AboutAppFragment : BaseFragment<AboutAppFragmentBinding>(
+class AboutAppFragment : BaseFragment<AboutAppFragmentBinding, Any>(
     bindingInflater = { inflater, container ->
         AboutAppFragmentBinding.inflate(inflater, container, false)
     }

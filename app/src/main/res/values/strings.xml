@@ -64,4 +64,13 @@
     <string name="copy_link_label">Copy link</string>
     <string name="feedback_button_label">Share feedback</string>
     <string name="feedback_title">Feedback form</string>
+    <string name="send_feedback_label">Send feedback</string>
+    <string name="problem_description_hint">Describe your problem or feedback here</string>
+    <string name="feedback_contact_hint">Write your contact here (optional)</string>
+    <string name="feedback_file_field">You can attach one file, up to 20 MB size</string>
+    <string name="error_title">Error occurred</string>
+    <string name="error_no_internet">No internet connection, please check your internet connection and try again later</string>
+    <string name="error_empty_feedback_message">Please fill field with feedback description</string>
+    <string name="error_message_general">Something went wrong, try again later please</string>
+    <string name="error_file_too_big_message">File is over than 20 MB</string>
 </resources>

@@ -16,7 +16,7 @@ import com.human_developing_soft.productcalc.main.ui.BaseFragment
 import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.ui.ExpenditureUi
 
-class AExpenditureFragment : BaseFragment<AeExpenditureFragmentBinding>(
+class AExpenditureFragment : BaseFragment<AeExpenditureFragmentBinding, Any>(
     bindingInflater = { inflater, container ->
         AeExpenditureFragmentBinding.inflate(inflater, container, false)
     }

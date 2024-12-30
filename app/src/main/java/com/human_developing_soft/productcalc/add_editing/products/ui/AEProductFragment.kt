@@ -17,12 +17,11 @@ import com.human_developing_soft.productcalc.main.ui.BaseFragment
 import com.human_developing_soft.productcalc.navigation.Navigation
 import com.human_developing_soft.productcalc.product_storage.ui.ProductUi
 
-class AEProductFragment : BaseFragment<AeProductsFragmentBinding>(
+class AEProductFragment : BaseFragment<AeProductsFragmentBinding, Any>(
     bindingInflater = { inflater, container ->
         AeProductsFragmentBinding.inflate(inflater, container, false)
     }
-),
-    OnProductUpdatedListener, OnProductObtained, OnChangingButtonClick {
+), OnProductUpdatedListener, OnProductObtained, OnChangingButtonClick {
     private lateinit var mViewModel: AEProductVM
     private lateinit var mUiManager: AEProductUi
     private var mId: Int? = null

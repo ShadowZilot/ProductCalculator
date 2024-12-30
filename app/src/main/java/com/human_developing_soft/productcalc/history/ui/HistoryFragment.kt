@@ -14,7 +14,7 @@ import com.human_developing_soft.productcalc.main.ui.BaseFragment
 import com.human_developing_soft.productcalc.product_storage.ui.ProductsListEmptyView
 import com.human_developing_soft.productcalc.sReviewGlobal
 
-class HistoryFragment : BaseFragment<HistoryFragmentBinding>(
+class HistoryFragment : BaseFragment<HistoryFragmentBinding, Any>(
     bindingInflater = { inflater, container ->
         HistoryFragmentBinding.inflate(inflater, container, false)
     }
