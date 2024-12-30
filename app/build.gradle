@@ -10,14 +10,14 @@ apply plugin: 'com.google.gms.google-services'
 
 
 android {
-    compileSdk 34
     namespace "com.human_developing_soft.productcalc"
     defaultConfig {
         applicationId "com.human_developing_soft.productcalc"
         minSdk 21
         targetSdk 34
-        versionCode 8
-        versionName "1.7.0"
+        compileSdk 34
+        versionCode 9
+        versionName "1.7.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
