@@ -76,13 +76,13 @@ class KeyboardEditText(
         focused: Boolean,
         direction: Int, previouslyFocusedRect: Rect?
     ) {
-        super.onFocusChanged(focused, direction, previouslyFocusedRect)
         mKeyBoard?.updateVisibility(focused)
         if (focused) {
             mListener?.onShow(this)
         } else {
             mListener?.onHide(this)
         }
+        super.onFocusChanged(focused, direction, previouslyFocusedRect)
     }
 
     override fun onSelectionChanged(selStart: Int, selEnd: Int) {
