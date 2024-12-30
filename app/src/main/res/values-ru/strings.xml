@@ -59,5 +59,17 @@
     <string name="star_image_cd">Изображение звёзд</string>
     <string name="share_app_label">Рассказать о приложении</string>
     <string name="copy_link_label">Скопировать ссылку</string>
-    <string name="feedback_button_label">Обратная связь</string>
+    <string name="feedback_button_label">Связаться с разработчиком</string>
+    <string name="feedback_title">Форма обратной связи</string>
+    <string name="send_feedback_label">Отправить</string>
+    <string name="problem_description_hint">Опишите проблему здесь</string>
+    <string name="feedback_contact_hint">Оставьте свой контакт (необязательно)</string>
+    <string name="feedback_file_field">Вы можете прикрепить один файл, размером до 20 МБ</string>
+    <string name="feedback_success_message">Обращение отправлено разработчику, спасибо!</string>
+    <string name="error_title">Произошла ошибка</string>
+    <string name="back_label">Вернуться</string>
+    <string name="error_no_internet">Нет интернет соединения, проверьте ваше подключение и попробуйте ещё раз</string>
+    <string name="error_empty_feedback_message">Пожалуйста заполните поле с описанием проблемы</string>
+    <string name="error_message_general">Что-то пошло не так, пожалуйста повторите попытку позже</string>
+    <string name="error_file_too_big_message">Выбранный файл больше 20 МБ</string>
 </resources>

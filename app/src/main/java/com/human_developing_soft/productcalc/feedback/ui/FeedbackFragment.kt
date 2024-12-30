@@ -1,9 +1,14 @@
 package com.human_developing_soft.productcalc.feedback.ui
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.ActivityNotFoundException
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationSet
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -62,6 +67,7 @@ class FeedbackFragment : BaseFragment<FeedbackFragmentBinding, FeedbackComponent
         }
         binding.attachFile.setOnClickListener { openFilePicker() }
         binding.removeFile.setOnClickListener { viewModel.removeFile() }
+        binding.backButton.setOnClickListener { Navigation.Navigation.instance().takeBack() }
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 viewModel.attachedFile.collect { attachedFile ->
@@ -81,18 +87,26 @@ class FeedbackFragment : BaseFragment<FeedbackFragmentBinding, FeedbackComponent
         }
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
+                viewModel.errorFlow.collect { errorState ->
+                    binding.sendFeedBack.setText(R.string.send_feedback_label)
+                    binding.feedbackLoader.visibility = View.GONE
+                    AlertDialog.Builder(requireContext())
+                        .setTitle(R.string.error_title)
+                        .setMessage(errorState.errorDescription)
+                        .setPositiveButton(
+                            android.R.string.ok
+                        ) { dialog, _ -> dialog.dismiss() }
+                        .show()
+                }
+            }
+        }
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 viewModel.feedbackState.collect { state ->
                     when (state) {
-                        is FeedbackState.Error -> {
-                            binding.sendFeedBack.setText(R.string.feedback_button_label)
+                        FeedbackState.Default -> {
+                            binding.sendFeedBack.setText(R.string.send_feedback_label)
                             binding.feedbackLoader.visibility = View.GONE
-                            AlertDialog.Builder(requireContext())
-                                .setTitle(R.string.error_title)
-                                .setMessage(state.errorDescription)
-                                .setPositiveButton(
-                                    android.R.string.ok
-                                ) { dialog, _ -> dialog.dismiss() }
-                                .show()
                         }
 
                         FeedbackState.Loading -> {
@@ -101,14 +115,32 @@ class FeedbackFragment : BaseFragment<FeedbackFragmentBinding, FeedbackComponent
                         }
 
                         FeedbackState.Success -> {
-                            binding.sendFeedBack.setText(R.string.feedback_button_label)
+                            binding.sendFeedBack.setText(R.string.send_feedback_label)
                             binding.feedbackLoader.visibility = View.GONE
-                            Navigation.Navigation.instance().takeBack()
+                            successScenario()
                         }
                     }
                 }
             }
         }
+    }
+
+    private fun successScenario() {
+        binding.feedbackSuccessContainer.visibility = View.VISIBLE
+        val backgroundAnimation = AnimatorSet().apply {
+            playTogether(
+                ObjectAnimator.ofFloat(
+                    binding.successBackground,
+                    "scaleX", 1f, 2_000f
+                ),
+                ObjectAnimator.ofFloat(
+                    binding.successBackground,
+                    "scaleY", 1f, 2_000f
+                ),
+            )
+            duration = 500
+        }
+        backgroundAnimation.start()
     }
 
     override fun onActivityResult(result: Uri?) {

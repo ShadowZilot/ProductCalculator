@@ -143,4 +143,68 @@
         app:layout_constraintEnd_toEndOf="@id/sendFeedBack"
         app:layout_constraintStart_toStartOf="@id/sendFeedBack"
         app:layout_constraintTop_toTopOf="@id/sendFeedBack" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/feedbackSuccessContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:translationZ="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/successBackground"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:background="@drawable/green_circle"
+            app:layout_constraintBottom_toBottomOf="@id/successImage"
+            app:layout_constraintEnd_toEndOf="@id/successImage"
+            app:layout_constraintStart_toStartOf="@id/successImage"
+            app:layout_constraintTop_toTopOf="@id/successImage" />
+
+        <ImageView
+            android:id="@+id/successImage"
+            android:layout_width="164dp"
+            android:layout_height="164dp"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_success"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/successLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/feedback_success_message"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/successImage" />
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/back_label"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
