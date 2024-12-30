@@ -73,5 +73,9 @@ interface ProductUi {
 }
 
 fun String.toFloatSafety(): Float {
-    return if (this.isEmpty()) 0f else this.toFloat()
+    return if (this.isEmpty()) 0f else try {
+        this.toFloat()
+    } catch (e: NumberFormatException) {
+        0f
+    }
 }
