@@ -53,7 +53,10 @@ class MainActivity : AppCompatActivity(), KeyboardHiding, FillingResultListener 
         try {
             if (mKeyboards.isAllHidden()) {
                 mKeyboards.clear()
-                Navigation.Navigation.instance().takeBack()
+                val isNavigated = Navigation.Navigation.instance().takeBack()
+                if (!isNavigated) {
+                    super.onBackPressed()
+                }
             } else {
                 mKeyboards.forEach {
                     it.hide()

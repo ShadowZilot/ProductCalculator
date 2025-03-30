@@ -14,5 +14,5 @@ interface Navigator {
              listener: FragmentResultListener? = null,
              data: Bundle? = null)
 
-    fun takeBack()
+    fun takeBack(): Boolean
 }

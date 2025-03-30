@@ -13,7 +13,13 @@ class Navigation private constructor(
     private val mHost: Int,
     private var mHidingNav: OnHidingBottomNav? = null
 ) : Navigator {
-    private val mList = mutableListOf<String>()
+    private val mTagList = mutableListOf<String>()
+
+    init {
+        mTagList.addAll(mManager.fragments.map {
+            it.tag ?: "Unknown fragment"
+        })
+    }
 
     override fun navigateTo(
         targetFragment: Class<out Fragment>,
@@ -22,31 +28,31 @@ class Navigation private constructor(
     ) {
         val transaction = mManager.beginTransaction()
         if (!isBackedStack) {
-            if (mList.isEmpty()) {
-                mList.add("${mList.size}$targetFragment.name{y}")
+            if (mTagList.isEmpty()) {
+                mTagList.add("${mTagList.size}$targetFragment.name{y}")
             } else {
-                mList.removeLast()
-                mList.add("${mList.size}$targetFragment.name{y}")
+                mTagList.removeLast()
+                mTagList.add("${mTagList.size}$targetFragment.name{y}")
             }
             transaction.replace(
                 mHost,
                 targetFragment,
                 data,
-                mList.last()
+                mTagList.last()
             )
         } else {
             mHidingNav?.onHide()
-            mList.add("${mList.size}$targetFragment.name")
+            mTagList.add("${mTagList.size}$targetFragment.name")
             transaction.add(
                 mHost,
                 targetFragment,
                 data,
-                mList.last()
+                mTagList.last()
             )
         }
-        if (mList.size > 1) {
-            for (i in mList.size - 2..0) {
-                mManager.findFragmentByTag(mList[i])?.onPause()
+        if (mTagList.size > 1) {
+            for (i in mTagList.size - 2..0) {
+                mManager.findFragmentByTag(mTagList[i])?.onPause()
             }
         }
         transaction.commit()
@@ -71,16 +77,19 @@ class Navigation private constructor(
         )
     }
 
-    override fun takeBack() {
-        if (mList.size > 1) {
+    override fun takeBack(): Boolean {
+        return if (mTagList.size > 1) {
             val transaction = mManager.beginTransaction()
-            transaction.remove(mManager.findFragmentByTag(mList.last())!!)
-            mList.remove(mList.last())
-            if (mList.last().contains("{y}")) {
+            transaction.remove(mManager.findFragmentByTag(mTagList.last())!!)
+            mTagList.remove(mTagList.last())
+            if (mTagList.last().contains("{y}")) {
                 mHidingNav?.onShow()
             }
-            mManager.findFragmentByTag(mList.last())!!.onResume()
+            mManager.findFragmentByTag(mTagList.last())!!.onResume()
             transaction.commit()
+            true
+        } else {
+            false
         }
     }
 

@@ -5,10 +5,7 @@ import android.animation.ObjectAnimator
 import android.content.ActivityNotFoundException
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.animation.Animation
-import android.view.animation.AnimationSet
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
